@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { api } from '../../api/client';
+import { api, extractListData } from '../../api/client';
 import { Sale } from '../../types';
 import { formatCurrency, formatWeight, formatDate } from '../../utils/formatters';
 import { Card } from '../../components/common/Card';
@@ -34,7 +34,8 @@ export const InvoiceListPage: React.FC = () => {
     setLoading(true);
     try {
       const res = await api.sales.list();
-      setSales(res.data || []);
+      const list = extractListData<Sale>(res);
+      setSales(list);
     } catch (err) {
       console.error('Failed to fetch sales invoices:', err);
     } finally {
@@ -64,11 +65,9 @@ export const InvoiceListPage: React.FC = () => {
 
   const filteredSales = sales.filter((s) => {
     const q = search.toLowerCase();
-    return (
-      s.invoice_number?.toLowerCase().includes(q) ||
-      s.customer_name?.toLowerCase().includes(q) ||
-      s.party?.name?.toLowerCase().includes(q)
-    );
+    const inv = s.invoice_number || s.invoiceNumber || '';
+    const cust = s.customer_name || s.customerName || s.party?.name || '';
+    return inv.toLowerCase().includes(q) || cust.toLowerCase().includes(q);
   });
 
   return (
@@ -134,41 +133,52 @@ export const InvoiceListPage: React.FC = () => {
                     </td>
                   </tr>
                 ) : (
-                  filteredSales.map((sale) => (
-                    <tr key={sale.id} className="hover:bg-slate-800/30 transition-colors">
-                      <td className="p-3.5 font-bold text-amber-400">{sale.invoice_number}</td>
-                      <td className="p-3.5 text-slate-400">{formatDate(sale.invoice_date)}</td>
-                      <td className="p-3.5 font-sans font-medium text-slate-200">
-                        {sale.party?.name || sale.customer_name || 'Retail Counter Buyer'}
-                      </td>
-                      <td className="p-3.5 text-center">
-                        <span className="text-[10px] font-sans uppercase font-bold text-slate-400 bg-slate-800 px-2 py-0.5 rounded">
-                          {(sale.invoice_type || (sale as any).invoiceType) === 'tax_invoice' ? 'GST Tax' : 'Memo'}
-                        </span>
-                      </td>
-                      <td className="p-3.5 text-right text-slate-300">
-                        {formatWeight(sale.total_net_weight)}
-                      </td>
-                      <td className="p-3.5 text-right text-slate-400">
-                        ₹{sale.total_taxable_amount}
-                      </td>
-                      <td className="p-3.5 text-right font-bold text-slate-100 text-sm">
-                        {formatCurrency(sale.grand_total)}
-                      </td>
-                      <td className="p-3.5 text-center">
-                        <Badge
-                          variant={
-                            sale.status === 'cancelled'
-                              ? 'ruby'
-                              : sale.payment_status === 'paid'
-                              ? 'emerald'
-                              : 'amber'
-                          }
-                          size="sm"
-                        >
-                          {sale.status === 'cancelled' ? 'Cancelled' : sale.payment_status}
-                        </Badge>
-                      </td>
+                  filteredSales.map((sale) => {
+                    const invNo = sale.invoice_number || sale.invoiceNumber || `INV-#${sale.id}`;
+                    const invDt = sale.invoice_date || sale.invoiceDate;
+                    const cust = sale.party?.name || sale.customer_name || sale.customerName || 'Retail Counter Buyer';
+                    const invTyp = sale.invoice_type || (sale as any).invoiceType;
+                    const netWeight = sale.total_net_weight ?? sale.totalNetWeight ?? 0;
+                    const taxable = sale.total_taxable_amount ?? sale.taxableAmount ?? sale.taxable_amount ?? 0;
+                    const total = sale.grand_total ?? sale.grandTotal ?? 0;
+                    const payStatus = sale.payment_status || (sale as any).paymentStatus || 'paid';
+                    const isCanc = sale.is_cancelled || (sale as any).isCancelled || sale.status === 'cancelled';
+
+                    return (
+                      <tr key={sale.id} className="hover:bg-slate-800/30 transition-colors">
+                        <td className="p-3.5 font-bold text-amber-400 font-mono">{invNo}</td>
+                        <td className="p-3.5 text-slate-400">{formatDate(invDt)}</td>
+                        <td className="p-3.5 font-sans font-medium text-slate-200">
+                          {cust}
+                        </td>
+                        <td className="p-3.5 text-center">
+                          <span className="text-[10px] font-sans uppercase font-bold text-slate-400 bg-slate-800 px-2 py-0.5 rounded">
+                            {invTyp === 'tax_invoice' ? 'GST Tax' : 'Memo'}
+                          </span>
+                        </td>
+                        <td className="p-3.5 text-right text-slate-300">
+                          {formatWeight(netWeight)}
+                        </td>
+                        <td className="p-3.5 text-right text-slate-400">
+                          ₹{taxable}
+                        </td>
+                        <td className="p-3.5 text-right font-bold text-slate-100 text-sm">
+                          {formatCurrency(total)}
+                        </td>
+                        <td className="p-3.5 text-center">
+                          <Badge
+                            variant={
+                              isCanc
+                                ? 'ruby'
+                                : payStatus === 'paid'
+                                ? 'emerald'
+                                : 'amber'
+                            }
+                            size="sm"
+                          >
+                            {isCanc ? 'Cancelled' : payStatus}
+                          </Badge>
+                        </td>
                       <td className="p-3.5 text-center">
                         <div className="flex items-center justify-center gap-1.5">
                           <button
@@ -190,8 +200,8 @@ export const InvoiceListPage: React.FC = () => {
                         </div>
                       </td>
                     </tr>
-                  ))
-                )}
+                  );
+                }))}
               </tbody>
             </table>
           </div>
@@ -203,7 +213,7 @@ export const InvoiceListPage: React.FC = () => {
         <Modal
           isOpen={Boolean(selectedSale)}
           onClose={() => setSelectedSale(null)}
-          title={`Invoice ${selectedSale.invoice_number}`}
+          title={`Invoice #${selectedSale.invoice_number || selectedSale.invoiceNumber}`}
           subtitle="Preview and re-print customer receipt"
           maxWidth="4xl"
         >

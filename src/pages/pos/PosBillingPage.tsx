@@ -320,16 +320,18 @@ export const PosBillingPage: React.FC = () => {
 
     setIsSubmitting(true);
     try {
+      const todayDate = new Date().toISOString().split('T')[0];
       const payload: StoreSalePayload = {
+        invoice_date: todayDate,
         party_id: customer?.id,
-        customer_name: customer?.name || 'Counter Customer',
+        customer_name: customer?.name || 'Retail Counter Customer',
         customer_mobile: customer?.mobile || undefined,
         customer_pan: customerPan || undefined,
         invoice_type: invoiceType,
         is_inter_state: isInterState,
-        payment_mode: paymentMode,
-        payment_account_id: paymentAccountId || undefined,
-        paid_amount: Number(paidAmount) || totals.grandTotal,
+        payment_mode: (paymentMode || 'cash').toLowerCase() as PaymentMode,
+        payment_account_id: paymentAccountId || (accounts && accounts.length > 0 ? accounts[0].id : 1),
+        paid_amount: Number(paidAmount) > 0 ? Number(paidAmount) : totals.grandTotal,
         notes: notes || undefined,
         terminal_id: effectiveSession.terminalId,
         terminal_code: effectiveSession.terminalCode,
@@ -356,19 +358,35 @@ export const PosBillingPage: React.FC = () => {
           discount_amount: it.discount_amount,
           taxable_amount: it.taxable_amount,
         })),
-        old_gold_items: oldGoldItems.map((og) => ({
+        old_gold_items: oldGoldItems.length > 0 ? oldGoldItems.map((og) => ({
           description: og.description,
           gross_weight: og.gross_weight,
           dust_weight: og.dust_weight,
           purity_percent: og.purity_percent,
           rate_per_gram: og.rate_per_gram,
-        })),
+        })) : undefined,
       };
 
       const created = await api.sales.create(payload);
-
+      const invNum = created.invoice_number || created.invoiceNumber || 'INV-GENERATED';
       const enriched: Sale = {
         ...created,
+        invoice_number: invNum,
+        invoiceNumber: invNum,
+        invoice_date: created.invoice_date || created.invoiceDate || todayDate,
+        invoiceDate: created.invoiceDate || created.invoice_date || todayDate,
+        customer_name: created.customer_name || created.customerName || customer?.name || 'Retail Counter Customer',
+        customerName: created.customerName || created.customer_name || customer?.name || 'Retail Counter Customer',
+        customer_mobile: created.customer_mobile || created.customerMobile || customer?.mobile || null,
+        payment_mode: paymentMode,
+        grand_total: created.grand_total ?? created.grandTotal ?? Number(totals.grandTotal),
+        grandTotal: created.grandTotal ?? created.grand_total ?? Number(totals.grandTotal),
+        paid_amount: created.paid_amount ?? created.paidAmount ?? (Number(paidAmount) > 0 ? Number(paidAmount) : Number(totals.grandTotal)),
+        paidAmount: created.paidAmount ?? created.paid_amount ?? (Number(paidAmount) > 0 ? Number(paidAmount) : Number(totals.grandTotal)),
+        total_taxable_amount: created.total_taxable_amount ?? created.taxableAmount ?? Number(totals.taxableAmount),
+        taxableAmount: created.taxableAmount ?? created.total_taxable_amount ?? Number(totals.taxableAmount),
+        total_gst_amount: created.total_gst_amount ?? created.totalTaxAmount ?? Number(totals.totalGst),
+        totalTaxAmount: created.totalTaxAmount ?? created.total_gst_amount ?? Number(totals.totalGst),
         terminal_id: effectiveSession.terminalId,
         terminal_code: effectiveSession.terminalCode,
         terminal_name: effectiveSession.terminalName,
@@ -386,8 +404,12 @@ export const PosBillingPage: React.FC = () => {
       resetPos();
     } catch (err: any) {
       console.error('Sale error:', err);
-      const msg = err.response?.data?.message || 'Failed to complete sale transaction.';
-      alert(`Error: ${msg}`);
+      let msg = err.response?.data?.message || 'Failed to complete sale transaction.';
+      if (err.response?.data?.errors) {
+        const errorList = Object.values(err.response.data.errors).flat();
+        msg += '\n\nValidation Details:\n• ' + errorList.join('\n• ');
+      }
+      alert(`Sale Validation Notice:\n${msg}`);
     } finally {
       setIsSubmitting(false);
     }
@@ -918,7 +940,16 @@ export const PosBillingPage: React.FC = () => {
               {/* Amount Paid input */}
               <div className="grid grid-cols-2 gap-2">
                 <div>
-                  <label className="block text-[11px] text-slate-400 mb-1">Paid Amount (₹)</label>
+                  <div className="flex items-center justify-between mb-1">
+                    <label className="text-[11px] text-slate-400">Paid Amount (₹)</label>
+                    <button
+                      type="button"
+                      onClick={() => setPaidAmount(totals.grandTotal)}
+                      className="text-[10px] text-amber-400 hover:text-amber-300 font-mono font-semibold underline cursor-pointer"
+                    >
+                      Exact (₹{totals.grandTotal.toLocaleString('en-IN')})
+                    </button>
+                  </div>
                   <input
                     type="number"
                     value={paidAmount}
@@ -1308,7 +1339,7 @@ export const PosBillingPage: React.FC = () => {
           isOpen={Boolean(completedSale)}
           onClose={() => setCompletedSale(null)}
           title="Sale Completed Successfully!"
-          subtitle={`Invoice ${completedSale.invoice_number} is generated and inventory is updated.`}
+          subtitle={`Invoice #${completedSale.invoice_number || completedSale.invoiceNumber} is generated and inventory is updated.`}
           maxWidth="4xl"
         >
           <div className="space-y-4">

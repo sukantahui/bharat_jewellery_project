@@ -18,6 +18,17 @@ export const ThermalSlipPrint: React.FC<ThermalSlipPrintProps> = ({
   const phone = comp.phone;
   const gstin = comp.gstin;
 
+  const invNumber = sale.invoice_number || sale.invoiceNumber || '—';
+  const invDate = sale.invoice_date || sale.invoiceDate;
+  const custName = sale.party?.name || sale.customer_name || sale.customerName || 'Counter Customer';
+  const custPan = sale.customer_pan || sale.customerPan;
+  const items = sale.items || [];
+  const oldGoldItems = sale.old_gold_items || sale.oldGoldExchanges || [];
+  const taxableAmount = sale.total_taxable_amount ?? sale.taxableAmount ?? sale.taxable_amount ?? 0;
+  const gstAmount = sale.total_gst_amount ?? sale.totalTaxAmount ?? sale.total_tax_amount ?? 0;
+  const grandTotal = sale.grand_total ?? sale.grandTotal ?? 0;
+  const paidAmount = sale.paid_amount ?? sale.paidAmount ?? grandTotal;
+
   return (
     <div className="bg-slate-900 rounded-2xl border border-slate-800 p-6 max-w-sm mx-auto text-slate-900">
       <div className="flex justify-between items-center mb-4 no-print">
@@ -41,8 +52,8 @@ export const ThermalSlipPrint: React.FC<ThermalSlipPrintProps> = ({
         </div>
 
         <div className="py-2 border-b border-dashed border-black text-[10px]">
-          <div>Inv: <span className="font-bold">{sale.invoice_number}</span></div>
-          <div>Date: {formatDate(sale.invoice_date)}</div>
+          <div>Inv: <span className="font-bold">{invNumber}</span></div>
+          <div>Date: {formatDate(invDate)}</div>
           {(sale.terminal_code || sale.terminal_name || sale.terminalCode || sale.terminalName) && (
             <div>
               POS: <span className="font-bold">{sale.terminal_code || sale.terminalCode || sale.terminal_name}</span>
@@ -52,8 +63,8 @@ export const ThermalSlipPrint: React.FC<ThermalSlipPrintProps> = ({
           {(sale.cashier_name || sale.cashierName) && (
             <div>Op/Cashier: {sale.cashier_name || sale.cashierName}</div>
           )}
-          <div>Cust: {sale.party?.name || sale.customer_name || 'Counter Customer'}</div>
-          {sale.customer_pan && <div>PAN: {sale.customer_pan}</div>}
+          <div>Cust: {custName}</div>
+          {custPan && <div>PAN: {custPan}</div>}
         </div>
 
         <div className="py-2 border-b border-dashed border-black">
@@ -66,48 +77,61 @@ export const ThermalSlipPrint: React.FC<ThermalSlipPrintProps> = ({
               </tr>
             </thead>
             <tbody>
-              {sale.items && sale.items.map((it, idx) => (
-                <tr key={it.id || idx}>
-                  <td className="py-0.5">
-                    <div>{it.item_name}</div>
-                    {it.huid && <div className="text-[8px]">HUID: {it.huid}</div>}
-                  </td>
-                  <td className="text-right py-0.5">{formatWeight(it.net_weight)}</td>
-                  <td className="text-right py-0.5 font-bold">₹{it.taxable_amount}</td>
-                </tr>
-              ))}
+              {items && items.map((it: any, idx: number) => {
+                const itName = it.item_name || it.itemName || 'Jewellery Item';
+                const huid = it.huid;
+                const net = it.net_weight ?? it.netWeight ?? 0;
+                const taxable = it.taxable_amount ?? it.taxableAmount ?? 0;
+
+                return (
+                  <tr key={it.id || idx}>
+                    <td className="py-0.5">
+                      <div>{itName}</div>
+                      {huid && <div className="text-[8px]">HUID: {huid}</div>}
+                    </td>
+                    <td className="text-right py-0.5">{formatWeight(net)}</td>
+                    <td className="text-right py-0.5 font-bold">₹{taxable}</td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
 
-        {sale.old_gold_items && sale.old_gold_items.length > 0 && (
+        {oldGoldItems && oldGoldItems.length > 0 && (
           <div className="py-1 border-b border-dashed border-black text-[10px]">
             <div className="font-bold">Old Gold Trade-In:</div>
-            {sale.old_gold_items.map((og, i) => (
-              <div key={i} className="flex justify-between">
-                <span>{formatWeight(og.gross_weight)} @ {og.purity_percent}%</span>
-                <span>-₹{og.exchange_value}</span>
-              </div>
-            ))}
+            {oldGoldItems.map((og: any, i: number) => {
+              const gross = og.gross_weight ?? og.grossWeight ?? 0;
+              const pct = og.purity_percent ?? og.purity_percentage ?? og.purityPercentage ?? 0;
+              const val = og.exchange_value ?? og.total_exchange_value ?? og.totalExchangeValue ?? 0;
+
+              return (
+                <div key={i} className="flex justify-between">
+                  <span>{formatWeight(gross)} @ {pct}%</span>
+                  <span>-₹{val}</span>
+                </div>
+              );
+            })}
           </div>
         )}
 
         <div className="py-2 space-y-1 text-[11px] border-b border-dashed border-black">
           <div className="flex justify-between">
             <span>Taxable:</span>
-            <span>₹{sale.total_taxable_amount}</span>
+            <span>₹{taxableAmount}</span>
           </div>
           <div className="flex justify-between">
             <span>GST (3%):</span>
-            <span>₹{sale.total_gst_amount}</span>
+            <span>₹{gstAmount}</span>
           </div>
           <div className="flex justify-between font-bold text-xs pt-1 border-t border-black">
             <span>NET TOTAL:</span>
-            <span>{formatCurrency(sale.grand_total)}</span>
+            <span>{formatCurrency(grandTotal)}</span>
           </div>
           <div className="flex justify-between text-[10px]">
-            <span>Paid ({sale.payment_mode}):</span>
-            <span>₹{sale.paid_amount || sale.grand_total}</span>
+            <span>Paid ({sale.payment_mode || 'Cash'}):</span>
+            <span>₹{paidAmount}</span>
           </div>
         </div>
 
