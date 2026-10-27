@@ -1159,16 +1159,30 @@ export interface BusinessProfile {
 
 export interface UpdateBusinessProfilePayload {
   business_name?: string;
+  company_name?: string;
+  companyName?: string;
+  trade_name?: string;
+  tradeName?: string;
+  legal_name?: string;
+  legalName?: string;
   tagline?: string;
   gstin?: string;
   pan?: string;
+  pan_number?: string;
+  panNumber?: string;
   hallmarking_license_no?: string;
+  hallmarkLicenseNo?: string;
   is_gst_registered?: boolean;
   address_line1?: string;
+  addressLine1?: string;
   address_line2?: string;
+  addressLine2?: string;
   city?: string;
+  district_id?: number;
   state_id?: number;
   state_code?: number | string;
+  stateCode?: number | string;
+  state_name?: string;
   pincode?: string;
   phone?: string;
   email?: string;
@@ -1179,16 +1193,22 @@ export interface UpdateBusinessProfilePayload {
   silver_gst_rate?: number;
   making_gst_rate?: number;
   terms_and_conditions?: string;
+  termsAndConditions?: string;
 
   // Additional settings fields
   address?: string;
   state?: string;
   website?: string;
   bank_name?: string;
+  bankName?: string;
   bank_account_number?: string;
+  bankAccountNumber?: string;
   bank_ifsc?: string;
+  bankIfsc?: string;
   bank_branch?: string;
+  bankBranch?: string;
   upi_id?: string;
+  upiId?: string;
   traded_metals?: 'gold' | 'silver' | 'both';
   tradedMetals?: 'gold' | 'silver' | 'both';
 }

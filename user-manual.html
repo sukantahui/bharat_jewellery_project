@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bharat Jewellery ERP & POS — Software User Manual | ব্যবহার নির্দেশিকা</title>
-  <meta name="description" content="Official bilingual operating guide and user manual for Bharat Jewellery ERP & POS in English and বাংলা." />
+  <title>Bharat Jewellery ERP & POS — Software User Manual</title>
+  <meta name="description" content="Official bilingual operating guide and user manual for Bharat Jewellery ERP & POS in English and Bengali." />
   
   <!-- Google Fonts: English & Bengali Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -894,15 +894,20 @@
       justify-content: space-between;
     }
 
-    /* Language specific block toggle */
+    /* Language specific block and inline toggle */
     .lang-en-block, .lang-bn-block {
       display: block;
     }
+    .lang-en-inline, .lang-bn-inline {
+      display: inline;
+    }
 
-    body.lang-bn .lang-en-block {
+    body.lang-bn .lang-en-block,
+    body.lang-bn .lang-en-inline {
       display: none !important;
     }
-    body.lang-en .lang-bn-block {
+    body.lang-en .lang-bn-block,
+    body.lang-en .lang-bn-inline {
       display: none !important;
     }
 
@@ -1059,9 +1064,9 @@
 
     <div class="header-actions">
       <!-- Bilingual Language Toggle Button -->
-      <div class="lang-switcher" title="Switch Language / ভাষা পরিবর্তন করুন">
+      <div class="lang-switcher" title="Language Switcher">
         <button id="btnLangBn" class="lang-btn active" onclick="setLanguage('bn')">
-          <span>🇮🇳</span> বাংলা (Bengali)
+          <span>🇮🇳</span> <span class="lang-en-inline">Bengali</span><span class="lang-bn-inline">বাংলা</span>
         </button>
         <button id="btnLangEn" class="lang-btn" onclick="setLanguage('en')">
           <span>🇬🇧</span> English
@@ -1074,10 +1079,10 @@
           <circle cx="11" cy="11" r="8"></circle>
           <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
         </svg>
-        <input type="text" id="manualSearch" placeholder="খুঁজুন / Search..." onkeyup="filterManual()" />
+        <input type="text" id="manualSearch" placeholder="Search documentation, topics, shortcuts..." onkeyup="filterManual()" />
       </div>
 
-      <button class="btn btn-outline" onclick="window.print()" title="Print / প্রিন্ট করুন">
+      <button class="btn btn-outline" onclick="window.print()" title="Print User Manual">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <polyline points="6 9 6 2 18 2 18 9"></polyline>
           <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
@@ -1087,7 +1092,7 @@
         <span class="lang-bn-block">প্রিন্ট</span>
       </button>
 
-      <a href="/" class="btn btn-gold" title="Return to Billing Terminal / বিলিং কাউন্টারে ফিরে যান">
+      <a href="/" class="btn btn-gold" title="Return to Billing Terminal">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
           <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
           <polyline points="10 17 15 12 10 7"></polyline>
@@ -1254,7 +1259,7 @@
       </div>
       <div style="padding: 12px; background: rgba(15,23,42,0.6); border-radius: 8px; font-size: 0.75rem; color: var(--text-muted); font-family: var(--font-mono); line-height: 1.6;">
         <div>Hallmark: <span style="color: var(--gold-light);">BIS 916 HUID</span></div>
-        <div>HSN Code: <span style="color: #fff;">7113 (গয়না) / 7108 (বাট)</span></div>
+        <div>HSN Code: <span style="color: #fff;"><span class="lang-en-inline">7113 (Jewellery) / 7108 (Bullion)</span><span class="lang-bn-inline">7113 (গয়না) / 7108 (বাট)</span></span></div>
         <div>GST Rate: <span style="color: #38bdf8;">3.0% (1.5% + 1.5%)</span></div>
         <div>Cash Rule: <span style="color: #34d399;">Rule 114B (₹2L Cap)</span></div>
       </div>
@@ -1291,28 +1296,40 @@
 
         <div class="quick-stats-grid">
           <div class="stat-pill">
-            <div class="num">F2 Key</div>
+            <div class="num">
+              <span class="lang-en-inline">F2 Key</span>
+              <span class="lang-bn-inline">F2 কি</span>
+            </div>
             <div class="lbl">
               <span class="lang-en-block">Instant POS Billing</span>
               <span class="lang-bn-block">এক ক্লিকে বিলিং কাউন্টার</span>
             </div>
           </div>
           <div class="stat-pill">
-            <div class="num">৩.০% জিএসটি</div>
+            <div class="num">
+              <span class="lang-en-inline">3.0% GST</span>
+              <span class="lang-bn-inline">৩.০% জিএসটি</span>
+            </div>
             <div class="lbl">
               <span class="lang-en-block">CGST 1.5% + SGST 1.5%</span>
               <span class="lang-bn-block">সিজিএসটি ১.৫% + এসজিএসটি ১.৫%</span>
             </div>
           </div>
           <div class="stat-pill">
-            <div class="num">৬-সংখ্যার HUID</div>
+            <div class="num">
+              <span class="lang-en-inline">6-Digit HUID</span>
+              <span class="lang-bn-inline">৬-সংখ্যার HUID</span>
+            </div>
             <div class="lbl">
               <span class="lang-en-block">BIS Hallmarking Compliant</span>
               <span class="lang-bn-block">হলমার্ক ইউনিক আইডি ট্র্যাকিং</span>
             </div>
           </div>
           <div class="stat-pill">
-            <div class="num">₹২,০০,০০০</div>
+            <div class="num">
+              <span class="lang-en-inline">₹2,00,000</span>
+              <span class="lang-bn-inline">₹২,০০,০০০</span>
+            </div>
             <div class="lbl">
               <span class="lang-en-block">Rule 114B Cash Limit</span>
               <span class="lang-bn-block">ক্যাশ প্যান কার্ডের সীমা</span>
@@ -1378,7 +1395,7 @@
 
         <div class="stepper">
           <div class="step-item">
-            <div class="step-badge">১</div>
+            <div class="step-badge"><span class="lang-en-inline">1</span><span class="lang-bn-inline">১</span></div>
             <div class="step-content">
               <h5>
                 <span class="lang-en-block">Step 1: Open POS Billing Counter (F2)</span>
@@ -1391,7 +1408,7 @@
             </div>
           </div>
           <div class="step-item">
-            <div class="step-badge">২</div>
+            <div class="step-badge"><span class="lang-en-inline">2</span><span class="lang-bn-inline">২</span></div>
             <div class="step-content">
               <h5>
                 <span class="lang-en-block">Step 2: Scan Jewellery Barbell Tag</span>
@@ -1404,7 +1421,7 @@
             </div>
           </div>
           <div class="step-item">
-            <div class="step-badge">৩</div>
+            <div class="step-badge"><span class="lang-en-inline">3</span><span class="lang-bn-inline">৩</span></div>
             <div class="step-content">
               <h5>
                 <span class="lang-en-block">Step 3: Verify Stone Weight Deduction</span>
@@ -1417,7 +1434,7 @@
             </div>
           </div>
           <div class="step-item">
-            <div class="step-badge">৪</div>
+            <div class="step-badge"><span class="lang-en-inline">4</span><span class="lang-bn-inline">৪</span></div>
             <div class="step-content">
               <h5>
                 <span class="lang-en-block">Step 4: Check Making Charges Rate</span>
@@ -1430,7 +1447,7 @@
             </div>
           </div>
           <div class="step-item">
-            <div class="step-badge">৫</div>
+            <div class="step-badge"><span class="lang-en-inline">5</span><span class="lang-bn-inline">৫</span></div>
             <div class="step-content">
               <h5>
                 <span class="lang-en-block">Step 5: Select or Add Customer</span>
@@ -1443,7 +1460,7 @@
             </div>
           </div>
           <div class="step-item">
-            <div class="step-badge">৬</div>
+            <div class="step-badge"><span class="lang-en-inline">6</span><span class="lang-bn-inline">৬</span></div>
             <div class="step-content">
               <h5>
                 <span class="lang-en-block">Step 6: Old Gold Scrap Exchange (If Applicable)</span>
@@ -1456,7 +1473,7 @@
             </div>
           </div>
           <div class="step-item">
-            <div class="step-badge">৭</div>
+            <div class="step-badge"><span class="lang-en-inline">7</span><span class="lang-bn-inline">৭</span></div>
             <div class="step-content">
               <h5>
                 <span class="lang-en-block">Step 7: Mandatory PAN Check (Rule 114B)</span>
@@ -1469,7 +1486,7 @@
             </div>
           </div>
           <div class="step-item">
-            <div class="step-badge">৮</div>
+            <div class="step-badge"><span class="lang-en-inline">8</span><span class="lang-bn-inline">৮</span></div>
             <div class="step-content">
               <h5>
                 <span class="lang-en-block">Step 8: Collect Tender & Print Invoice</span>
@@ -1513,7 +1530,7 @@
 
         <div class="stepper">
           <div class="step-item">
-            <div class="step-badge">১</div>
+            <div class="step-badge"><span class="lang-en-inline">1</span><span class="lang-bn-inline">১</span></div>
             <div class="step-content">
               <h5>
                 <span class="lang-en-block">Step 1: Open Karigar Inward</span>
@@ -1526,7 +1543,7 @@
             </div>
           </div>
           <div class="step-item">
-            <div class="step-badge">২</div>
+            <div class="step-badge"><span class="lang-en-inline">2</span><span class="lang-bn-inline">২</span></div>
             <div class="step-content">
               <h5>
                 <span class="lang-en-block">Step 2: Enter Metal Weights (0.001g Precision)</span>
@@ -1539,7 +1556,7 @@
             </div>
           </div>
           <div class="step-item">
-            <div class="step-badge">৩</div>
+            <div class="step-badge"><span class="lang-en-inline">3</span><span class="lang-bn-inline">৩</span></div>
             <div class="step-content">
               <h5>
                 <span class="lang-en-block">Step 3: Record Karigar Making Charges & HUID</span>
@@ -1552,7 +1569,7 @@
             </div>
           </div>
           <div class="step-item">
-            <div class="step-badge">৪</div>
+            <div class="step-badge"><span class="lang-en-inline">4</span><span class="lang-bn-inline">৪</span></div>
             <div class="step-content">
               <h5>
                 <span class="lang-en-block">Step 4: Save & Print Barbell Label</span>
@@ -1565,7 +1582,7 @@
             </div>
           </div>
           <div class="step-item">
-            <div class="step-badge">৫</div>
+            <div class="step-badge"><span class="lang-en-inline">5</span><span class="lang-bn-inline">৫</span></div>
             <div class="step-content">
               <h5>
                 <span class="lang-en-block">Step 5: Tray Allocation & Low Stock Monitoring</span>
@@ -1609,7 +1626,7 @@
 
         <div class="stepper">
           <div class="step-item">
-            <div class="step-badge">১</div>
+            <div class="step-badge"><span class="lang-en-inline">1</span><span class="lang-bn-inline">১</span></div>
             <div class="step-content">
               <h5>
                 <span class="lang-en-block">Step 1: Morning Cash Drawer Audit</span>
@@ -1622,7 +1639,7 @@
             </div>
           </div>
           <div class="step-item">
-            <div class="step-badge">২</div>
+            <div class="step-badge"><span class="lang-en-inline">2</span><span class="lang-bn-inline">২</span></div>
             <div class="step-content">
               <h5>
                 <span class="lang-en-block">Step 2: Record Daily Expense Debit Vouchers</span>
@@ -1635,7 +1652,7 @@
             </div>
           </div>
           <div class="step-item">
-            <div class="step-badge">৩</div>
+            <div class="step-badge"><span class="lang-en-inline">3</span><span class="lang-bn-inline">৩</span></div>
             <div class="step-content">
               <h5>
                 <span class="lang-en-block">Step 3: Post Bullion Purchases & Input Tax Credit</span>
@@ -1648,7 +1665,7 @@
             </div>
           </div>
           <div class="step-item">
-            <div class="step-badge">৪</div>
+            <div class="step-badge"><span class="lang-en-inline">4</span><span class="lang-bn-inline">৪</span></div>
             <div class="step-content">
               <h5>
                 <span class="lang-en-block">Step 4: Reconcile Bank Statements (UPI & RTGS)</span>
@@ -1661,7 +1678,7 @@
             </div>
           </div>
           <div class="step-item">
-            <div class="step-badge">৫</div>
+            <div class="step-badge"><span class="lang-en-inline">5</span><span class="lang-bn-inline">৫</span></div>
             <div class="step-content">
               <h5>
                 <span class="lang-en-block">Step 5: Day-End Cash Closing & Vault Tally</span>
@@ -1705,7 +1722,7 @@
 
         <div class="stepper">
           <div class="step-item">
-            <div class="step-badge">১</div>
+            <div class="step-badge"><span class="lang-en-inline">1</span><span class="lang-bn-inline">১</span></div>
             <div class="step-content">
               <h5>
                 <span class="lang-en-block">Step 1: Broadcast Daily Board Rates (10:00 AM)</span>
@@ -1718,7 +1735,7 @@
             </div>
           </div>
           <div class="step-item">
-            <div class="step-badge">২</div>
+            <div class="step-badge"><span class="lang-en-inline">2</span><span class="lang-bn-inline">২</span></div>
             <div class="step-content">
               <h5>
                 <span class="lang-en-block">Step 2: Monitor Real-Time Showroom Dashboard</span>
@@ -1731,7 +1748,7 @@
             </div>
           </div>
           <div class="step-item">
-            <div class="step-badge">৩</div>
+            <div class="step-badge"><span class="lang-en-inline">3</span><span class="lang-bn-inline">৩</span></div>
             <div class="step-content">
               <h5>
                 <span class="lang-en-block">Step 3: Review Karigar & Vendor Ledger Balances</span>
@@ -1744,7 +1761,7 @@
             </div>
           </div>
           <div class="step-item">
-            <div class="step-badge">৪</div>
+            <div class="step-badge"><span class="lang-en-inline">4</span><span class="lang-bn-inline">৪</span></div>
             <div class="step-content">
               <h5>
                 <span class="lang-en-block">Step 4: Monthly Statutory GST Filing (GSTR-1 & 3B)</span>
@@ -1757,7 +1774,7 @@
             </div>
           </div>
           <div class="step-item">
-            <div class="step-badge">৫</div>
+            <div class="step-badge"><span class="lang-en-inline">5</span><span class="lang-bn-inline">৫</span></div>
             <div class="step-content">
               <h5>
                 <span class="lang-en-block">Step 5: Weekly Encrypted Database Backup</span>
@@ -1860,7 +1877,7 @@
 
         <div class="stepper">
           <div class="step-item">
-            <div class="step-badge">1</div>
+            <div class="step-badge"><span class="lang-en-inline">1</span><span class="lang-bn-inline">১</span></div>
             <div class="step-content">
               <h5>
                 <span class="lang-en-block">Launch Terminal & Log In</span>
@@ -1873,7 +1890,7 @@
             </div>
           </div>
           <div class="step-item">
-            <div class="step-badge">2</div>
+            <div class="step-badge"><span class="lang-en-inline">2</span><span class="lang-bn-inline">২</span></div>
             <div class="step-content">
               <h5>
                 <span class="lang-en-block">Broadcast Today's Bullion Rates</span>
@@ -1886,7 +1903,7 @@
             </div>
           </div>
           <div class="step-item">
-            <div class="step-badge">3</div>
+            <div class="step-badge"><span class="lang-en-inline">3</span><span class="lang-bn-inline">৩</span></div>
             <div class="step-content">
               <h5>
                 <span class="lang-en-block">Verify Cash Drawer Opening Balance</span>
@@ -1948,6 +1965,17 @@
               <p>
                 <strong>Board Rate</strong> is the official daily retail price prominently displayed on the showroom's electronic rate board or wall display for retail walk-in customers. It represents the showroom's official per-gram selling price for finished jewellery across different karats (22K BIS Hallmark 916, 18K Diamond Mounts 750, 14K, and Silver) as well as the scrap buying rate for customer old gold exchanges.
               </p>
+            </div>
+          </div>
+
+          <div class="callout info">
+            <div class="icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            </div>
+            <div class="callout-body">
+              <strong>Key Difference: Bullion Rate vs Board Rate (Summary)</strong>
+              • <strong>Bullion Rate:</strong> Wholesale benchmark spot market price for 24K raw bullion bars/coins (used for wholesale purchases from banks or refiners).<br/>
+              • <strong>Board Rate:</strong> Showroom displayed retail rates for 22K (916) and 18K (750) jewellery (used on customer tax invoices and scrap buy-backs).
             </div>
           </div>
         </div>
@@ -2104,24 +2132,48 @@
           <h3>৩.২ সোনার বিল তৈরির সঠিক গাণিতিক সূত্র</h3>
         </div>
 
-        <div class="formula-box">
-          <span class="comment">// ১. নেট সোনার ওজন (Net Weight)</span>
-          নেট সোনার ওজন = মোট ওজন (Gross Wt) - পাথর/পুতির ওজন (Stone Wt)
-          
-          <span class="comment">// ২. সোনার প্রাথমিক মূল্য (Gold Value)</span>
-          সোনার দাম = নেট সোনার ওজন × আজকের প্রতি গ্রাম দর
+        <div class="lang-en-block">
+          <div class="formula-box">
+            <span class="comment">// 1. Net Gold Weight (Net Wt)</span>
+            Net Weight = Gross Weight - Stone / Enamel Weight
+            
+            <span class="comment">// 2. Primary Gold Value</span>
+            Gold Value = Net Weight × Today's Rate per Gram
 
-          <span class="comment">// ৩. মজুরি / মেকিং চার্জ (Making Charges - ৩টি পদ্ধতি)</span>
-          • প্রতি গ্রাম অনুযায়ী:  মজুরি = মোট ওজন × প্রতি গ্রামের মজুরি (যেমন ₹৬৫০/গ্রাম)
-          • শতাংশ অনুযায়ী (%):   মজুরি = সোনার দামের নির্দিষ্ট শতাংশ (যেমন ১০%)
-          • ফিক্সড বা থোক:       নির্দিষ্ট এককালীন টাকা (যেমন ₹৫,০০০)
+            <span class="comment">// 3. Making Charges (3 Flexible Modes)</span>
+            • Per Gram Mode:       Making Charge = Gross Weight × Rate per Gram (e.g. ₹650/g)
+            • Percentage Mode (%): Making Charge = Gold Value × Specified Percentage (e.g. 10%)
+            • Fixed Lumpsum:       Flat Fixed Amount (e.g. ₹5,000)
 
-          <span class="comment">// ৪. করযোগ্য মূল্য (Taxable Amount)</span>
-          করযোগ্য মূল্য = সোনার দাম + মজুরি + পাথরের দাম + হলমার্কিং ফি (₹৪৫) - ছাড়
+            <span class="comment">// 4. Taxable Amount</span>
+            Taxable Amount = Gold Value + Making Charges + Stone Value + Hallmarking Fee (₹45) - Discount
 
-          <span class="comment">// ৫. জিএসটি ৩% (GST 3%)</span>
-          • রাজ্যের মধ্যে (Intra-State): CGST ১.৫% + SGST ১.৫% = ৩.০%
-          • অন্য রাজ্যে (Inter-State): IGST ৩.০%
+            <span class="comment">// 5. Statutory GST 3%</span>
+            • Intra-State (Within WB): CGST 1.5% + SGST 1.5% = 3.0%
+            • Inter-State (Outside):   IGST 3.0%
+          </div>
+        </div>
+
+        <div class="lang-bn-block">
+          <div class="formula-box">
+            <span class="comment">// ১. নেট সোনার ওজন (Net Weight)</span>
+            নেট সোনার ওজন = মোট ওজন (Gross Wt) - পাথর/পুতির ওজন (Stone Wt)
+            
+            <span class="comment">// ২. সোনার প্রাথমিক মূল্য (Gold Value)</span>
+            সোনার দাম = নেট সোনার ওজন × আজকের প্রতি গ্রাম দর
+
+            <span class="comment">// ৩. মজুরি / মেকিং চার্জ (Making Charges - ৩টি পদ্ধতি)</span>
+            • প্রতি গ্রাম অনুযায়ী:  মজুরি = মোট ওজন × প্রতি গ্রামের মজুরি (যেমন ₹৬৫০/গ্রাম)
+            • শতাংশ অনুযায়ী (%):   মজুরি = সোনার দামের নির্দিষ্ট শতাংশ (যেমন ১০%)
+            • ফিক্সড বা থোক:       নির্দিষ্ট এককালীন টাকা (যেমন ₹৫,০০০)
+
+            <span class="comment">// ৪. করযোগ্য মূল্য (Taxable Amount)</span>
+            করযোগ্য মূল্য = সোনার দাম + মজুরি + পাথরের দাম + হলমার্কিং ফি (₹৪৫) - ছাড়
+
+            <span class="comment">// ৫. জিএসটি ৩% (GST 3%)</span>
+            • রাজ্যের মধ্যে (Intra-State): CGST ১.৫% + SGST ১.৫% = ৩.০%
+            • অন্য রাজ্যে (Inter-State): IGST ৩.০%
+          </div>
         </div>
 
         <div class="lang-en-block">
@@ -2169,8 +2221,14 @@
           <div class="row"><span>Tender: Cash & UPI</span> <span>PAID</span></div>
           <div class="divider"></div>
           <div class="center" style="font-size: 0.7rem;">
-            ১০০% বিআইএস হলমার্কযুক্ত গয়না।<br/>
-            ৭ দিনের মধ্যে আসল বিল সহ এক্সচেঞ্জ প্রযোজ্য।
+            <span class="lang-en-block">
+              100% BIS Hallmarked Certified Jewellery.<br/>
+              Exchange valid within 7 days with original tax invoice.
+            </span>
+            <span class="lang-bn-block">
+              ১০০% বিআইএস হলমার্কযুক্ত গয়না।<br/>
+              ৭ দিনের মধ্যে আসল বিল সহ এক্সচেঞ্জ প্রযোজ্য।
+            </span>
           </div>
         </div>
       </section>
@@ -2224,12 +2282,24 @@
           </li>
         </ol>
 
-        <div class="formula-box">
-          <span class="comment">// পুরনো সোনার সঠিক হিসাবের সমীকরণ</span>
-          ১. মেল্ট ওজন (Melt Weight) = মোট ওজন - গালা/ধুলো বাদ
-          ২. খাঁটি পাকা সোনা (Fine Gold 24K) = মেল্ট ওজন × (বিশুদ্ধতা % ÷ ১০০)
-          ৩. ক্রেতার এক্সচেঞ্জ ক্রেডিট (₹) = খাঁটি পাকা সোনা × আজকের কেনার দর (Buying Rate)
-          ৪. ক্রেতার চূড়ান্ত প্রদেয় টাকা = নতুন গয়নার মোট বিল - পুরনো সোনার ক্রেডিট
+        <div class="lang-en-block">
+          <div class="formula-box">
+            <span class="comment">// Old Gold Scrap Exchange & Melt Valuation Formula</span>
+            1. Melt Weight = Gross Scrap Weight - Dust / Enamel / Lacquer Deduction
+            2. Pure Fine Gold (24K Equiv.) = Melt Weight × (Assayed Purity % ÷ 100)
+            3. Customer Exchange Credit (₹) = Fine Gold Weight × Today's Scrap Buying Rate
+            4. Net Payable by Customer = Gross New Jewellery Invoice Amount - Exchange Credit
+          </div>
+        </div>
+
+        <div class="lang-bn-block">
+          <div class="formula-box">
+            <span class="comment">// পুরনো সোনার সঠিক হিসাবের সমীকরণ</span>
+            ১. মেল্ট ওজন (Melt Weight) = মোট ওজন - গালা/ধুলো বাদ
+            ২. খাঁটি পাকা সোনা (Fine Gold 24K) = মেল্ট ওজন × (বিশুদ্ধতা % ÷ ১০০)
+            ৩. ক্রেতার এক্সচেঞ্জ ক্রেডিট (₹) = খাঁটি পাকা সোনা × আজকের কেনার দর (Buying Rate)
+            ৪. ক্রেতার চূড়ান্ত প্রদেয় টাকা = নতুন গয়নার মোট বিল - পুরনো সোনার ক্রেডিট
+          </div>
         </div>
 
         <div class="callout tip">
@@ -2378,7 +2448,7 @@
 
         <div class="stepper">
           <div class="step-item">
-            <div class="step-badge">1</div>
+            <div class="step-badge"><span class="lang-en-inline">1</span><span class="lang-bn-inline">১</span></div>
             <div class="step-content">
               <h5>
                 <span class="lang-en-block">Select Registered Karigar</span>
@@ -2391,7 +2461,7 @@
             </div>
           </div>
           <div class="step-item">
-            <div class="step-badge">2</div>
+            <div class="step-badge"><span class="lang-en-inline">2</span><span class="lang-bn-inline">২</span></div>
             <div class="step-content">
               <h5>
                 <span class="lang-en-block">Input Weights & Hallmarking HUID</span>
@@ -2404,7 +2474,7 @@
             </div>
           </div>
           <div class="step-item">
-            <div class="step-badge">3</div>
+            <div class="step-badge"><span class="lang-en-inline">3</span><span class="lang-bn-inline">৩</span></div>
             <div class="step-content">
               <h5>
                 <span class="lang-en-block">Save & Print Tag</span>
@@ -2667,9 +2737,9 @@
                 <span class="lang-bn-block">মজুরির ধরণ</span>
               </label>
               <select id="calcMakingType" onchange="calculateInteractiveBill()">
-                <option value="per_gram">প্রতি গ্রাম অনুযায়ী (Per Gram)</option>
-                <option value="percentage">শতাংশ অনুযায়ী (Percentage %)</option>
-                <option value="fixed">এককালীন ফিক্সড টাকা (Fixed ₹)</option>
+                <option value="per_gram" data-en="Per Gram Rate (₹/g)" data-bn="প্রতি গ্রাম অনুযায়ী (₹/গ্রাম)">Per Gram Rate (₹/g)</option>
+                <option value="percentage" data-en="Percentage of Gold (% e.g. 10%)" data-bn="সোনার মূল্যের শতাংশ (%)">Percentage of Gold (% e.g. 10%)</option>
+                <option value="fixed" data-en="Fixed Lumpsum Amount (₹)" data-bn="এককালীন ফিক্সড টাকা (Fixed ₹)">Fixed Lumpsum Amount (₹)</option>
               </select>
             </div>
             <div class="calc-field">
@@ -2922,7 +2992,7 @@
                 </td>
               </tr>
               <tr>
-                <td><kbd>Enter</kbd> (ট্যাগ ইনপুটে)</td>
+                <td><kbd>Enter</kbd> <span class="lang-en-inline">(In Tag Input)</span><span class="lang-bn-inline">(ট্যাগ ইনপুটে)</span></td>
                 <td>
                   <span class="lang-en-block">Scan & Add Tag</span>
                   <span class="lang-bn-block">ট্যাগ কার্টে যোগ করা</span>
@@ -3027,7 +3097,7 @@
   <!-- Footer -->
   <footer class="doc-footer">
     <div style="font-family: var(--font-display); font-size: 1rem; color: #fff; margin-bottom: 6px;">
-      BHARAT JEWELLERS & SONS PVT. LTD. • ভারত জুয়েলার্স অ্যান্ড সন্স
+      BHARAT JEWELLERS & SONS PVT. LTD.<span class="lang-bn-inline"> • ভারত জুয়েলার্স অ্যান্ড সন্স</span>
     </div>
     <div>Bowbazar, Kolkata • BIS Hallmark License: HM/BIS/WB-2024/916 • GSTIN: 19AAACB1234D1Z5</div>
     <div style="margin-top: 10px; font-size: 0.75rem;">
@@ -3043,6 +3113,8 @@
       const body = document.body;
       const btnBn = document.getElementById('btnLangBn');
       const btnEn = document.getElementById('btnLangEn');
+      const searchInput = document.getElementById('manualSearch');
+      const makingTypeSelect = document.getElementById('calcMakingType');
 
       if (lang === 'bn') {
         body.classList.remove('lang-en');
@@ -3050,12 +3122,26 @@
         btnBn.classList.add('active');
         btnEn.classList.remove('active');
         localStorage.setItem('bj_manual_lang', 'bn');
+        document.title = "ভারত জুয়েলারি ইআরপি ও পিওএস — ব্যবহার নির্দেশিকা";
+        if (searchInput) searchInput.placeholder = "খুঁজুন (যেমন: F2, প্যান কার্ড, মেকিং চার্জ)...";
       } else {
         body.classList.remove('lang-bn');
         body.classList.add('lang-en');
         btnEn.classList.add('active');
         btnBn.classList.remove('active');
         localStorage.setItem('bj_manual_lang', 'en');
+        document.title = "Bharat Jewellery ERP & POS — Operating Manual & SOP";
+        if (searchInput) searchInput.placeholder = "Search documentation, topics, shortcuts...";
+      }
+
+      // Update dropdown option labels
+      if (makingTypeSelect) {
+        for (let i = 0; i < makingTypeSelect.options.length; i++) {
+          const opt = makingTypeSelect.options[i];
+          if (opt.dataset && opt.dataset[lang]) {
+            opt.textContent = opt.dataset[lang];
+          }
+        }
       }
 
       // Re-trigger live calculators to update any strings
@@ -3218,22 +3304,25 @@
       const printWindow = window.open('', '_blank');
       const title = sec.querySelector('h2') ? sec.querySelector('h2').innerText : 'Role Manual';
       const content = sec.innerHTML;
+      const currentLang = document.body.classList.contains('lang-en') ? 'lang-en' : 'lang-bn';
       printWindow.document.write(`
         <!DOCTYPE html>
         <html>
         <head>
           <title>${title}</title>
-          <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+          <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
           <style>
-            body { font-family: 'Hind Siliguri', sans-serif; padding: 30px; color: #000; line-height: 1.6; }
+            body { font-family: 'Plus Jakarta Sans', 'Hind Siliguri', sans-serif; padding: 30px; color: #000; line-height: 1.6; }
             .btn, .no-print, a { display: none !important; }
             .step-item { display: flex; gap: 14px; margin-bottom: 16px; border-bottom: 1px dashed #ccc; padding-bottom: 12px; }
             .step-badge { font-weight: bold; border: 1px solid #000; border-radius: 50%; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; }
             h2 { margin-bottom: 6px; }
             kbd { border: 1px solid #333; padding: 1px 5px; font-family: monospace; }
+            body.lang-bn .lang-en-block, body.lang-bn .lang-en-inline { display: none !important; }
+            body.lang-en .lang-bn-block, body.lang-en .lang-bn-inline { display: none !important; }
           </style>
         </head>
-        <body>
+        <body class="${currentLang}">
           ${content}
           <script>window.onload = function() { window.print(); window.close(); }<\/script>
         </body>

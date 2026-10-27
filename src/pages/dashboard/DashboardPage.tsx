@@ -448,17 +448,23 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ onNavigate }) => {
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-800/60 font-mono">
-                {recentSales && recentSales.map((sale) => (
+                {recentSales && recentSales.map((sale: any) => (
                   <tr key={sale.id} className="hover:bg-slate-800/30 transition-colors">
-                    <td className="py-2.5 font-bold text-amber-400">{sale.invoice_number}</td>
-                    <td className="py-2.5 text-slate-300 font-sans truncate max-w-[120px]">
-                      {sale.customer_name || 'Counter Customer'}
+                    <td className="py-2.5 font-bold text-amber-400">
+                      {sale.invoice_number || sale.invoiceNumber || `INV-#${sale.id}`}
                     </td>
-                    <td className="py-2.5 text-right text-slate-300">{formatWeight(sale.total_net_weight)}</td>
-                    <td className="py-2.5 text-right font-bold text-slate-100">{formatCurrency(sale.grand_total)}</td>
+                    <td className="py-2.5 text-slate-300 font-sans truncate max-w-[120px]">
+                      {sale.customer_name || sale.customerName || 'Counter Customer'}
+                    </td>
+                    <td className="py-2.5 text-right text-slate-300">
+                      {formatWeight(sale.total_net_weight ?? sale.totalNetWeight ?? 0)}
+                    </td>
+                    <td className="py-2.5 text-right font-bold text-slate-100">
+                      {formatCurrency(sale.grand_total ?? sale.grandTotal ?? 0)}
+                    </td>
                     <td className="py-2.5 text-center">
-                      <Badge variant={sale.payment_status === 'paid' ? 'emerald' : 'amber'} size="sm">
-                        {sale.payment_status}
+                      <Badge variant={(sale.payment_status || sale.paymentStatus) === 'paid' ? 'emerald' : 'amber'} size="sm">
+                        {sale.payment_status || sale.paymentStatus || 'paid'}
                       </Badge>
                     </td>
                   </tr>
@@ -494,15 +500,23 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ onNavigate }) => {
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-800/60 font-mono">
-                {recentStockEntries && recentStockEntries.map((stk) => (
+                {recentStockEntries && recentStockEntries.map((stk: any) => (
                   <tr key={stk.id} className="hover:bg-slate-800/30 transition-colors">
-                    <td className="py-2.5 font-bold text-slate-200">{stk.entry_number}</td>
-                    <td className="py-2.5 font-sans capitalize text-slate-400">
-                      {stk.entry_type.replace('_', ' ')}
+                    <td className="py-2.5 font-bold text-slate-200">
+                      {stk.entry_number || stk.entryNumber || `STK-#${stk.id}`}
                     </td>
-                    <td className="py-2.5 text-right text-slate-300">{stk.total_items_count} pcs</td>
-                    <td className="py-2.5 text-right font-bold text-amber-400">{formatWeight(stk.total_gross_weight)}</td>
-                    <td className="py-2.5 text-right text-slate-400">{formatDate(stk.entry_date)}</td>
+                    <td className="py-2.5 font-sans capitalize text-slate-400">
+                      {(stk.entry_type || stk.entryType || 'inward')?.replace('_', ' ')}
+                    </td>
+                    <td className="py-2.5 text-right text-slate-300">
+                      {stk.total_items_count ?? stk.totalItemsCount ?? 0} pcs
+                    </td>
+                    <td className="py-2.5 text-right font-bold text-amber-400">
+                      {formatWeight(stk.total_gross_weight ?? stk.totalGrossWeight ?? 0)}
+                    </td>
+                    <td className="py-2.5 text-right text-slate-400">
+                      {formatDate(stk.entry_date || stk.entryDate)}
+                    </td>
                   </tr>
                 ))}
               </tbody>

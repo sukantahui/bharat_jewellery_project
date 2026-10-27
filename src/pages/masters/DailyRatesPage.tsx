@@ -39,7 +39,7 @@ export const DailyRatesPage: React.FC = () => {
     setLoadingHistory(true);
     try {
       const res = await api.masters.getDailyRates();
-      setRateHistory(res.data || []);
+      setRateHistory(Array.isArray(res) ? res : (res?.data || []));
     } catch (err) {
       console.error(err);
     } finally {

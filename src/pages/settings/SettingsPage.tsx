@@ -93,8 +93,42 @@ export const SettingsPage: React.FC = () => {
     setSavingProfile(true);
     setProfileSavedMsg(false);
     try {
-      const updated = await api.profile.update(profileForm);
+      const payload: UpdateBusinessProfilePayload = {
+        ...profileForm,
+        business_name: profileForm.business_name,
+        company_name: profileForm.business_name,
+        companyName: profileForm.business_name,
+        pan: profileForm.pan,
+        pan_number: profileForm.pan,
+        panNumber: profileForm.pan,
+        address: profileForm.address,
+        address_line1: profileForm.address,
+        addressLine1: profileForm.address,
+        state_code: Number(profileForm.state_code) || 19,
+        stateCode: Number(profileForm.state_code) || 19,
+      };
+      const updated = await api.profile.update(payload);
       setProfile(updated);
+      const comp = getCompanyDetails(updated);
+      setProfileForm({
+        business_name: comp.name,
+        tagline: comp.tagline,
+        address: comp.address,
+        phone: comp.phone,
+        email: comp.email,
+        website: comp.website,
+        gstin: comp.gstin,
+        pan: comp.pan,
+        state: comp.state,
+        state_code: comp.stateCode,
+        bank_name: comp.bankName,
+        bank_account_number: comp.bankAccountNumber,
+        bank_ifsc: comp.bankIfsc,
+        bank_branch: comp.bankBranch,
+        upi_id: comp.upiId,
+        traded_metals: comp.tradedMetals,
+        tradedMetals: comp.tradedMetals,
+      });
       setProfileSavedMsg(true);
       setTimeout(() => setProfileSavedMsg(false), 4000);
     } catch (err: any) {

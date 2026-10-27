@@ -462,7 +462,7 @@ export const getCompanyDetails = (profile?: any): CompanyProfileSettings => {
   const def = APP_SETTINGS.company;
 
   return {
-    name: profile.business_name || profile.businessName || def.name,
+    name: profile.company_name || profile.companyName || profile.business_name || profile.businessName || profile.name || def.name,
     legalName: profile.legal_name || profile.legalName || def.legalName,
     shortName: profile.short_name || profile.shortName || def.shortName,
     tagline: profile.tagline || def.tagline,
@@ -476,17 +476,17 @@ export const getCompanyDetails = (profile?: any): CompanyProfileSettings => {
     supportEmail: profile.support_email || profile.supportEmail || def.supportEmail,
     website: profile.website || def.website,
 
-    address: profile.address || def.address,
+    address: profile.address || (profile.address_line1 ? (profile.address_line2 ? `${profile.address_line1}, ${profile.address_line2}` : profile.address_line1) : (profile.addressLine1 ? (profile.addressLine2 ? `${profile.addressLine1}, ${profile.addressLine2}` : profile.addressLine1) : def.address)),
     addressLine1: profile.address_line1 || profile.addressLine1 || def.addressLine1,
     addressLine2: profile.address_line2 || profile.addressLine2 || def.addressLine2,
     city: profile.city || def.city,
-    state: profile.state || def.state,
-    stateCode: profile.state_code || profile.stateCode || def.stateCode,
+    state: profile.state_name || profile.stateName || profile.state || def.state,
+    stateCode: String(profile.state_code ?? profile.stateCode ?? def.stateCode),
     pincode: profile.pincode || def.pincode,
     country: profile.country || def.country,
 
     gstin: profile.gstin || def.gstin,
-    pan: profile.pan || def.pan,
+    pan: profile.pan_number || profile.panNumber || profile.pan || def.pan,
     tan: profile.tan || def.tan,
     cin: profile.cin || def.cin,
 
