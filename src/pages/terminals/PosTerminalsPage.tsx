@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTerminalStore, PosTerminal } from '../../store/terminalStore';
 import { useAuthStore } from '../../store/authStore';
 import { formatCurrency, formatDate } from '../../utils/formatters';
@@ -25,6 +25,7 @@ import {
   ArrowRight,
   ShieldCheck,
   Sparkles,
+  RefreshCw,
 } from 'lucide-react';
 
 interface PosTerminalsPageProps {
@@ -36,6 +37,8 @@ export const PosTerminalsPage: React.FC<PosTerminalsPageProps> = ({ onNavigate }
   const {
     terminals,
     activeSession,
+    isLoading,
+    fetchTerminalsFromApi,
     createTerminal,
     updateTerminal,
     deleteTerminal,
@@ -44,6 +47,10 @@ export const PosTerminalsPage: React.FC<PosTerminalsPageProps> = ({ onNavigate }
     logoutFromTerminal,
     getAreas,
   } = useTerminalStore();
+
+  useEffect(() => {
+    fetchTerminalsFromApi();
+  }, [fetchTerminalsFromApi]);
 
   const [selectedArea, setSelectedArea] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState('');
@@ -212,7 +219,7 @@ export const PosTerminalsPage: React.FC<PosTerminalsPageProps> = ({ onNavigate }
             <Sparkles className="w-5 h-5 text-amber-400" />
           </h1>
           <p className="text-xs text-amber-300/80 font-sans mt-0.5">
-            এলাকাভিত্তিক POS টার্মিনাল তৈরি, বিলিং কাউন্টার কন্ট্রোল ও ক্যাশিয়ার লগইন ম্যানেজমেন্ট
+            Area-based POS terminal network, billing counter control, and cashier shift management
           </p>
         </div>
 
@@ -233,6 +240,16 @@ export const PosTerminalsPage: React.FC<PosTerminalsPageProps> = ({ onNavigate }
               </button>
             </div>
           )}
+
+          <button
+            onClick={() => fetchTerminalsFromApi()}
+            disabled={isLoading}
+            title="Refresh Terminals from API"
+            className="flex items-center gap-1.5 px-3 py-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 text-slate-300 hover:text-amber-300 font-semibold text-xs transition-all cursor-pointer disabled:opacity-50"
+          >
+            <RefreshCw className={`w-3.5 h-3.5 ${isLoading ? 'animate-spin text-amber-400' : ''}`} />
+            <span className="hidden sm:inline">Sync</span>
+          </button>
 
           <button
             onClick={handleOpenCreateModal}

@@ -39,6 +39,7 @@ import type {
   BusinessProfile,
   UpdateBusinessProfilePayload,
   BackupItem,
+  PosTerminal,
 } from '../types';
 import { COMPANY_DETAILS, APP_SETTINGS, isGoldEnabled, isSilverEnabled } from '../config/company';
 
@@ -251,6 +252,22 @@ export const api = {
     create: () => unwrap<any>(apiClient.post('/backups')),
     downloadUrl: (filename: string) => `${API_BASE_URL}/backups/${filename}`,
     delete: (filename: string) => unwrap<any>(apiClient.delete(`/backups/${filename}`)),
+  },
+  terminals: {
+    list: (params?: { status?: string; area?: string; search?: string }) =>
+      unwrap<PosTerminal[]>(apiClient.get('/pos-terminals', { params })),
+    getById: (id: string | number) =>
+      unwrap<PosTerminal>(apiClient.get(`/pos-terminals/${id}`)),
+    create: (data: Partial<PosTerminal>) =>
+      unwrap<PosTerminal>(apiClient.post('/pos-terminals', data)),
+    update: (id: string | number, data: Partial<PosTerminal>) =>
+      unwrap<PosTerminal>(apiClient.put(`/pos-terminals/${id}`, data)),
+    delete: (id: string | number) =>
+      unwrap<any>(apiClient.delete(`/pos-terminals/${id}`)),
+    openSession: (id: string | number, payload: { cashier_name: string; opening_cash?: number }) =>
+      unwrap<any>(apiClient.post(`/pos-terminals/${id}/open-session`, payload)),
+    closeSession: (id: string | number, payload: { closing_cash: number; notes?: string }) =>
+      unwrap<any>(apiClient.post(`/pos-terminals/${id}/close-session`, payload)),
   },
 };
 

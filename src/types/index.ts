@@ -1255,3 +1255,29 @@ export interface BackupItem {
   size: string;
   created_at: string;
 }
+
+export interface PosTerminal {
+  id: string | number;
+  code: string;
+  name: string;
+  counterType?: string;
+  counter_type?: string;
+  area: string;
+  branchCode?: string;
+  branch_code?: string;
+  address?: string;
+  invoicePrefix: string;
+  invoice_prefix?: string;
+  assignedStaff?: string;
+  assigned_staff?: string;
+  openingBalance: number;
+  opening_balance?: number;
+  currentBalance: number;
+  current_balance?: number;
+  status: 'active' | 'inactive';
+  notes?: string;
+  createdAt?: string;
+  created_at?: string;
+  lastActiveAt?: string;
+  last_active_at?: string;
+}
