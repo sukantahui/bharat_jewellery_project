@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>কাউন্টার সেলস ও পিওএস বিলিং নির্দেশিকা | Bharat Jewellery ERP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Hind+Siliguri:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #06090e; --card: #0c121d; --border: rgba(245, 158, 11, 0.25);
+      --gold: #f59e0b; --gold-light: #fbbf24; --text: #f8fafc; --muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: 'Hind Siliguri', sans-serif; line-height: 1.6; padding: 24px; }
+    .container { max-width: 900px; margin: 0 auto; }
+    .header { background: linear-gradient(135deg, #101827, #1c150b); border: 1px solid var(--border); border-radius: 16px; padding: 28px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+    .role-badge { display: inline-block; padding: 4px 12px; background: rgba(245, 158, 11, 0.15); border: 1px solid var(--gold); border-radius: 20px; color: var(--gold-light); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; margin-bottom: 8px; }
+    h1 { font-size: 1.8rem; color: #fff; margin-bottom: 6px; }
+    .btn { padding: 8px 16px; border-radius: 8px; font-weight: 600; font-size: 0.85rem; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; border: none; }
+    .btn-gold { background: linear-gradient(135deg, #f59e0b, #d97706); color: #0b0f19; }
+    .btn-outline { background: #0f172a; border: 1px solid var(--border); color: var(--gold-light); }
+    .step-card { background: var(--card); border: 1px solid rgba(148, 163, 184, 0.15); border-radius: 12px; padding: 20px; margin-bottom: 16px; display: flex; gap: 16px; align-items: flex-start; }
+    .step-card:hover { border-color: var(--gold); }
+    .step-num { width: 36px; height: 36px; border-radius: 50%; background: rgba(245, 158, 11, 0.15); border: 1px solid var(--gold); color: var(--gold-light); font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; }
+    .step-content h3 { font-size: 1.1rem; color: #fff; margin-bottom: 6px; }
+    .step-content p { color: var(--muted); font-size: 0.92rem; margin-bottom: 8px; }
+    kbd { background: #1e293b; border: 1px solid #334155; padding: 2px 7px; border-radius: 5px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #fff; }
+    .alert-box { background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 10px; padding: 14px 18px; margin: 16px 0; color: #fecaca; font-size: 0.9rem; }
+    .formula-box { background: #080d16; border-left: 4px solid var(--gold); padding: 12px 16px; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #fef3c7; margin: 8px 0; }
+    @media print {
+      body { background: #fff !important; color: #000 !important; }
+      .btn, .no-print { display: none !important; }
+      .header, .step-card { background: #fff !important; color: #000 !important; border: 1px solid #ccc !important; }
+      h1, h3 { color: #000 !important; }
+      .step-num { color: #000 !important; border-color: #000 !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div>
+        <div class="role-badge">কর্মীর ভূমিকা: সেলস ও ক্যাশিয়ার (Sales & Cashier)</div>
+        <h1>কাউন্টার সেলস ও পিওএস বিলিং কাজের পুঙ্খানুপুঙ্খ নির্দেশিকা</h1>
+        <p style="color: var(--muted); font-size: 0.9rem;">Bharat Jewellery ERP • দ্রুত ও নির্ভুল রিটেল বিলিং গাইড</p>
+      </div>
+      <div class="no-print" style="display: flex; gap: 8px;">
+        <button class="btn btn-outline" onclick="window.print()">🖨️ প্রিন্ট করুন</button>
+        <a href="/user-manual.html" class="btn btn-gold">📚 মূল নির্দেশিকা</a>
+      </div>
+    </div>
+
+    <!-- Step 1 -->
+    <div class="step-card">
+      <div class="step-num">১</div>
+      <div class="step-content">
+        <h3>সকালে বিলিং কাউন্টারে ঢোকা (Open POS Terminal)</h3>
+        <p>সফটওয়্যারের যেকোনো পেজে থাকাকালীন কী-বোর্ডের <kbd>F2</kbd> বাটন চাপুন অথবা বামদিকের মেনু থেকে <strong>"POS Billing Terminal"</strong>-এ ক্লিক করুন। সাথে সাথে ফ্রন্ট কাউন্টার বিলিং স্ক্রিন খুলে যাবে।</p>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="step-card">
+      <div class="step-num">২</div>
+      <div class="step-content">
+        <h3>গয়না স্ক্যান করে বিলে তোলা (Barcode Scanning)</h3>
+        <p>বারকোড স্ক্যানার দিয়ে গয়নার বারবেল ট্যাগে স্ক্যান করুন। মোট ওজন (Gross Wt), নেট ওজন (Net Wt), ক্যারেট (22K 916) এবং হলমার্কের HUID নিজে থেকেই বিলে যুক্ত হয়ে যাবে।</p>
+        <p><em>যদি ট্যাগ ক্ষতিগ্রস্ত হয় বা স্ক্যান না নেয়:</em> হাতে ট্যাগের নম্বর (যেমন: <code>BJ-2024-001</code>) টাইপ করে <kbd>Enter</kbd> চাপুন, অথবা <strong>"+ Manual Item"</strong> বাটনে ক্লিক করে নাম ও ওজন লিখে দিন।</p>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="step-card">
+      <div class="step-num">৩</div>
+      <div class="step-content">
+        <h3>পাথর বা পুতির ওজন ও দাম চেক করা</h3>
+        <p>গয়নায় ভারী পাথর, মুক্তো বা পুতি থাকলে সফটওয়্যার মোট ওজন থেকে পাথরের ওজন বাদ দিয়ে খাঁটি সোনার নেট ওজন হিসাব করবে। পাথরের আলাদা মূল্য থাকলে 'Stone Value'-র ঘরে লিখুন।</p>
+        <div class="formula-box">নেট সোনার ওজন = মোট ওজন (Gross Wt) - পাথরের ওজন (Stone Wt)</div>
+      </div>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="step-card">
+      <div class="step-num">৪</div>
+      <div class="step-content">
+        <h3>মজুরি বা মেকিং চার্জ যাচাই (Making Charges)</h3>
+        <p>দোকানের রেট অনুযায়ী মজুরির পদ্ধতি সিলেক্ট করুন:</p>
+        <ul>
+          <li><strong>প্রতি গ্রাম (Per Gram):</strong> যেমন প্রতি গ্রাম ₹৬৫০ (মোট ওজন × রেট)।</li>
+          <li><strong>শতাংশ (%):</strong> সোনার মূল্যের নির্দিষ্ট শতাংশ (যেমন ৮% বা ১০%)।</li>
+          <li><strong>ফিক্সড টাকা (Fixed ₹):</strong> বিশেষ ডিজাইনের জন্য থোক মজুরি।</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Step 5 -->
+    <div class="step-card">
+      <div class="step-num">৫</div>
+      <div class="step-content">
+        <h3>ক্রেতার নাম ও মোবাইল নম্বর যোগ করা (Customer CRM)</h3>
+        <p><strong>"+ Select Customer"</strong> বাটনে ক্লিক করে ক্রেতার ফোন নম্বর দিয়ে সার্চ করুন। পুরনো ক্রেতা হলে সাথে সাথে তার তথ্য চলে আসবে; নতুন ক্রেতা হলে নাম, ঠিকানা ও ফোন নম্বর লিখে সেভ করুন।</p>
+      </div>
+    </div>
+
+    <!-- Step 6 -->
+    <div class="step-card">
+      <div class="step-num">৬</div>
+      <div class="step-content">
+        <h3>পুরনো সোনা বদল থাকলে (Old Gold Scrap Exchange)</h3>
+        <p>ক্রেতা যদি পুরনো সোনা ভাঙিয়ে নতুন গয়না নেন, তবে <strong>"Old Gold Scrap Exchange"</strong> প্যানেল খুলুন:</p>
+        <ol>
+          <li>কাউন্টারে নিখুঁত কাঁটায় মেপে পুরনো সোনার মোট ওজন (Gross Wt) লিখুন।</li>
+          <li>গালার বালা বা ময়লা থাকলে গালা বাদ (Dust Wt) লিখুন।</li>
+          <li>সোনার খাদ বা ক্যারেট শতাংশ (যেমন ৮৫% বা ৯১.৬%) লিখুন।</li>
+          <li>সফটওয়্যার পাকা সোনার সমতুল্য ওজন বের করে আজকের কেনার রেট অনুযায়ী বিল থেকে টাকা বাদ দিয়ে দেবে।</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Step 7 -->
+    <div class="step-card">
+      <div class="step-num">৭</div>
+      <div class="step-content">
+        <h3>প্যান কার্ডের সরকারি নিয়ম (Rule 114B Mandatory PAN)</h3>
+        <div class="alert-box">
+          <strong>⚠️ অতি জরুরি সতর্কতা:</strong> ক্রেতা যদি <strong>নগদে (Cash) ২,০০,০০০ (দুই লাখ) টাকা বা তার বেশি</strong> দেন, তবে সফটওয়্যার লাল সতর্কতা দেবে। এই অবস্থায় ক্রেতার ১০ সংখ্যার সঠিক প্যান কার্ড নম্বর (যেমন: <code>ABCDE1234F</code>) ছাড়া বিল সম্পন্ন করা যাবে না। ক্রেতার প্যান না থাকলে বাকি টাকা ইউপিআই বা ব্যাংকে দিতে বলুন।
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 8 -->
+    <div class="step-card">
+      <div class="step-num">৮</div>
+      <div class="step-content">
+        <h3>টাকা বুঝে নেওয়া ও বিল প্রিন্ট (Print Invoice)</h3>
+        <p>ক্রেতার থেকে ক্যাশ, ইউপিআই (PhonePe/GPay কিউআর কোড), কার্ড সোয়াইপ বা ব্যাংকের মাধ্যমে টাকা বুঝে নিন। তারপর <strong>"Complete & Print Invoice"</strong>-এ ক্লিক করে প্রিন্ট দিন।</p>
+        <p>বড় বিলের জন্য <strong>A4 / A5 Tax Invoice</strong> এবং ছোট রসিদের জন্য <strong>80mm Thermal Receipt</strong> প্রিন্ট করে গয়নার সাথে ক্রেতাকে বুঝিয়ে দিন।</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

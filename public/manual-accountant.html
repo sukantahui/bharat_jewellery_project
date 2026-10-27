@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>অ্যাকাউন্ট্যান্ট ও ক্যাশ খাতা নির্দেশিকা | Bharat Jewellery ERP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Hind+Siliguri:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #06090e; --card: #0c121d; --border: rgba(245, 158, 11, 0.25);
+      --gold: #f59e0b; --gold-light: #fbbf24; --text: #f8fafc; --muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: 'Hind Siliguri', sans-serif; line-height: 1.6; padding: 24px; }
+    .container { max-width: 900px; margin: 0 auto; }
+    .header { background: linear-gradient(135deg, #101827, #1c150b); border: 1px solid var(--border); border-radius: 16px; padding: 28px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+    .role-badge { display: inline-block; padding: 4px 12px; background: rgba(245, 158, 11, 0.15); border: 1px solid var(--gold); border-radius: 20px; color: var(--gold-light); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; margin-bottom: 8px; }
+    h1 { font-size: 1.8rem; color: #fff; margin-bottom: 6px; }
+    .btn { padding: 8px 16px; border-radius: 8px; font-weight: 600; font-size: 0.85rem; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; border: none; }
+    .btn-gold { background: linear-gradient(135deg, #f59e0b, #d97706); color: #0b0f19; }
+    .btn-outline { background: #0f172a; border: 1px solid var(--border); color: var(--gold-light); }
+    .step-card { background: var(--card); border: 1px solid rgba(148, 163, 184, 0.15); border-radius: 12px; padding: 20px; margin-bottom: 16px; display: flex; gap: 16px; align-items: flex-start; }
+    .step-card:hover { border-color: var(--gold); }
+    .step-num { width: 36px; height: 36px; border-radius: 50%; background: rgba(245, 158, 11, 0.15); border: 1px solid var(--gold); color: var(--gold-light); font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; }
+    .step-content h3 { font-size: 1.1rem; color: #fff; margin-bottom: 6px; }
+    .step-content p { color: var(--muted); font-size: 0.92rem; margin-bottom: 8px; }
+    @media print {
+      body { background: #fff !important; color: #000 !important; }
+      .btn, .no-print { display: none !important; }
+      .header, .step-card { background: #fff !important; color: #000 !important; border: 1px solid #ccc !important; }
+      h1, h3 { color: #000 !important; }
+      .step-num { color: #000 !important; border-color: #000 !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div>
+        <div class="role-badge">কর্মীর ভূমিকা: অ্যাকাউন্ট্যান্ট ও ক্যাশিয়ার (Accountant & Cashier)</div>
+        <h1>অ্যাকাউন্টস, ক্যাশ খাতা ও খরচের নির্দেশিকা</h1>
+        <p style="color: var(--muted); font-size: 0.9rem;">Bharat Jewellery ERP • ক্যাশ ড্রয়ার, ভাউচার, ক্রয় বিল ও ব্যাংক ব্যালেন্স</p>
+      </div>
+      <div class="no-print" style="display: flex; gap: 8px;">
+        <button class="btn btn-outline" onclick="window.print()">🖨️ প্রিন্ট করুন</button>
+        <a href="/user-manual.html" class="btn btn-gold">📚 মূল নির্দেশিকা</a>
+      </div>
+    </div>
+
+    <!-- Step 1 -->
+    <div class="step-card">
+      <div class="step-num">১</div>
+      <div class="step-content">
+        <h3>সকালের ক্যাশ ড্রয়ার ব্যালেন্স মিলিয়ে নেওয়া</h3>
+        <p>সকালে দোকান খোলার পর ক্যাশ বাক্সে থাকা নগদ টাকা ও খুচরো সফটওয়্যারের উপরের <strong>"Cash Drawer"</strong> ব্যালেন্সের সাথে মিলিয়ে নিন। কোনো অমিল থাকলে খতিয়ে দেখুন আগের দিন কোনো ভাউচার বাদ পড়েছিল কিনা।</p>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="step-card">
+      <div class="step-num">২</div>
+      <div class="step-content">
+        <h3>দোকানের দৈনন্দিন খরচের ভাউচার এন্ট্রি (Debit Voucher)</h3>
+        <p>মেনু থেকে <strong>"Operating Expenses"</strong> পেজে যান। সারাদিনে হওয়া সমস্ত দোকান খরচ সাথে সাথে এন্ট্রি করুন:</p>
+        <ul>
+          <li>কর্মচারীদের চা ও টিফিন খরচ</li>
+          <li>বিদ্যুৎ বিল ও শোরুমের রক্ষণাবেক্ষণ</li>
+          <li>ঝাড়ুদার বা ক্লিনিং বিল</li>
+          <li>কারিগরকে নগদ বায়না বা কর্মচারীর বেতনের অগ্রিম</li>
+        </ul>
+        <p>ভাউচার সেভ করার সাথে সাথে ক্যাশ ড্রয়ার থেকে টাকা কমে যাবে।</p>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="step-card">
+      <div class="step-num">৩</div>
+      <div class="step-content">
+        <h3>মহাজনের সোনা ক্রয়ের বিল তোলা (Bullion Purchase Entry)</h3>
+        <p>বউবাজারের মহাজন, রিফাইনারি বা ব্যাংকের থেকে যে ২৪ ক্যারেট পাকা সোনার বাট বা বার কেনা হয়েছে, মেনু থেকে <strong>"Purchase Entry"</strong> পেজে যান।</p>
+        <p>মহাজনের ইনভয়েস নম্বর, জিএসটিন (GSTIN), খাঁটি ওজন এবং ৩% জিএসটি ইনপুট ট্যাক্স (ITC) সঠিকভাবে রেকর্ড করুন। এটি মাসের শেষে জিএসটি ট্যাক্স কমানোর জন্য একান্ত প্রয়োজন।</p>
+      </div>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="step-card">
+      <div class="step-num">৪</div>
+      <div class="step-content">
+        <h3>ব্যাংক ও ইউপিআই স্টেটমেন্ট মেলানো (Bank Reconciliation)</h3>
+        <p>মেনু থেকে <strong>"Cash Drawer & Ledger"</strong> পেজে যান। সারাদিনে ক্রেতারা যে কিউআর কোড (PhonePe/GPay), কার্ড বা আরটিজিএস (RTGS)-এর মাধ্যমে টাকা দিয়েছেন, তা স্টেট ব্যাংক (SBI), এইচডিএফসি বা আইসিআইসিআই ব্যাংক স্টেটমেন্টের সাথে মিলিয়ে নিন।</p>
+      </div>
+    </div>
+
+    <!-- Step 5 -->
+    <div class="step-card">
+      <div class="step-num">৫</div>
+      <div class="step-content">
+        <h3>গয়না ফেরতের ক্রেডিট নোট অডিট (Sales Returns & CRN)</h3>
+        <p>কোনো ক্রেতা যদি গয়না ফেরত দিয়ে ক্যাশ রিফান্ড নেন, তবে তা যথাযথ ইনভয়েসের বিপরীতে হয়েছে কিনা এবং ক্যাশ ড্রয়ারে সঠিক এন্ট্রি পড়েছে কিনা খতিয়ে দেখুন।</p>
+      </div>
+    </div>
+
+    <!-- Step 6 -->
+    <div class="step-card">
+      <div class="step-num">৬</div>
+      <div class="step-content">
+        <h3>দিনের শেষে ক্যাশ ক্লোজিং (Day-End Cash Tally)</h3>
+        <p>দোকান বন্ধ করার সময় সারাদিনের মোট ক্যাশ সেল থেকে সমস্ত ডেবিট ভাউচারের খরচ বাদ দিয়ে ক্যাশ ড্রয়ারে থাকা বাকি টাকা গুনে মিলিয়ে ক্যাশ বাক্স লকারে বন্ধ করুন।</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

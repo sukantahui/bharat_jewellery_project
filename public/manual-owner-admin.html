@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>শোরুমের মালিক ও চিফ অ্যাডমিন নির্দেশিকা | Bharat Jewellery ERP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Hind+Siliguri:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #06090e; --card: #0c121d; --border: rgba(245, 158, 11, 0.25);
+      --gold: #f59e0b; --gold-light: #fbbf24; --text: #f8fafc; --muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: 'Hind Siliguri', sans-serif; line-height: 1.6; padding: 24px; }
+    .container { max-width: 900px; margin: 0 auto; }
+    .header { background: linear-gradient(135deg, #101827, #1c150b); border: 1px solid var(--border); border-radius: 16px; padding: 28px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+    .role-badge { display: inline-block; padding: 4px 12px; background: rgba(245, 158, 11, 0.15); border: 1px solid var(--gold); border-radius: 20px; color: var(--gold-light); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; margin-bottom: 8px; }
+    h1 { font-size: 1.8rem; color: #fff; margin-bottom: 6px; }
+    .btn { padding: 8px 16px; border-radius: 8px; font-weight: 600; font-size: 0.85rem; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; border: none; }
+    .btn-gold { background: linear-gradient(135deg, #f59e0b, #d97706); color: #0b0f19; }
+    .btn-outline { background: #0f172a; border: 1px solid var(--border); color: var(--gold-light); }
+    .step-card { background: var(--card); border: 1px solid rgba(148, 163, 184, 0.15); border-radius: 12px; padding: 20px; margin-bottom: 16px; display: flex; gap: 16px; align-items: flex-start; }
+    .step-card:hover { border-color: var(--gold); }
+    .step-num { width: 36px; height: 36px; border-radius: 50%; background: rgba(245, 158, 11, 0.15); border: 1px solid var(--gold); color: var(--gold-light); font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; }
+    .step-content h3 { font-size: 1.1rem; color: #fff; margin-bottom: 6px; }
+    .step-content p { color: var(--muted); font-size: 0.92rem; margin-bottom: 8px; }
+    @media print {
+      body { background: #fff !important; color: #000 !important; }
+      .btn, .no-print { display: none !important; }
+      .header, .step-card { background: #fff !important; color: #000 !important; border: 1px solid #ccc !important; }
+      h1, h3 { color: #000 !important; }
+      .step-num { color: #000 !important; border-color: #000 !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div>
+        <div class="role-badge">কর্মীর ভূমিকা: শোরুম মালিক ও চিফ অ্যাডমিন (Owner & Executive Admin)</div>
+        <h1>শোরুমের মালিক ও চিফ অ্যাডমিনিস্ট্রেটর নির্দেশিকা</h1>
+        <p style="color: var(--muted); font-size: 0.9rem;">Bharat Jewellery ERP • রেট নির্ধারণ, সেলস ড্যাশবোর্ড, জিএসটি রিপোর্ট ও নিরাপত্তা</p>
+      </div>
+      <div class="no-print" style="display: flex; gap: 8px;">
+        <button class="btn btn-outline" onclick="window.print()">🖨️ প্রিন্ট করুন</button>
+        <a href="/user-manual.html" class="btn btn-gold">📚 মূল নির্দেশিকা</a>
+      </div>
+    </div>
+
+    <!-- Step 1 -->
+    <div class="step-card">
+      <div class="step-num">১</div>
+      <div class="step-content">
+        <h3>প্রতিদিন সকাল ১০টায় সোনার বোর্ড রেট সম্প্রচার (Broadcast Board Rates)</h3>
+        <p>সকালে দোকান চালুর সাথে সাথে সফটওয়্যারের উপরে <strong>"Set Rates"</strong> বাটনে ক্লিক করুন।</p>
+        <ul>
+          <li><strong>২২ ক্যারেট (৯১৬ হলমার্ক):</strong> বিক্রয় দর (যেমন: ₹৭,৩৫০) ও পুরনো সোনা কেনার দর (যেমন: ₹৭,০৫০)।</li>
+          <li><strong>২৪ ক্যারেট পাকা সোনা:</strong> বিক্রয় ও কেনার দর।</li>
+          <li><strong>১৮ ক্যারেট ও রূপো:</strong> আজকের রেট।</li>
+        </ul>
+        <p><strong>"Save & Broadcast Rates"</strong>-এ চাপুন। শোরুমের সমস্ত কম্পিউটারে মুহূর্তের মধ্যে রেট লক হয়ে যাবে।</p>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="step-card">
+      <div class="step-num">২</div>
+      <div class="step-content">
+        <h3>লাইভ সেলস ও আর্থিক ড্যাশবোর্ড পর্যবেক্ষণ (Dashboard Intelligence)</h3>
+        <p><strong>"Dashboard"</strong> পেজে যান। এখানে লাইভ দেখতে পাবেন:</p>
+        <ul>
+          <li>আজ সারাদিনে কত টাকার সেল হলো এবং মোট কত গ্রাম সোনা বিক্রি হয়েছে।</li>
+          <li>কাউন্টারের ক্যাশ বাক্সে কত টাকা জমা পড়েছে এবং ব্যাংকে কত তহবিল রয়েছে।</li>
+          <li>শোরুমের ট্রে-তে কোন কোন ডিজাইনের গয়না কত পিস মজুত রয়েছে।</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="step-card">
+      <div class="step-num">৩</div>
+      <div class="step-content">
+        <h3>কারিগর ও মহাজনের খাতা অডিট (Parties Ledger)</h3>
+        <p><strong>"Customers & Parties"</strong> পেজে গিয়ে দেখুন কোনো কারিগরের কাছে কত গ্রাম কাঁচা সোনা জমা দেওয়া আছে এবং কোনো মহাজন বা বুলিয়ান ডিলারের কত টাকা পাওনা রয়েছে।</p>
+      </div>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="step-card">
+      <div class="step-num">৪</div>
+      <div class="step-content">
+        <h3>মাসের শেষে জিএসটি ট্যাক্স ফাইলিং (GST Reports for CA)</h3>
+        <p>মাসের প্রথম সপ্তাহে <strong>"GST Reports (GSTR)"</strong> পেজে যান:</p>
+        <ul>
+          <li><strong>GSTR-1 Table 4:</strong> B2B পাইকারি বিক্রির হিসাব।</li>
+          <li><strong>GSTR-1 Table 7:</strong> B2C খুচরো সাধারণ ক্রেতার ৩% জিএসটি বিক্রির হিসাব।</li>
+          <li><strong>GSTR-1 Table 12:</strong> HSN 7113 অনুযায়ী মোট কত গ্রাম বিক্রি হয়েছে তার সারসংক্ষেপ।</li>
+          <li><strong>GSTR-3B:</strong> বিক্রির ট্যাক্স থেকে কাঁচা সোনা কেনার ইনপুট ট্যাক্স বাদ দিয়ে সরকারকে প্রদেয় নেট ট্যাক্স।</li>
+        </ul>
+        <p>এক ক্লিকে <strong>"Export CSV / Excel"</strong> করে আপনার চার্টার্ড অ্যাকাউন্ট্যান্টকে (CA) পাঠিয়ে দিন।</p>
+      </div>
+    </div>
+
+    <!-- Step 5 -->
+    <div class="step-card">
+      <div class="step-num">৫</div>
+      <div class="step-content">
+        <h3>সাপ্তাহিক ডাটাবেস ব্যাকআপ (Critical Security Backup)</h3>
+        <p>ব্যবসার ডেটা অমূল্য। তাই প্রতি রবিবার দোকান বন্ধ করার সময় <strong>"Settings & Backups"</strong> পেজে গিয়ে <strong>"Create Backup Now"</strong> বাটনে ক্লিক করুন।</p>
+        <p>ডাউনলোড হওয়া এনক্রিপ্টেড ব্যাকআপ ফাইলটি আপনার পার্সোনাল পেনড্রাইভ বা গুগল ড্রাইভে নিরাপদে কপি করে রাখুন। কম্পিউটার নষ্ট হলেও মাত্র ৫ মিনিটে পুরো সফটওয়্যারের সমস্ত হিসাব ফিরিয়ে আনা যাবে।</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

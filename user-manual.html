@@ -1,0 +1,3252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bharat Jewellery ERP & POS — Software User Manual | ব্যবহার নির্দেশিকা</title>
+  <meta name="description" content="Official bilingual operating guide and user manual for Bharat Jewellery ERP & POS in English and বাংলা." />
+  
+  <!-- Google Fonts: English & Bengali Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Hind+Siliguri:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-main: #06090e;
+      --bg-card: #0c121d;
+      --bg-card-hover: #131c2d;
+      --bg-sidebar: #080d16;
+      --border-color: rgba(245, 158, 11, 0.2);
+      --border-subtle: rgba(148, 163, 184, 0.12);
+      --gold-primary: #f59e0b;
+      --gold-light: #fbbf24;
+      --gold-dark: #b45309;
+      --gold-glow: rgba(245, 158, 11, 0.25);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-accent: #fde68a;
+      --accent-green: #10b981;
+      --accent-red: #ef4444;
+      --accent-blue: #38bdf8;
+      --font-ui: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-bengali: 'Hind Siliguri', 'Noto Sans Bengali', system-ui, sans-serif;
+      --font-display: 'Cinzel', serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      font-family: var(--font-ui);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* Bengali Font Override when language is active */
+    body.lang-bn, .lang-bn-text {
+      font-family: var(--font-bengali);
+    }
+    body.lang-bn h1, body.lang-bn h2, body.lang-bn h3, body.lang-bn h4 {
+      font-family: var(--font-bengali);
+      letter-spacing: normal;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #090d16;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #233148;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--gold-dark);
+    }
+
+    /* Top Sticky Navigation Bar */
+    header.top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(8, 13, 22, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .brand-icon {
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, #d97706, #fbbf24);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0b0f19;
+      font-weight: bold;
+      box-shadow: 0 0 15px var(--gold-glow);
+    }
+
+    .brand-text h1 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.05em;
+      line-height: 1.1;
+      text-transform: uppercase;
+    }
+
+    .brand-text span {
+      font-size: 0.72rem;
+      color: var(--gold-light);
+      font-family: var(--font-mono);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* Language Switcher Switch */
+    .lang-switcher {
+      display: flex;
+      background: #0f172a;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 3px;
+      gap: 3px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 7px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .lang-btn.active {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #0b0f19;
+      font-weight: 700;
+      box-shadow: 0 2px 6px var(--gold-glow);
+    }
+
+    .lang-btn:hover:not(.active) {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .search-box {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 240px;
+    }
+
+    .search-box input {
+      width: 100%;
+      background: #0f172a;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      border-radius: 8px;
+      padding: 8px 12px 8px 36px;
+      color: #fff;
+      font-size: 0.82rem;
+      font-family: inherit;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    .search-box input:focus {
+      border-color: var(--gold-primary);
+      box-shadow: 0 0 10px var(--gold-glow);
+    }
+
+    .search-box svg {
+      position: absolute;
+      left: 10px;
+      width: 16px;
+      height: 16px;
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border: none;
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #0b0f19;
+      box-shadow: 0 4px 12px var(--gold-glow);
+    }
+
+    .btn-gold:hover {
+      background: linear-gradient(135deg, #fbbf24, #f59e0b);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background: #0f172a;
+      border: 1px solid var(--border-color);
+      color: var(--text-accent);
+    }
+
+    .btn-outline:hover {
+      background: #1e293b;
+      border-color: var(--gold-light);
+      color: #fff;
+    }
+
+    /* Main Container Layout */
+    .app-layout {
+      display: flex;
+      flex: 1;
+      max-width: 1600px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* Sidebar Navigation */
+    aside.sidebar {
+      width: 330px;
+      background: var(--bg-sidebar);
+      border-right: 1px solid var(--border-color);
+      padding: 24px 16px;
+      position: sticky;
+      top: 65px;
+      height: calc(100vh - 65px);
+      overflow-y: auto;
+      flex-shrink: 0;
+    }
+
+    .sidebar-section-title {
+      font-size: 0.68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--gold-primary);
+      margin: 18px 12px 6px 12px;
+    }
+
+    .nav-list {
+      list-style: none;
+      margin-bottom: 12px;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.84rem;
+      font-weight: 500;
+      transition: all 0.15s ease;
+      margin-bottom: 2px;
+    }
+
+    .nav-link:hover {
+      background: rgba(245, 158, 11, 0.1);
+      color: var(--gold-light);
+    }
+
+    .nav-link.active {
+      background: rgba(245, 158, 11, 0.16);
+      color: #fff;
+      font-weight: 600;
+      border-left: 3px solid var(--gold-primary);
+    }
+
+    .nav-badge {
+      margin-left: auto;
+      font-size: 0.65rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: rgba(148, 163, 184, 0.15);
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+    }
+
+    .nav-badge.f2 {
+      background: rgba(245, 158, 11, 0.25);
+      color: var(--gold-light);
+    }
+
+    /* Main Content Area */
+    main.content {
+      flex: 1;
+      padding: 36px 48px;
+      max-width: 1050px;
+      overflow-x: hidden;
+    }
+
+    /* Hero Banner */
+    .hero-banner {
+      background: linear-gradient(135deg, #101827 0%, #1c150b 100%);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 36px;
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .hero-banner::after {
+      content: "";
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle, var(--gold-glow) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      color: var(--gold-light);
+      font-size: 0.72rem;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+
+    .hero-title span {
+      color: var(--gold-primary);
+    }
+
+    .hero-desc {
+      color: var(--text-muted);
+      font-size: 1rem;
+      max-width: 760px;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .quick-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .stat-pill {
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+
+    .stat-pill .num {
+      font-family: var(--font-mono);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--gold-light);
+    }
+
+    .stat-pill .lbl {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 2px;
+    }
+
+    /* Chapter Sections */
+    section.chapter {
+      margin-bottom: 56px;
+      scroll-margin-top: 90px;
+    }
+
+    .chapter-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 14px;
+      margin-bottom: 24px;
+    }
+
+    .chapter-num {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold-light);
+      font-family: var(--font-mono);
+      font-weight: 800;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .chapter-header h2 {
+      font-family: var(--font-display);
+      font-size: 1.55rem;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .chapter-lead {
+      font-size: 1rem;
+      color: #cbd5e1;
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    h3 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      color: var(--gold-light);
+      margin: 32px 0 14px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    h4 {
+      font-size: 0.95rem;
+      color: #f1f5f9;
+      margin: 20px 0 8px 0;
+      font-weight: 700;
+    }
+
+    p {
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      font-size: 0.92rem;
+    }
+
+    ul, ol {
+      margin-left: 20px;
+      margin-bottom: 18px;
+      color: var(--text-muted);
+      font-size: 0.92rem;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    strong {
+      color: #f8fafc;
+    }
+
+    /* Cards and Feature Grids */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+      margin: 20px 0;
+    }
+
+    .guide-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 20px;
+      transition: all 0.2s ease;
+    }
+
+    .guide-card:hover {
+      border-color: rgba(245, 158, 11, 0.35);
+      background: var(--bg-card-hover);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .guide-card .card-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(245, 158, 11, 0.12);
+      color: var(--gold-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+      font-weight: 700;
+    }
+
+    .guide-card h4 {
+      margin: 0 0 8px 0;
+      font-size: 1rem;
+      color: #fff;
+    }
+
+    .guide-card p {
+      font-size: 0.84rem;
+      margin: 0;
+    }
+
+    /* Callouts & Alert Boxes */
+    .callout {
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 20px 0;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      font-size: 0.88rem;
+    }
+
+    .callout.tip {
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.28);
+      color: #a7f3d0;
+    }
+    .callout.tip .icon { color: var(--accent-green); }
+
+    .callout.warning {
+      background: rgba(239, 68, 68, 0.08);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #fecaca;
+    }
+    .callout.warning .icon { color: var(--accent-red); }
+
+    .callout.important {
+      background: rgba(245, 158, 11, 0.09);
+      border: 1px solid rgba(245, 158, 11, 0.32);
+      color: #fef08a;
+    }
+    .callout.important .icon { color: var(--gold-primary); }
+
+    .callout.info {
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.28);
+      color: #bae6fd;
+    }
+    .callout.info .icon { color: var(--accent-blue); }
+
+    .callout-body strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 0.92rem;
+    }
+
+    /* Tables */
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      margin: 22px 0;
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      background: var(--bg-card);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.86rem;
+    }
+
+    th {
+      background: #0f172a;
+      padding: 12px 16px;
+      color: var(--gold-light);
+      font-size: 0.82rem;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border-subtle);
+      color: #cbd5e1;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover td {
+      background: rgba(245, 158, 11, 0.03);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      font-family: var(--font-mono);
+    }
+
+    .badge-gold {
+      background: rgba(245, 158, 11, 0.2);
+      color: var(--gold-light);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+    }
+
+    .badge-green {
+      background: rgba(16, 185, 129, 0.2);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .badge-red {
+      background: rgba(239, 68, 68, 0.2);
+      color: #f87171;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+
+    .badge-blue {
+      background: rgba(56, 189, 248, 0.2);
+      color: #7dd3fc;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    /* Math Formula Block */
+    .formula-box {
+      background: #0a0f18;
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      border-left: 4px solid var(--gold-primary);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 18px 0;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      color: #fef3c7;
+      overflow-x: auto;
+      line-height: 1.7;
+    }
+
+    .formula-box .comment {
+      color: #64748b;
+      display: block;
+      font-size: 0.78rem;
+      margin-bottom: 4px;
+      font-family: inherit;
+    }
+
+    /* Interactive Calculator Sandboxes */
+    .calculator-widget {
+      background: #0b111c;
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 24px;
+      margin: 28px 0;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    .calculator-widget-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .calculator-widget-header h4 {
+      color: var(--gold-light);
+      margin: 0;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .calc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .calc-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .calc-field label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .calc-field input, .calc-field select {
+      background: #111a2e;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      border-radius: 8px;
+      padding: 9px 12px;
+      color: #fff;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      outline: none;
+      transition: all 0.2s;
+    }
+
+    .calc-field input:focus, .calc-field select:focus {
+      border-color: var(--gold-primary);
+      box-shadow: 0 0 8px var(--gold-glow);
+    }
+
+    .calc-output-box {
+      background: #06090e;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 18px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 16px;
+    }
+
+    .calc-output-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .calc-output-item .lbl {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .calc-output-item .val {
+      font-family: var(--font-mono);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+      margin-top: 4px;
+    }
+
+    .calc-output-item.grand-total .val {
+      color: var(--gold-light);
+      font-size: 1.35rem;
+    }
+
+    /* Workflow Diagram Stepper */
+    .stepper {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin: 24px 0;
+      position: relative;
+    }
+
+    .step-item {
+      display: flex;
+      gap: 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 18px 20px;
+      align-items: flex-start;
+      transition: all 0.2s;
+    }
+
+    .step-item:hover {
+      border-color: rgba(245, 158, 11, 0.35);
+      background: var(--bg-card-hover);
+    }
+
+    .step-badge {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid var(--gold-primary);
+      color: var(--gold-light);
+      font-family: var(--font-mono);
+      font-weight: 800;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .step-content h5 {
+      font-size: 0.98rem;
+      color: #fff;
+      margin-bottom: 4px;
+      font-weight: 700;
+    }
+
+    .step-content p {
+      font-size: 0.85rem;
+      margin: 0;
+      color: var(--text-muted);
+    }
+
+    /* Keyboard Shortcut Tag */
+    kbd {
+      display: inline-block;
+      padding: 2px 7px;
+      font-size: 0.75rem;
+      font-family: var(--font-mono);
+      line-height: 1.3;
+      color: #fff;
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 5px;
+      box-shadow: 0 2px 0 #0f172a;
+    }
+
+    /* Thermal / Invoice Preview Mockup */
+    .preview-card {
+      background: #fff;
+      color: #000;
+      border-radius: 8px;
+      padding: 24px;
+      font-family: 'Courier New', Courier, monospace;
+      max-width: 340px;
+      margin: 20px auto;
+      font-size: 0.78rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      line-height: 1.4;
+      border: 1px dashed #999;
+    }
+
+    .preview-card .center {
+      text-align: center;
+    }
+
+    .preview-card .divider {
+      border-bottom: 1px dashed #666;
+      margin: 8px 0;
+    }
+
+    .preview-card .row {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Language specific block toggle */
+    .lang-en-block, .lang-bn-block {
+      display: block;
+    }
+
+    body.lang-bn .lang-en-block {
+      display: none !important;
+    }
+    body.lang-en .lang-bn-block {
+      display: none !important;
+    }
+
+    /* Role Selector Bar */
+    .role-selector-bar {
+      background: linear-gradient(135deg, #0e1626, #1a150c);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 22px;
+      margin-bottom: 36px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+    }
+    .role-selector-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .role-pills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .role-pill {
+      background: #090e18;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      color: var(--text-muted);
+      border-radius: 10px;
+      padding: 9px 16px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+    .role-pill:hover {
+      background: #141e33;
+      border-color: var(--gold-primary);
+      color: #fff;
+    }
+    .role-pill.active {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      border-color: var(--gold-light);
+      color: #06090e;
+      font-weight: 700;
+      box-shadow: 0 4px 12px var(--gold-glow);
+    }
+    .role-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 40px;
+      scroll-margin-top: 90px;
+    }
+    .role-section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border-subtle);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    /* Footer */
+    footer.doc-footer {
+      border-top: 1px solid var(--border-color);
+      background: #05080e;
+      padding: 30px 24px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      margin-top: 60px;
+    }
+
+    footer.doc-footer a {
+      color: var(--gold-light);
+      text-decoration: none;
+    }
+
+    /* Print Styles */
+    @media print {
+      body {
+        background: #fff !important;
+        color: #000 !important;
+      }
+      header.top-bar, aside.sidebar, .btn, .search-box, .calculator-widget, footer.doc-footer, .lang-switcher {
+        display: none !important;
+      }
+      main.content {
+        padding: 0 !important;
+        max-width: 100% !important;
+      }
+      .hero-banner, .guide-card, .table-container, .step-item {
+        background: #fff !important;
+        color: #000 !important;
+        border: 1px solid #ccc !important;
+        box-shadow: none !important;
+      }
+      h1, h2, h3, h4, strong {
+        color: #000 !important;
+      }
+      .formula-box {
+        background: #f8fafc !important;
+        color: #000 !important;
+        border: 1px solid #999 !important;
+      }
+    }
+
+    @media (max-width: 992px) {
+      aside.sidebar {
+        display: none;
+      }
+      main.content {
+        padding: 24px 20px;
+      }
+      .hero-title {
+        font-size: 1.8rem;
+      }
+      .search-box {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body class="lang-bn">
+
+  <!-- Top Sticky Navigation Bar -->
+  <header class="top-bar">
+    <a href="#" class="brand-container">
+      <div class="brand-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="12 2 2 8.5 12 22 22 8.5 12 2"></polygon>
+          <polygon points="12 2 8 8.5 12 13 16 8.5 12 2" fill="currentColor"></polygon>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <h1 class="lang-en-block">Bharat Jewellery ERP</h1>
+        <h1 class="lang-bn-block">ভারত জুয়েলারি ইআরপি</h1>
+        <span class="lang-en-block">Official Operating Manual</span>
+        <span class="lang-bn-block">অফিসিয়াল ব্যবহার নির্দেশিকা</span>
+      </div>
+    </a>
+
+    <div class="header-actions">
+      <!-- Bilingual Language Toggle Button -->
+      <div class="lang-switcher" title="Switch Language / ভাষা পরিবর্তন করুন">
+        <button id="btnLangBn" class="lang-btn active" onclick="setLanguage('bn')">
+          <span>🇮🇳</span> বাংলা (Bengali)
+        </button>
+        <button id="btnLangEn" class="lang-btn" onclick="setLanguage('en')">
+          <span>🇬🇧</span> English
+        </button>
+      </div>
+
+      <!-- Search Input -->
+      <div class="search-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="manualSearch" placeholder="খুঁজুন / Search..." onkeyup="filterManual()" />
+      </div>
+
+      <button class="btn btn-outline" onclick="window.print()" title="Print / প্রিন্ট করুন">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="6 9 6 2 18 2 18 9"></polyline>
+          <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+          <rect x="6" y="14" width="12" height="8"></rect>
+        </svg>
+        <span class="lang-en-block">Print</span>
+        <span class="lang-bn-block">প্রিন্ট</span>
+      </button>
+
+      <a href="/" class="btn btn-gold" title="Return to Billing Terminal / বিলিং কাউন্টারে ফিরে যান">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+          <polyline points="10 17 15 12 10 7"></polyline>
+          <line x1="15" y1="12" x2="3" y2="12"></line>
+        </svg>
+        <span class="lang-en-block">Software</span>
+        <span class="lang-bn-block">সফটওয়্যার</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Body Layout -->
+  <div class="app-layout">
+
+    <!-- Left Sticky Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-section-title">
+        <span class="lang-en-block">👤 ROLE MANUALS (SOP)</span>
+        <span class="lang-bn-block">👤 প্রত্যেকের আলাদা নির্দেশিকা</span>
+      </div>
+      <ul class="nav-list" style="margin-bottom: 18px;">
+        <li>
+          <a href="#role-billing" class="nav-link" style="border-left: 3px solid #f59e0b;">
+            <span>🛍️ <span class="lang-en-block">Billing Staff SOP</span><span class="lang-bn-block">কাউন্টার সেলস কর্মী</span></span>
+            <span class="nav-badge f2">F2</span>
+          </a>
+        </li>
+        <li>
+          <a href="#role-karigar" class="nav-link" style="border-left: 3px solid #38bdf8;">
+            <span>🏷️ <span class="lang-en-block">Karigar & Inventory</span><span class="lang-bn-block">কারিগর ও স্টক ম্যানেজার</span></span>
+            <span class="nav-badge">Tags</span>
+          </a>
+        </li>
+        <li>
+          <a href="#role-accountant" class="nav-link" style="border-left: 3px solid #10b981;">
+            <span>💰 <span class="lang-en-block">Accountant & Cash</span><span class="lang-bn-block">অ্যাকাউন্ট্যান্ট ও ক্যাশ খাতা</span></span>
+            <span class="nav-badge">₹</span>
+          </a>
+        </li>
+        <li>
+          <a href="#role-owner" class="nav-link" style="border-left: 3px solid #fbbf24;">
+            <span>👑 <span class="lang-en-block">Owner & Executive</span><span class="lang-bn-block">মালিক ও চিফ অ্যাডমিন</span></span>
+            <span class="nav-badge">Admin</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-section-title">
+        <span class="lang-en-block">Navigation Index (All Chapters)</span>
+        <span class="lang-bn-block">সম্পূর্ণ বিষয়সূচি (সব অধ্যায়)</span>
+      </div>
+
+      <ul class="nav-list" id="sidebarNav">
+        <li>
+          <a href="#ch1" class="nav-link active">
+            <span class="lang-en-block">1. System Overview & Login</span>
+            <span class="lang-bn-block">১. পরিচিতি ও লগইন পদ্ধতি</span>
+            <span class="nav-badge">Auth</span>
+          </a>
+        </li>
+        <li>
+          <a href="#ch2" class="nav-link">
+            <span class="lang-en-block">2. Daily Rates & Board Prices</span>
+            <span class="lang-bn-block">২. আজকের সোনার রেট ও দর</span>
+            <span class="nav-badge">Daily</span>
+          </a>
+        </li>
+        <li>
+          <a href="#ch3" class="nav-link">
+            <span class="lang-en-block">3. POS Billing Terminal</span>
+            <span class="lang-bn-block">৩. পিওএস বিলিং কাউন্টার</span>
+            <span class="nav-badge f2">F2</span>
+          </a>
+        </li>
+        <li>
+          <a href="#ch4" class="nav-link">
+            <span class="lang-en-block">4. Old Gold Exchange (Melt)</span>
+            <span class="lang-bn-block">৪. পুরনো সোনা বদল ও খাদ কাটার হিসাব</span>
+            <span class="nav-badge">Math</span>
+          </a>
+        </li>
+        <li>
+          <a href="#ch5" class="nav-link">
+            <span class="lang-en-block">5. Rule 114B PAN Compliance</span>
+            <span class="lang-bn-block">৫. ২ লাখ টাকার ক্যাশে প্যান কার্ডের নিয়ম</span>
+            <span class="nav-badge">Govt</span>
+          </a>
+        </li>
+        <li>
+          <a href="#ch6" class="nav-link">
+            <span class="lang-en-block">6. Inventory & Barbell Tags</span>
+            <span class="lang-bn-block">৬. শোরুমের স্টক ও গয়নার ট্যাগ</span>
+            <span class="nav-badge">Tags</span>
+          </a>
+        </li>
+        <li>
+          <a href="#ch7" class="nav-link">
+            <span class="lang-en-block">7. Karigar Inward & Jobwork</span>
+            <span class="lang-bn-block">৭. কারিগরের জমা ও মজুরির হিসাব</span>
+            <span class="nav-badge">Artisan</span>
+          </a>
+        </li>
+        <li>
+          <a href="#ch8" class="nav-link">
+            <span class="lang-en-block">8. Bullion Procurement</span>
+            <span class="lang-bn-block">৮. মহাজনের থেকে সোনা ক্রয়</span>
+            <span class="nav-badge">Purchase</span>
+          </a>
+        </li>
+        <li>
+          <a href="#ch9" class="nav-link">
+            <span class="lang-en-block">9. Sales Returns & Credit Notes</span>
+            <span class="lang-bn-block">৯. গয়না ফেরত ও ক্রেডিট নোট</span>
+            <span class="nav-badge">Returns</span>
+          </a>
+        </li>
+        <li>
+          <a href="#ch10" class="nav-link">
+            <span class="lang-en-block">10. Cash Drawer & Accounts</span>
+            <span class="lang-bn-block">১০. ক্যাশ কাউন্টার ও খরচের খাতা</span>
+            <span class="nav-badge">₹ Ledger</span>
+          </a>
+        </li>
+        <li>
+          <a href="#ch11" class="nav-link">
+            <span class="lang-en-block">11. Statutory GST (GSTR-1/3B)</span>
+            <span class="lang-bn-block">১১. জিএসটি ট্যাক্স ও সিএ রিপোর্ট</span>
+            <span class="nav-badge">CA</span>
+          </a>
+        </li>
+        <li>
+          <a href="#ch12" class="nav-link">
+            <span class="lang-en-block">12. Showroom Config & Banks</span>
+            <span class="lang-bn-block">১২. শোরুম প্রোফাইল ও ব্যাংক সেটিংস</span>
+            <span class="nav-badge">Settings</span>
+          </a>
+        </li>
+        <li>
+          <a href="#ch13" class="nav-link">
+            <span class="lang-en-block">13. Interactive Calculators</span>
+            <span class="lang-bn-block">১৩. সোনার বিল ও খাদ ক্যালকুলেটর</span>
+            <span class="nav-badge">Tools</span>
+          </a>
+        </li>
+        <li>
+          <a href="#ch14" class="nav-link">
+            <span class="lang-en-block">14. Shortcuts Reference</span>
+            <span class="lang-bn-block">১৪. দ্রুত কাজের কি-বোর্ড শর্টকাট</span>
+            <span class="nav-badge">Hotkeys</span>
+          </a>
+        </li>
+        <li>
+          <a href="#ch15" class="nav-link">
+            <span class="lang-en-block">15. FAQ & Troubleshooting</span>
+            <span class="lang-bn-block">১৫. সাধারণ প্রশ্ন ও সমস্যার সমাধান</span>
+            <span class="nav-badge">Help</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="sidebar-section-title">
+        <span class="lang-en-block">Compliance Standards</span>
+        <span class="lang-bn-block">সরকারি মানদণ্ড ও বিধি</span>
+      </div>
+      <div style="padding: 12px; background: rgba(15,23,42,0.6); border-radius: 8px; font-size: 0.75rem; color: var(--text-muted); font-family: var(--font-mono); line-height: 1.6;">
+        <div>Hallmark: <span style="color: var(--gold-light);">BIS 916 HUID</span></div>
+        <div>HSN Code: <span style="color: #fff;">7113 (গয়না) / 7108 (বাট)</span></div>
+        <div>GST Rate: <span style="color: #38bdf8;">3.0% (1.5% + 1.5%)</span></div>
+        <div>Cash Rule: <span style="color: #34d399;">Rule 114B (₹2L Cap)</span></div>
+      </div>
+    </aside>
+
+    <!-- Main Content Articles -->
+    <main class="content">
+
+      <!-- Hero Header -->
+      <div class="hero-banner">
+        <div class="hero-tag">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+          <span class="lang-en-block">Enterprise Jewellery Retail Guide</span>
+          <span class="lang-bn-block">সোনার শোরুম পরিচালন ও ব্যবহার নির্দেশিকা</span>
+        </div>
+
+        <!-- English Title -->
+        <div class="lang-en-block">
+          <h1 class="hero-title">Bharat Jewellery <span>ERP & POS</span> Operating Guide</h1>
+          <p class="hero-desc">
+            Official operational reference for <strong>Bharat Jewellery ERP & POS</strong> — an all-in-one luxury retail billing, bullion trade, karigar production, and statutory GST compliance system engineered for Indian gold and diamond showrooms.
+          </p>
+        </div>
+
+        <!-- Bengali Title -->
+        <div class="lang-bn-block">
+          <h1 class="hero-title">ভারত জুয়েলারি <span>ইআরপি ও পিওএস</span> সম্পূর্ণ ব্যবহার নির্দেশিকা</h1>
+          <p class="hero-desc">
+            বাঙালী স্বর্ণ ব্যবসায়ী, শোরুমের মালিক, ম্যানেজার ও কাউন্টার কর্মীদের জন্য সম্পূর্ণ বাংলায় প্রস্তুত করা নির্দেশিকা। দ্রুত পিওএস বিলিং, বারকোড ট্যাগ স্ক্যান, মেকিং চার্জ, পুরনো সোনা বদলের খাদ কাটার হিসাব, ইনকাম ট্যাক্স রুল ১১৪বি অনুযায়ী প্যান কার্ডের নিয়ম এবং জিএসটি হিসাব সহজে শিখুন।
+          </p>
+        </div>
+
+        <div class="quick-stats-grid">
+          <div class="stat-pill">
+            <div class="num">F2 Key</div>
+            <div class="lbl">
+              <span class="lang-en-block">Instant POS Billing</span>
+              <span class="lang-bn-block">এক ক্লিকে বিলিং কাউন্টার</span>
+            </div>
+          </div>
+          <div class="stat-pill">
+            <div class="num">৩.০% জিএসটি</div>
+            <div class="lbl">
+              <span class="lang-en-block">CGST 1.5% + SGST 1.5%</span>
+              <span class="lang-bn-block">সিজিএসটি ১.৫% + এসজিএসটি ১.৫%</span>
+            </div>
+          </div>
+          <div class="stat-pill">
+            <div class="num">৬-সংখ্যার HUID</div>
+            <div class="lbl">
+              <span class="lang-en-block">BIS Hallmarking Compliant</span>
+              <span class="lang-bn-block">হলমার্ক ইউনিক আইডি ট্র্যাকিং</span>
+            </div>
+          </div>
+          <div class="stat-pill">
+            <div class="num">₹২,০০,০০০</div>
+            <div class="lbl">
+              <span class="lang-en-block">Rule 114B Cash Limit</span>
+              <span class="lang-bn-block">ক্যাশ প্যান কার্ডের সীমা</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- =================================================================== -->
+      <!-- ROLE SELECTOR BAR & ROLE-SPECIFIC MANUALS -->
+      <!-- =================================================================== -->
+      <div class="role-selector-bar" id="role-picker">
+        <div class="role-selector-title">
+          <span>👤</span>
+          <span class="lang-en-block">Choose Your Job Role for Tailored Step-by-Step SOP:</span>
+          <span class="lang-bn-block">আপনার শোরুমের কাজের পদবী অনুযায়ী আলাদা ব্যবহার নির্দেশিকা বেছে নিন:</span>
+        </div>
+        <div class="role-pills-grid">
+          <button class="role-pill active" onclick="filterByRole('all')">
+            📚 <span class="lang-en-block">Master Reference Guide (All Chapters)</span><span class="lang-bn-block">সম্পূর্ণ নির্দেশিকা (সব অধ্যায়)</span>
+          </button>
+          <button class="role-pill" onclick="filterByRole('billing')">
+            🛍️ <span class="lang-en-block">Counter Billing Staff</span><span class="lang-bn-block">কাউন্টার সেলস ও বিলিং কর্মী</span>
+          </button>
+          <button class="role-pill" onclick="filterByRole('karigar')">
+            🏷️ <span class="lang-en-block">Artisan & Inventory Manager</span><span class="lang-bn-block">কারিগর ও স্টক ম্যানেজার</span>
+          </button>
+          <button class="role-pill" onclick="filterByRole('accountant')">
+            💰 <span class="lang-en-block">Accountant & Cashier</span><span class="lang-bn-block">অ্যাকাউন্ট্যান্ট ও ক্যাশ খাতা</span>
+          </button>
+          <button class="role-pill" onclick="filterByRole('owner')">
+            👑 <span class="lang-en-block">Owner & Executive Admin</span><span class="lang-bn-block">শোরুম মালিক ও অ্যাডমিন</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- ROLE 1: COUNTER SALES & BILLING STAFF -->
+      <section id="role-billing" class="role-section">
+        <div class="role-section-header">
+          <div>
+            <div class="role-badge" style="background: rgba(245, 158, 11, 0.2); border-color: var(--gold); color: var(--gold-light);">
+              <span class="lang-en-block">Role Guide: Counter Sales & Billing Staff</span>
+              <span class="lang-bn-block">কর্মীর ভূমিকা: কাউন্টার সেলস ও পিওএস বিলিং কর্মী</span>
+            </div>
+            <h2 style="font-size: 1.5rem; color: #fff; margin-top: 4px;">
+              <span class="lang-en-block">Counter Billing Staff Operating Guide (SOP)</span>
+              <span class="lang-bn-block">কাউন্টার সেলস ও পিওএস বিলিং কর্মীর পুঙ্খানুপুঙ্খ নির্দেশিকা</span>
+            </h2>
+            <p style="color: var(--muted); font-size: 0.88rem; margin: 4px 0 0 0;">
+              <span class="lang-en-block">Primary Duties: POS Billing (F2), Tag Scanning, Making Charges, Old Gold Exchange & Tax Invoicing</span>
+              <span class="lang-bn-block">মূল দায়িত্ব: দ্রুত বিল তৈরি (F2), বারকোড স্ক্যান, মেকিং চার্জ, পুরনো সোনা খাদ কাটা ও বিল প্রিন্ট</span>
+            </p>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <a href="/manual-billing-staff.html" target="_blank" class="btn btn-outline" style="font-size: 0.78rem;">
+              ↗️ <span class="lang-en-block">Standalone Page</span><span class="lang-bn-block">আলাদা পেজে খুলুন</span>
+            </a>
+            <button class="btn btn-gold" onclick="printRoleManual('role-billing')" style="font-size: 0.78rem;">
+              🖨️ <span class="lang-en-block">Print This Guide</span><span class="lang-bn-block">এই নির্দেশিকা প্রিন্ট করুন</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="stepper">
+          <div class="step-item">
+            <div class="step-badge">১</div>
+            <div class="step-content">
+              <h5>
+                <span class="lang-en-block">Step 1: Open POS Billing Counter (F2)</span>
+                <span class="lang-bn-block">ধাপ ১: সকালে বিলিং কাউন্টারে ঢোকা</span>
+              </h5>
+              <p>
+                <span class="lang-en-block">Press <kbd>F2</kbd> anywhere in the software or click <strong>"POS Billing Terminal"</strong> in the left sidebar to open the active ticket terminal.</span>
+                <span class="lang-bn-block">কী-বোর্ডে <kbd>F2</kbd> বাটন চাপুন অথবা বামদিকের মেনু থেকে <strong>"POS Billing Terminal"</strong>-এ যান। সাথে সাথে বিলিং কাউন্টার খুলে যাবে।</span>
+              </p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-badge">২</div>
+            <div class="step-content">
+              <h5>
+                <span class="lang-en-block">Step 2: Scan Jewellery Barbell Tag</span>
+                <span class="lang-bn-block">ধাপ ২: বারকোড স্ক্যানার দিয়ে গয়না স্ক্যান করা</span>
+              </h5>
+              <p>
+                <span class="lang-en-block">Scan the barcode on the ornament tag. Gross Weight, Net Weight, Karat code (22K 916), and Hallmarking HUID populate into the cart instantly. (If barcode is unreadable, type tag code or click <strong>"+ Manual Item"</strong>).</span>
+                <span class="lang-bn-block">বারকোড স্ক্যানার দিয়ে গয়নার ট্যাগে স্ক্যান করুন। মোট ওজন (Gross Wt), নেট ওজন (Net Wt), ক্যারেট এবং হলমার্কের HUID নিজে থেকেই চলে আসবে। (ট্যাগ ক্ষতিগ্রস্ত হলে হাতে নম্বর টাইপ করুন বা <strong>"+ Manual Item"</strong>-এ ক্লিক করুন)।</span>
+              </p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-badge">৩</div>
+            <div class="step-content">
+              <h5>
+                <span class="lang-en-block">Step 3: Verify Stone Weight Deduction</span>
+                <span class="lang-bn-block">ধাপ ৩: পাথর বা পুতি থাকলে চেক করা</span>
+              </h5>
+              <p>
+                <span class="lang-en-block">Confirm Net Gold Weight = Gross Weight - Stone Weight. If stones have separate valuation, record it under Stone Value.</span>
+                <span class="lang-bn-block">গ্রস ওজন থেকে পাথরের ওজন বাদ গিয়ে খাঁটি সোনার নেট ওজন ঠিক আছে কিনা মিলিয়ে নিন। পাথরের আলাদা মূল্য থাকলে তা 'Stone Value'-র ঘরে লিখুন।</span>
+              </p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-badge">৪</div>
+            <div class="step-content">
+              <h5>
+                <span class="lang-en-block">Step 4: Check Making Charges Rate</span>
+                <span class="lang-bn-block">ধাপ ৪: মেকিং চার্জ বা মজুরি যাচাই করা</span>
+              </h5>
+              <p>
+                <span class="lang-en-block">Select making mode: Per-gram (e.g. ₹650/g), Percentage (e.g. 10%), or Fixed fee.</span>
+                <span class="lang-bn-block">দোকানের নিয়ম অনুযায়ী প্রতি গ্রাম মজুরি (যেমন ₹৬৫০/গ্রাম) অথবা শতাংশ (%) ঠিকমতো ধার্য হয়েছে কিনা দেখুন।</span>
+              </p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-badge">৫</div>
+            <div class="step-content">
+              <h5>
+                <span class="lang-en-block">Step 5: Select or Add Customer</span>
+                <span class="lang-bn-block">ধাপ ৫: ক্রেতার তথ্য যোগ করা</span>
+              </h5>
+              <p>
+                <span class="lang-en-block">Click <strong>"+ Select Customer"</strong> and search by mobile number. For new customers, quickly save their name and phone.</span>
+                <span class="lang-bn-block">ক্রেতার মোবাইল নম্বর দিয়ে সার্চ করুন। পুরনো ক্রেতা হলে সাথে সাথে চলে আসবে, নতুন হলে নাম ও ফোন নম্বর লিখে সেভ করুন।</span>
+              </p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-badge">৬</div>
+            <div class="step-content">
+              <h5>
+                <span class="lang-en-block">Step 6: Old Gold Scrap Exchange (If Applicable)</span>
+                <span class="lang-bn-block">ধাপ ৬: পুরনো সোনা বদল থাকলে খাদ কাটা ও মেল্ট হিসাব</span>
+              </h5>
+              <p>
+                <span class="lang-en-block">Open the <strong>"Old Gold Scrap Exchange"</strong> accordion. Enter scrap Gross weight, dust/wax deduction, and purity %. The system calculates fine gold valuation and deducts it from invoice total.</span>
+                <span class="lang-bn-block">ক্রেতা পুরনো সোনা দিলে <strong>"Old Gold Scrap Exchange"</strong> প্যানেল খুলুন। পুরনো সোনার ওজন, গালা বাদ এবং খাঁদ শতাংশ লিখলে সফটওয়্যার পাকা সোনার সমতুল্য টাকা বের করে বিল থেকে বাদ দেবে।</span>
+              </p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-badge">৭</div>
+            <div class="step-content">
+              <h5>
+                <span class="lang-en-block">Step 7: Mandatory PAN Check (Rule 114B)</span>
+                <span class="lang-bn-block">ধাপ ৭: প্যান কার্ড যাচাই (রুল ১১৪বি: নগদ ₹২ লাখের বেশি হলে)</span>
+              </h5>
+              <p>
+                <span class="lang-en-block"><strong>Important:</strong> If Cash Paid $\ge ₹2,00,000$, valid 10-digit PAN (e.g. <code>ABCDE1234F</code>) is mandatory before saving the bill. Otherwise, tender must be split into digital modes (UPI/Card/NEFT).</span>
+                <span class="lang-bn-block"><strong>খুব সাবধান:</strong> ক্রেতা যদি ক্যাশে ₹২,০০,০০০ বা তার বেশি দেন, তবে বৈধ ১০ সংখ্যার প্যান কার্ড ছাড়া বিল সেভ হবে না। প্যান না থাকলে বাকি টাকা ইউপিআই বা ব্যাংকে দিতে বলুন।</span>
+              </p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-badge">৮</div>
+            <div class="step-content">
+              <h5>
+                <span class="lang-en-block">Step 8: Collect Tender & Print Invoice</span>
+                <span class="lang-bn-block">ধাপ ৮: টাকা গ্রহণ ও রসিদ প্রিন্ট করা</span>
+              </h5>
+              <p>
+                <span class="lang-en-block">Collect tender (Cash, UPI QR, Card, Bank). Click <strong>"Complete & Print Invoice"</strong>. Print official A4 Tax Invoice or 80mm Thermal Receipt.</span>
+                <span class="lang-bn-block">ক্যাশ বা ইউপিআই-তে টাকা বুঝে নিয়ে <strong>"Complete & Print Invoice"</strong>-এ ক্লিক করুন। থার্মাল স্লিপ বা A4 ইনভয়েস প্রিন্ট করে ক্রেতাকে গয়নার সাথে বুঝিয়ে দিন।</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ROLE 2: ARTISAN & INVENTORY MANAGER -->
+      <section id="role-karigar" class="role-section">
+        <div class="role-section-header">
+          <div>
+            <div class="role-badge" style="background: rgba(56, 189, 248, 0.2); border-color: #38bdf8; color: #7dd3fc;">
+              <span class="lang-en-block">Role Guide: Artisan & Inventory Manager</span>
+              <span class="lang-bn-block">কর্মীর ভূমিকা: কারিগর ও স্টক ম্যানেজার</span>
+            </div>
+            <h2 style="font-size: 1.5rem; color: #fff; margin-top: 4px;">
+              <span class="lang-en-block">Artisan Inward & Barbell Tagging SOP</span>
+              <span class="lang-bn-block">কারিগর জমা ও শোরুমের স্টক ম্যানেজমেন্ট নির্দেশিকা</span>
+            </h2>
+            <p style="color: var(--muted); font-size: 0.88rem; margin: 4px 0 0 0;">
+              <span class="lang-en-block">Primary Duties: Receiving finished jewellery, making charges calculation, HUID barcode tag printing & tray distribution</span>
+              <span class="lang-bn-block">মূল দায়িত্ব: কারিগরের তৈরি গয়না জমা নেওয়া, মজুরি নির্ধারণ, HUID বারকোড ট্যাগ প্রিন্ট ও ট্রে-তে সাজানো</span>
+            </p>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <a href="/manual-karigar-inventory.html" target="_blank" class="btn btn-outline" style="font-size: 0.78rem;">
+              ↗️ <span class="lang-en-block">Standalone Page</span><span class="lang-bn-block">আলাদা পেজে খুলুন</span>
+            </a>
+            <button class="btn btn-gold" onclick="printRoleManual('role-karigar')" style="font-size: 0.78rem;">
+              🖨️ <span class="lang-en-block">Print This Guide</span><span class="lang-bn-block">এই নির্দেশিকা প্রিন্ট করুন</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="stepper">
+          <div class="step-item">
+            <div class="step-badge">১</div>
+            <div class="step-content">
+              <h5>
+                <span class="lang-en-block">Step 1: Open Karigar Inward</span>
+                <span class="lang-bn-block">ধাপ ১: কারিগর ইনওয়ার্ড পেজ খোলা</span>
+              </h5>
+              <p>
+                <span class="lang-en-block">Go to <strong>"Karigar Inward"</strong> in the sidebar. Select the artisan or workshop from the party dropdown.</span>
+                <span class="lang-bn-block">মেনু থেকে <strong>"Karigar Inward"</strong> পেজে যান এবং যে কারিগর গয়না জমা দিচ্ছেন তার নাম সিলেক্ট করুন।</span>
+              </p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-badge">২</div>
+            <div class="step-content">
+              <h5>
+                <span class="lang-en-block">Step 2: Enter Metal Weights (0.001g Precision)</span>
+                <span class="lang-bn-block">ধাপ ২: গয়নার বিবরণ ও ওজন এন্ট্রি করা</span>
+              </h5>
+              <p>
+                <span class="lang-en-block">Select category (Necklace, Ring, Bangle), karat (22K 916), gross weight, and stone weight from digital scale.</span>
+                <span class="lang-bn-block">ক্যাটাগরি (নেকলেস, চুড়ি, আংটি ইত্যাদি), ক্যারেট (২২ ক্যারেট ৯১৬) এবং ডিজিটাল কাঁটা দেখে মোট ওজন ও পাথরের ওজন ৩ দশমিক স্থান পর্যন্ত নির্ভুল লিখুন।</span>
+              </p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-badge">৩</div>
+            <div class="step-content">
+              <h5>
+                <span class="lang-en-block">Step 3: Record Karigar Making Charges & HUID</span>
+                <span class="lang-bn-block">ধাপ ৩: কারিগরের মজুরি ও হলমার্ক HUID লেখা</span>
+              </h5>
+              <p>
+                <span class="lang-en-block">Enter agreed making rate (₹/g) and type the 6-character laser-engraved BIS Hallmarking HUID (e.g. <code>HM89A2</code>).</span>
+                <span class="lang-bn-block">কারিগরের চুক্তি অনুযায়ী প্রতি গ্রাম মজুরি (যেমন ₹২৮০/গ্রাম) এবং হলমার্কিং সেন্টারের খোদাই করা ৬ অক্ষরের HUID কোডটি লিখুন।</span>
+              </p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-badge">৪</div>
+            <div class="step-content">
+              <h5>
+                <span class="lang-en-block">Step 4: Save & Print Barbell Label</span>
+                <span class="lang-bn-block">ধাপ ৪: সেভ ও বারবেল ট্যাগ প্রিন্ট করা</span>
+              </h5>
+              <p>
+                <span class="lang-en-block">Click <strong>"Save & Generate Tag"</strong>. Print the dual-flap barbell tag on the thermal label printer. Affix securely to the jewellery ornament.</span>
+                <span class="lang-bn-block"><strong>"Save & Generate Tag"</strong> বাটনে ক্লিক করে লেবেল প্রিন্টারে বারবেল ট্যাগ প্রিন্ট দিন এবং গয়নায় আটকে দিন।</span>
+              </p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-badge">৫</div>
+            <div class="step-content">
+              <h5>
+                <span class="lang-en-block">Step 5: Tray Allocation & Low Stock Monitoring</span>
+                <span class="lang-bn-block">ধাপ ৫: ট্রে-তে সাজানো ও স্টক অডিট</span>
+              </h5>
+              <p>
+                <span class="lang-en-block">Place the tagged ornament in the showroom tray or vault. Regularly check <strong>"Inventory & Tags"</strong> (<kbd>F4</kbd>) for categories falling below 3 items.</span>
+                <span class="lang-bn-block">ট্যাগ লাগানো গয়নাটি শোরুমের ডিসপ্লে ট্রে-তে রেখে দিন এবং <kbd>F4</kbd> পেজে গিয়ে যেসব ডিজাইনের স্টক কমে গেছে তা কারিগরকে নতুন বানাতে দিন।</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ROLE 3: ACCOUNTANT & FINANCIAL CASHIER -->
+      <section id="role-accountant" class="role-section">
+        <div class="role-section-header">
+          <div>
+            <div class="role-badge" style="background: rgba(16, 185, 129, 0.2); border-color: #10b981; color: #a7f3d0;">
+              <span class="lang-en-block">Role Guide: Accountant & Financial Cashier</span>
+              <span class="lang-bn-block">কর্মীর ভূমিকা: অ্যাকাউন্ট্যান্ট ও ক্যাশ খাতা ম্যানেজার</span>
+            </div>
+            <h2 style="font-size: 1.5rem; color: #fff; margin-top: 4px;">
+              <span class="lang-en-block">Accountant & Cash Drawer Operating Guide (SOP)</span>
+              <span class="lang-bn-block">অ্যাকাউন্টস, ক্যাশ খাতা ও খরচের পুঙ্খানুপুঙ্খ নির্দেশিকা</span>
+            </h2>
+            <p style="color: var(--muted); font-size: 0.88rem; margin: 4px 0 0 0;">
+              <span class="lang-en-block">Primary Duties: Cash drawer balancing, expense debit/credit vouchers, bullion purchase bills & bank reconciliations</span>
+              <span class="lang-bn-block">মূল দায়িত্ব: ক্যাশ কাউন্টার অডিট, খরচের ভাউচার এন্ট্রি, মহাজনের সোনা ক্রয়ের বিল ও ব্যাংক মেলানো</span>
+            </p>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <a href="/manual-accountant.html" target="_blank" class="btn btn-outline" style="font-size: 0.78rem;">
+              ↗️ <span class="lang-en-block">Standalone Page</span><span class="lang-bn-block">আলাদা পেজে খুলুন</span>
+            </a>
+            <button class="btn btn-gold" onclick="printRoleManual('role-accountant')" style="font-size: 0.78rem;">
+              🖨️ <span class="lang-en-block">Print This Guide</span><span class="lang-bn-block">এই নির্দেশিকা প্রিন্ট করুন</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="stepper">
+          <div class="step-item">
+            <div class="step-badge">১</div>
+            <div class="step-content">
+              <h5>
+                <span class="lang-en-block">Step 1: Morning Cash Drawer Audit</span>
+                <span class="lang-bn-block">ধাপ ১: সকালের ক্যাশ ড্রয়ার ব্যালেন্স মিলিয়ে নেওয়া</span>
+              </h5>
+              <p>
+                <span class="lang-en-block">Compare physical cash float in drawer with system Cash Drawer balance displayed in top header.</span>
+                <span class="lang-bn-block">সকালে কাউন্টারে থাকা ক্যাশ টাকার সাথে সফটওয়্যারের উপরের <strong>"Cash Drawer"</strong> ব্যালেন্স মিলিয়ে নিন।</span>
+              </p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-badge">২</div>
+            <div class="step-content">
+              <h5>
+                <span class="lang-en-block">Step 2: Record Daily Expense Debit Vouchers</span>
+                <span class="lang-bn-block">ধাপ ২: দোকানের দৈনন্দিন খরচের ভাউচার এন্ট্রি</span>
+              </h5>
+              <p>
+                <span class="lang-en-block">Navigate to <strong>"Operating Expenses"</strong>. Enter vouchers for tea, electricity, cleaning, artisan advances, or staff salaries immediately.</span>
+                <span class="lang-bn-block">মেনু থেকে <strong>"Operating Expenses"</strong> পেজে গিয়ে কর্মচারীদের চা, বিদ্যুৎ বিল, ঝাড়ুদার বা কারিগরের অগ্রিম খরচের ভাউচার সাথে সাথে রেকর্ড করুন।</span>
+              </p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-badge">৩</div>
+            <div class="step-content">
+              <h5>
+                <span class="lang-en-block">Step 3: Post Bullion Purchases & Input Tax Credit</span>
+                <span class="lang-bn-block">ধাপ ৩: মহাজনের সোনা ক্রয়ের বিল তোলা (Purchase Entry)</span>
+              </h5>
+              <p>
+                <span class="lang-en-block">Go to <strong>"Purchase Entry"</strong>. Record raw 24K bullion purchases from dealers with invoice number, GSTIN, gross grams, and 3% GST Input Tax Credit (ITC).</span>
+                <span class="lang-bn-block">মহাজন বা ব্যাংকের থেকে কেনা ২৪ ক্যারেট পাকা সোনার বিল, ভেন্ডরের জিএসটি নম্বর ও ৩% ইনপুট ট্যাক্স ক্রেডিট <strong>"Purchase Entry"</strong> পেজে রেকর্ড করুন।</span>
+              </p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-badge">৪</div>
+            <div class="step-content">
+              <h5>
+                <span class="lang-en-block">Step 4: Reconcile Bank Statements (UPI & RTGS)</span>
+                <span class="lang-bn-block">ধাপ ৪: ব্যাংক ও ইউপিআই স্টেটমেন্ট মেলানো</span>
+              </h5>
+              <p>
+                <span class="lang-en-block">In <strong>"Cash Drawer & Ledger"</strong>, verify UPI QR collections and card payments against commercial bank online accounts (SBI, HDFC, ICICI).</span>
+                <span class="lang-bn-block">ক্রেতারা কিউআর কোড বা কার্ডে যে টাকা দিয়েছেন, তা স্টেট ব্যাংক বা এইচডিএফসি ব্যাংক স্টেটমেন্টের সাথে মিলিয়ে নিন।</span>
+              </p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-badge">৫</div>
+            <div class="step-content">
+              <h5>
+                <span class="lang-en-block">Step 5: Day-End Cash Closing & Vault Tally</span>
+                <span class="lang-bn-block">ধাপ ৫: দিনের শেষে ক্যাশ ক্লোজিং</span>
+              </h5>
+              <p>
+                <span class="lang-en-block">At showroom closing, balance total cash received against expense vouchers. Tally physical cash before locking cash into safe vault.</span>
+                <span class="lang-bn-block">দোকান বন্ধ করার সময় মোট ক্যাশ সেল থেকে খরচ বাদ দিয়ে অবশিষ্ট নগদ টাকা গুনে মিলিয়ে ক্যাশ বাক্স লকারে বন্ধ করুন।</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ROLE 4: SHOWROOM OWNER & EXECUTIVE ADMIN -->
+      <section id="role-owner" class="role-section">
+        <div class="role-section-header">
+          <div>
+            <div class="role-badge" style="background: rgba(251, 191, 36, 0.2); border-color: #fbbf24; color: #fde68a;">
+              <span class="lang-en-block">Role Guide: Showroom Owner & Executive Admin</span>
+              <span class="lang-bn-block">কর্মীর ভূমিকা: শোরুম মালিক ও চিফ অ্যাডমিন</span>
+            </div>
+            <h2 style="font-size: 1.5rem; color: #fff; margin-top: 4px;">
+              <span class="lang-en-block">Showroom Owner & Executive Admin SOP</span>
+              <span class="lang-bn-block">শোরুমের মালিক ও চিফ অ্যাডমিনিস্ট্রেটর নির্দেশিকা</span>
+            </h2>
+            <p style="color: var(--muted); font-size: 0.88rem; margin: 4px 0 0 0;">
+              <span class="lang-en-block">Primary Duties: Daily rate lock, live sales intelligence, party ledgers, GST CA tax returns & database security</span>
+              <span class="lang-bn-block">মূল দায়িত্ব: প্রতিদিন সোনার বোর্ড রেট লক করা, লাইভ সেলস ড্যাশবোর্ড, জিএসটি রিপোর্ট (CA ফাইল) ও ব্যাকআপ</span>
+            </p>
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <a href="/manual-owner-admin.html" target="_blank" class="btn btn-outline" style="font-size: 0.78rem;">
+              ↗️ <span class="lang-en-block">Standalone Page</span><span class="lang-bn-block">আলাদা পেজে খুলুন</span>
+            </a>
+            <button class="btn btn-gold" onclick="printRoleManual('role-owner')" style="font-size: 0.78rem;">
+              🖨️ <span class="lang-en-block">Print This Guide</span><span class="lang-bn-block">এই নির্দেশিকা প্রিন্ট করুন</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="stepper">
+          <div class="step-item">
+            <div class="step-badge">১</div>
+            <div class="step-content">
+              <h5>
+                <span class="lang-en-block">Step 1: Broadcast Daily Board Rates (10:00 AM)</span>
+                <span class="lang-bn-block">ধাপ ১: প্রতিদিন সকাল ১০টায় সোনার বোর্ড রেট সম্প্রচার</span>
+              </h5>
+              <p>
+                <span class="lang-en-block">Click <strong>"Set Rates"</strong> in top header. Update 22K Selling (e.g. ₹7,350/g) & Old Gold Buying rate (e.g. ₹7,050/g). Click Save to lock prices across all showroom terminals.</span>
+                <span class="lang-bn-block">সকালে দোকান খোলার পর হেডার বারে <strong>"Set Rates"</strong> বাটনে ক্লিক করে আজকের ২২ ক্যারেট, ২৪ ক্যারেট, ১৮ ক্যারেট ও রূপোর বিক্রয় এবং কেনার দর সেভ করুন। সব কম্পিউটারে রেট লক হয়ে যাবে।</span>
+              </p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-badge">২</div>
+            <div class="step-content">
+              <h5>
+                <span class="lang-en-block">Step 2: Monitor Real-Time Showroom Dashboard</span>
+                <span class="lang-bn-block">ধাপ ২: লাইভ সেলস ও আর্থিক ড্যাশবোর্ড পর্যবেক্ষণ</span>
+              </h5>
+              <p>
+                <span class="lang-en-block">Check <strong>"Dashboard"</strong> for Today's Total Sales (₹), total outward net weight (grams), cash collected, and live category stock breakdown.</span>
+                <span class="lang-bn-block"><strong>"Dashboard"</strong> পেজ থেকে আজ কত টাকার সেল হলো, কত গ্রাম সোনা বিক্রি হলো, ক্যাশ ও ব্যাংকে কত তহবিল আছে এবং ট্রে-তে কত টাকার গয়না মজুত আছে তা লাইভ দেখুন।</span>
+              </p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-badge">৩</div>
+            <div class="step-content">
+              <h5>
+                <span class="lang-en-block">Step 3: Review Karigar & Vendor Ledger Balances</span>
+                <span class="lang-bn-block">ধাপ ৩: কারিগর ও মহাজনের খাতা অডিট</span>
+              </h5>
+              <p>
+                <span class="lang-en-block">Audit <strong>"Customers & Parties"</strong> to monitor fine gold balances held with artisans and outstanding vendor dues to bullion merchants.</span>
+                <span class="lang-bn-block"><strong>"Customers & Parties"</strong> পেজে গিয়ে দেখুন কোন কারিগরের কাছে কত গ্রাম কাঁচা সোনা জমা আছে এবং কোন মহাজনকে কত টাকা বাকি আছে।</span>
+              </p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-badge">৪</div>
+            <div class="step-content">
+              <h5>
+                <span class="lang-en-block">Step 4: Monthly Statutory GST Filing (GSTR-1 & 3B)</span>
+                <span class="lang-bn-block">ধাপ ৪: মাসের শেষে জিএসটি ট্যাক্স ফাইলিং (CA ফাইল)</span>
+              </h5>
+              <p>
+                <span class="lang-en-block">In <strong>"GST Reports"</strong>, export GSTR-1 Table 4 (B2B), Table 7 (B2C), Table 12 (HSN 7113 summary) and GSTR-3B tax offset tables in CSV/Excel format for your CA.</span>
+                <span class="lang-bn-block">মাসের শুরুতে <strong>"GST Reports"</strong> পেজ থেকে GSTR-1 (Table 4 B2B, Table 7 B2C, Table 12 HSN) এবং GSTR-3B এক ক্লিকে 'Export CSV' করে চার্টার্ড অ্যাকাউন্ট্যান্টকে (CA) পাঠিয়ে দিন।</span>
+              </p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-badge">৫</div>
+            <div class="step-content">
+              <h5>
+                <span class="lang-en-block">Step 5: Weekly Encrypted Database Backup</span>
+                <span class="lang-bn-block">ধাপ ৫: সাপ্তাহিক ডাটাবেস ব্যাকআপ নেওয়া</span>
+              </h5>
+              <p>
+                <span class="lang-en-block">In <strong>"Settings & Backups"</strong>, click <strong>"Create Backup Now"</strong> every weekend. Store the downloaded backup file safely on a secure external USB drive or cloud storage.</span>
+                <span class="lang-bn-block">প্রতি রবিবার দোকান বন্ধ করার সময় <strong>"Settings & Backups"</strong> পেজে গিয়ে <strong>"Create Backup Now"</strong> বাটনে ক্লিক করে সম্পূর্ণ ডাটাবেস ব্যাকআপ ফাইলটি আলাদা পেনড্রাইভে রেখে দিন।</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================== -->
+      <!-- CHAPTER 1: GETTING STARTED & LOGIN -->
+      <!-- =================================================================== -->
+      <section id="ch1" class="chapter">
+        <div class="chapter-header">
+          <div class="chapter-num">01</div>
+          <h2>
+            <span class="lang-en-block">System Overview & Terminal Login</span>
+            <span class="lang-bn-block">সফটওয়্যারের পরিচিতি ও লগইন পদ্ধতি</span>
+          </h2>
+        </div>
+
+        <div class="lang-en-block">
+          <p class="chapter-lead">
+            Bharat Jewellery ERP is designed for zero-latency counter billing. It runs on a local high-performance server (or cloud instance) connecting to the backend database securely.
+          </p>
+          <h3>1.1 Default User Roles & Demo Credentials</h3>
+          <p>The system provides four role tiers with distinct permissions. On the login screen, you can also click the <strong>Quick Fill Pills</strong> for 1-click test authentication:</p>
+        </div>
+
+        <div class="lang-bn-block">
+          <p class="chapter-lead">
+            ভারত জুয়েলারি ইআরপি হলো এমন একটি আধুনিক সিস্টেম যা আপনার শোরুমের কম্পিউটার থেকে সরাসরি দ্রুত কাজ করে। ইন্টারনেট বিভ্রাট থাকলেও স্থানীয় নেটওয়ার্কে বিলিং করতে কোনো সমস্যা হয় না।
+          </p>
+          <h3>১.১ ইউজার রোল ও পাসওয়ার্ড তালিকা</h3>
+          <p>সফটওয়্যারে বিভিন্ন কর্মীদের জন্য আলাদা আলাদা ক্ষমতা ও লগইন দেওয়া আছে। লগইন স্ক্রিনে দেওয়া কুইক পিল বাটনে ক্লিক করেও সহজে লগইন করতে পারেন:</p>
+        </div>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th><span class="lang-en-block">Role</span><span class="lang-bn-block">পদবী</span></th>
+                <th><span class="lang-en-block">Username / Email</span><span class="lang-bn-block">ইউজারনেম / ইমেইল</span></th>
+                <th><span class="lang-en-block">Password</span><span class="lang-bn-block">পাসওয়ার্ড</span></th>
+                <th><span class="lang-en-block">Access Scope & Permissions</span><span class="lang-bn-block">কাজের পরিধি ও ক্ষমতা</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="badge badge-gold">Admin</span></td>
+                <td><code>sukantahui</code></td>
+                <td><code>Cnat@1977</code></td>
+                <td>
+                  <span class="lang-en-block">Full system control, daily rate locks, database backup, business settings.</span>
+                  <span class="lang-bn-block">সম্পূর্ণ নিয়ন্ত্রণ, দৈনিক সোনার রেট লক করা, ব্যাকআপ ও শোরুমের সেটিংস পরিবর্তন।</span>
+                </td>
+              </tr>
+              <tr>
+                <td><span class="badge badge-gold">Owner</span></td>
+                <td><code>owner@bharatjewellers.com</code></td>
+                <td><code>Owner@1234</code></td>
+                <td>
+                  <span class="lang-en-block">Executive dashboard, audit reports, financial ledgers, GST tax returns.</span>
+                  <span class="lang-bn-block">শোরুমের ড্যাশবোর্ড, মোট লাভ-ক্ষতি, ক্যাশ ও ব্যাংকের খাতা এবং জিএসটি ট্যাক্স ফাইল।</span>
+                </td>
+              </tr>
+              <tr>
+                <td><span class="badge badge-blue">Staff / Cashier</span></td>
+                <td><code>staff@bharatjewellers.com</code></td>
+                <td><code>Staff@1234</code></td>
+                <td>
+                  <span class="lang-en-block">High-speed POS billing, barcode tag lookup, invoice printing, cash counter.</span>
+                  <span class="lang-bn-block">কাউন্টার বিলিং, ট্যাগ স্ক্যানিং, ক্রেতাকে রসিদ প্রিন্ট করে দেওয়া ও ক্যাশ নেওয়া।</span>
+                </td>
+              </tr>
+              <tr>
+                <td><span class="badge badge-green">Developer</span></td>
+                <td><code>dev@bharatjewellers.com</code></td>
+                <td><code>Dev@1234</code></td>
+                <td>
+                  <span class="lang-en-block">API diagnostic mode, schema inspection, stress testing.</span>
+                  <span class="lang-bn-block">প্রযুক্তিগত পরীক্ষণ ও ডাটাবেস পরীক্ষা।</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="lang-en-block">
+          <h3>1.2 Daily Showroom Opening Routine (Standard Operating Procedure)</h3>
+        </div>
+        <div class="lang-bn-block">
+          <h3>১.২ প্রতিদিন সকালে শোরুম খোলার নিয়মাবলী (SOP)</h3>
+        </div>
+
+        <div class="stepper">
+          <div class="step-item">
+            <div class="step-badge">1</div>
+            <div class="step-content">
+              <h5>
+                <span class="lang-en-block">Launch Terminal & Log In</span>
+                <span class="lang-bn-block">কম্পিউটার চালু করে সফটওয়্যারে লগইন করুন</span>
+              </h5>
+              <p>
+                <span class="lang-en-block">Open Google Chrome or Microsoft Edge and browse to <code>http://localhost:5173/</code>. Log in with your staff or administrator credentials.</span>
+                <span class="lang-bn-block">ব্রাউজার খুলে সফটওয়্যারে যান এবং আপনার আইডি-পাসওয়ার্ড দিয়ে লগইন করুন।</span>
+              </p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-badge">2</div>
+            <div class="step-content">
+              <h5>
+                <span class="lang-en-block">Broadcast Today's Bullion Rates</span>
+                <span class="lang-bn-block">আজকের সোনার ও রূপোর বোর্ড রেট সেট করুন</span>
+              </h5>
+              <p>
+                <span class="lang-en-block">Click <strong>"Set Rates"</strong> in the top header. Input today's 24K, 22K (916), 18K, and Silver selling and buying rates per gram. This immediately locks pricing across all sales counters.</span>
+                <span class="lang-bn-block">উপরের হেডারে <strong>"Set Rates"</strong> বাটনে ক্লিক করে আজকের ২৪ ক্যারেট, ২২ ক্যারেট (৯১৬), ১৮ ক্যারেট ও রূপোর প্রতি গ্রামের বিক্রয় দর এবং পুরনো সোনা কেনার দর বসিয়ে সেভ করুন। সব কাউন্টারে স্বয়ংক্রিয়ভাবে রেট চালু হয়ে যাবে।</span>
+              </p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-badge">3</div>
+            <div class="step-content">
+              <h5>
+                <span class="lang-en-block">Verify Cash Drawer Opening Balance</span>
+                <span class="lang-bn-block">ক্যাশ ড্রয়ারের ওপেনিং ব্যালেন্স মিলিয়ে নিন</span>
+              </h5>
+              <p>
+                <span class="lang-en-block">Click on the <strong>Cash Drawer</strong> indicator in the top header to confirm physical counter float matches the system's recorded balance.</span>
+                <span class="lang-bn-block">কাউন্টারে থাকা খুচরো ও ক্যাশ টাকার সাথে সফটওয়্যারের ক্যাশ ড্রয়ার ব্যালেন্স মিলিয়ে নিন।</span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout tip">
+          <div class="icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+          </div>
+          <div class="callout-body">
+            <span class="lang-en-block">
+              <strong>Pro-Tip: Instant Keyboard Access</strong>
+              Press <kbd>F2</kbd> anywhere in the software to jump straight into the POS Billing Terminal without touching the mouse!
+            </span>
+            <span class="lang-bn-block">
+              <strong>জরুরি টিপস: সরাসরি বিলিং কাউন্টারে যাওয়া</strong>
+              সফটওয়্যারের যেকোনো পেজে থাকাকালীন কী-বোর্ডের <kbd>F2</kbd> বাটন চাপলেই সরাসরি পিওএস বিলিং স্ক্রিন খুলে যাবে। মাউস ধরার দরকার পড়বে না!
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================== -->
+      <!-- CHAPTER 2: DAILY RATES & BULLION CONTROL -->
+      <!-- =================================================================== -->
+      <section id="ch2" class="chapter">
+        <div class="chapter-header">
+          <div class="chapter-num">02</div>
+          <h2>
+            <span class="lang-en-block">Daily Rates & Bullion Board Price Control</span>
+            <span class="lang-bn-block">আজকের সোনার রেট ও বোর্ড দর নিয়ন্ত্রণ</span>
+          </h2>
+        </div>
+
+        <div class="lang-en-block">
+          <h3>2.1 What are Bullion Rates and Board Rates? (Core Concepts)</h3>
+          <p>
+            Understanding the distinction between <strong>Bullion Rates</strong> and <strong>Board Rates</strong> is essential for showroom staff and accountants:
+          </p>
+          <div class="feature-grid">
+            <div class="guide-card">
+              <div class="card-icon">🏦</div>
+              <h4>What is Bullion & Bullion Rate?</h4>
+              <p>
+                <strong>Bullion</strong> refers to high-purity physical precious metal (99.9% pure 24 Karat gold or 999 fine silver) traded in wholesale forms like minted bars, biscuits, and coins—not finished designer jewellery. <strong>Bullion Rate</strong> is the wholesale benchmark spot price set by international markets (London, NYMEX) and domestic commodity exchanges (MCX, IBJA). Wholesale merchants and bullion dealers trade using this rate per 10g or per 1g.
+              </p>
+            </div>
+            <div class="guide-card">
+              <div class="card-icon">📋</div>
+              <h4>What is Board Rate?</h4>
+              <p>
+                <strong>Board Rate</strong> is the official daily retail price prominently displayed on the showroom's electronic rate board or wall display for retail walk-in customers. It represents the showroom's official per-gram selling price for finished jewellery across different karats (22K BIS Hallmark 916, 18K Diamond Mounts 750, 14K, and Silver) as well as the scrap buying rate for customer old gold exchanges.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="lang-bn-block">
+          <h3>২.১ বুলিয়ান রেট এবং বোর্ড রেট কাকে বলে? (সহজ ভাষায় বিস্তারিত ব্যাখ্যা)</h3>
+          <p>
+            সোনার ব্যবসা ও সফটওয়্যার পরিচালনার জন্য <strong>বুলিয়ান রেট (Bullion Rate)</strong> এবং <strong>বোর্ড রেট (Board Rate)</strong> এর পার্থক্য পরিষ্কারভাবে জানা অত্যন্ত জরুরি:
+          </p>
+
+          <div class="feature-grid">
+            <div class="guide-card">
+              <div class="card-icon">🏦</div>
+              <h4>বুলিয়ান (Bullion) ও বুলিয়ান রেট কী?</h4>
+              <p>
+                <strong>বুলিয়ান (Bullion):</strong> অলঙ্কার বা গয়না নয়—বরং খনি থেকে পরিশোধিত ৯৯.৯% খাঁটি <strong>২৪ ক্যারেট পাকা সোনা</strong> যা বাট (Bar), বিস্কুট (Biscuit) বা সরকার-স্বীকৃত কয়েন আকারে থাকে, তাকে 'বুলিয়ান' বলা হয়।<br/>
+                <strong>বুলিয়ান রেট (Bullion Rate):</strong> আন্তর্জাতিক বাজার এবং ভারতীয় কমোডিটি এক্সচেঞ্জ (MCX ও IBJA) অনুযায়ী প্রতিদিন ২৪ ক্যারেট কাঁচা সোনা কেনা-বেচার যে সরকারি পাইকারি বাজারদর নির্ধারিত হয়, তাকে <strong>বুলিয়ান রেট</strong> বলে। বউবাজারের মহাজন বা ব্যাংক থেকে কাঁচা সোনা কেনার সময় এই পাইকারি দর প্রযোজ্য হয়।
+              </p>
+            </div>
+            <div class="guide-card">
+              <div class="card-icon">📋</div>
+              <h4>বোর্ড রেট (Board Rate) কী?</h4>
+              <p>
+                <strong>বোর্ড রেট (Board Rate):</strong> সাধারণ খুচরো ক্রেতাদের দেখার জন্য শোরুমের দেওয়ালে বা ডিজিটাল এলইডি বোর্ডে যে প্রতিদিনের অফিসিয়াল দর লিখে রাখা হয়, তাকে <strong>বোর্ড রেট</strong> বলে।<br/>
+                বোর্ড রেট বুলিয়ান রেটের ভিত্তিতে নির্ধারিত হলেও এটি গয়নার ক্যারেট অনুযায়ী হয়—যেমন <strong>২২ ক্যারেট ৯১৬ হলমার্ক সোনার দর</strong>, <strong>১৮ ক্যারেট দর</strong> এবং <strong>রূপোর দর</strong>। এই দরেই সাধারণ ক্রেতাদের কাছে নতুন গয়না বিক্রি করা হয় এবং পুরনো সোনা বদলের হিসাব করা হয়।
+              </p>
+            </div>
+          </div>
+
+          <div class="callout info">
+            <div class="icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            </div>
+            <div class="callout-body">
+              <strong>বুলিয়ান রেট বনাম বোর্ড রেট এর মূল পার্থক্য (সহজ সংক্ষেপ)</strong>
+              • <strong>বুলিয়ান রেট:</strong> ২৪ ক্যারেট কাঁচা সোনা/বাটের পাইকারি বাজারদর (যা মহাজন বা ব্যাংকের সাথে লেনদেনে লাগে)।<br/>
+              • <strong>বোর্ড রেট:</strong> শোরুমের বোর্ডে ঝোলানো ২২ ক্যারেট ও ১৮ ক্যারেট খুচরো গয়নার অফিসিয়াল বিক্রয় ও ক্রয় দর (যা সাধারণ ক্রেতার বিলে লাগে)।
+            </div>
+          </div>
+        </div>
+
+        <div class="lang-en-block">
+          <h3>2.2 Karat Breakdown & Metal Categories</h3>
+        </div>
+
+        <div class="lang-bn-block">
+          <h3>২.২ বিভিন্ন ক্যারেট ও ধাতুর পরিচিতি</h3>
+        </div>
+
+        <div class="feature-grid">
+          <div class="guide-card">
+            <div class="card-icon">24K</div>
+            <h4>
+              <span class="lang-en-block">24 Karat (999 Fine Bullion)</span>
+              <span class="lang-bn-block">২৪ ক্যারেট (৯৯৯ পাকা সোনা)</span>
+            </h4>
+            <p>
+              <span class="lang-en-block">Pure gold coins, raw biscuits, and bullion bars. Benchmark for old scrap melt purity math.</span>
+              <span class="lang-bn-block">খাঁটি পাকা সোনা বা বাট। পুরনো সোনা বদলের হিসাবের মূল মাপকাঠি হিসেবে ব্যবহৃত হয়।</span>
+            </p>
+          </div>
+          <div class="guide-card">
+            <div class="card-icon">22K</div>
+            <h4>
+              <span class="lang-en-block">22 Karat (916 BIS Hallmark)</span>
+              <span class="lang-bn-block">২২ ক্যারেট (৯১৬ হলমার্ক গয়না)</span>
+            </h4>
+            <p>
+              <span class="lang-en-block">Standard purity for Indian bridal jewellery, bangles, chains, and necklaces (91.6% pure fine gold).</span>
+              <span class="lang-bn-block">বাঙালির বিয়ের গয়না, হার, চুড়ি, চেইন ও কানের দুল তৈরির আদর্শ মান (৯১.৬% খাঁটি সোনা)।</span>
+            </p>
+          </div>
+          <div class="guide-card">
+            <div class="card-icon">18K</div>
+            <h4>
+              <span class="lang-en-block">18 Karat (750 Diamond Mounts)</span>
+              <span class="lang-bn-block">১৮ ক্যারেট (৭৫০ হিরে ও পাথর)</span>
+            </h4>
+            <p>
+              <span class="lang-en-block">Used for diamond rings, stone-studded ornaments, and lightweight designer collections (75.0% pure).</span>
+              <span class="lang-bn-block">হিরের আংটি ও স্টোন-সেটিং আধুনিক হালকা ডিজাইনের গয়নার মান (৭৫.০% খাঁটি সোনা)।</span>
+            </p>
+          </div>
+          <div class="guide-card">
+            <div class="card-icon">Ag</div>
+            <h4>
+              <span class="lang-en-block">Silver 999 (Articles & Bullion)</span>
+              <span class="lang-bn-block">রূপো ৯৯৯ (বাসন ও গয়না)</span>
+            </h4>
+            <p>
+              <span class="lang-en-block">Fine silver utensils, pooja articles, coins, and silver jewellery ornaments.</span>
+              <span class="lang-bn-block">পূজার সামগ্রী, বাটি, চামচ, রূপোর কয়েন ও নূপুর-পায়েল এর দৈনিক প্রতি গ্রাম দর।</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="lang-en-block">
+          <h3>2.3 Selling Board Rate vs Buying / Melt Scrap Board Rate</h3>
+          <p>For every purity, you specify two distinct daily rates on the board:</p>
+          <ul>
+            <li><strong>Selling Board Rate (₹/g):</strong> The retail rate charged to customers purchasing new ornaments.</li>
+            <li><strong>Buying / Melt Scrap Board Rate (₹/g):</strong> The rate credited to customers when exchanging old gold ornaments.</li>
+          </ul>
+        </div>
+
+        <div class="lang-bn-block">
+          <h3>২.৩ বিক্রয় বোর্ড দর বনাম পুরনো সোনা কেনার বোর্ড দর (Selling vs Buying Rate)</h3>
+          <p>শোরুমের বোর্ড রেটে প্রতিদিন ২টি পৃথক দর ঘোষণা করতে হয়:</p>
+          <ul>
+            <li><strong>বিক্রয় বোর্ড দর (Selling Rate ₹/গ্রাম):</strong> আজ যে দরে সাধারণ ক্রেতার কাছে নতুন হলমার্ক গয়না বিক্রি করা হবে। (যেমন: ২২ ক্যারেট প্রতি গ্রাম ₹৭,৩৫০)।</li>
+            <li><strong>পুরনো সোনা কেনার বোর্ড দর (Buying / Melt Rate ₹/গ্রাম):</strong> ক্রেতা যখন পুরনো ভাঙা সোনা নিয়ে এসে নতুন গয়না কিনবেন, তখন তার থেকে পুরনো সোনা প্রতি গ্রাম কী দরে শোরুম জমা নেবে। (যেমন: ২২ ক্যারেট প্রতি গ্রাম ₹৭,০৫০)। বিক্রয় দর ও ক্রয় দরের মধ্যে একটি স্বাভাবিক ব্যাবসায়িক ব্যবধান (Spread) থাকে।</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- =================================================================== -->
+      <!-- CHAPTER 3: POS BILLING TERMINAL -->
+      <!-- =================================================================== -->
+      <section id="ch3" class="chapter">
+        <div class="chapter-header">
+          <div class="chapter-num">03</div>
+          <h2>
+            <span class="lang-en-block">High-Speed POS Retail Billing Terminal (F2)</span>
+            <span class="lang-bn-block">কাউন্টার বিলিং ও পিওএস টার্মিনাল (F2)</span>
+          </h2>
+        </div>
+
+        <div class="lang-en-block">
+          <p class="chapter-lead">
+            The POS Billing Terminal enables instant barcode tag lookups, accurate stone and net weight deductions, flexible making charges, statutory hallmarking charges, and instant invoice printing.
+          </p>
+          <h3>3.1 Item Addition Methods</h3>
+          <ol>
+            <li><strong>Instant Barcode Scanner:</strong> Scan the barbell tag or type the tag code (e.g., <code>BJ-2024-001</code>) and hit Enter. The Gross, Net, Stone weight, purity, and HUID populate automatically.</li>
+            <li><strong>Manual Item Entry (+ Manual Item):</strong> For custom orders, non-tagged counter pieces, or repairs, click <strong>"+ Manual Item"</strong>.</li>
+          </ol>
+        </div>
+
+        <div class="lang-bn-block">
+          <p class="chapter-lead">
+            পিওএস বিলিং কাউন্টার হলো সফটওয়্যারের প্রধান ইঞ্জিন। এখানে খুব দ্রুত বারকোড স্ক্যান করে গয়নার মোট ওজন, পাথর বাদ দিয়ে নেট সোনার ওজন, মেকিং চার্জ, হলমার্কিং ফি ও জিএসটি যোগ হয়ে নিখুঁত বিল তৈরি হয়।
+          </p>
+          <h3>৩.১ বিলে গয়না যোগ করার ২টি সহজ উপায়</h3>
+          <ol>
+            <li><strong>বারকোড স্ক্যানার দিয়ে:</strong> গয়নার ট্যাগের বারকোডে স্ক্যানার ধরুন বা ট্যাগের নম্বর (যেমন: <code>BJ-2024-001</code>) টাইপ করে Enter চাপুন। সাথে সাথে ওজন, ক্যারেট ও HUID বিলে চলে আসবে।</li>
+            <li><strong>ম্যানুয়াল এন্ট্রি (+ Manual Item):</strong> যদি কোনো গয়নায় ট্যাগ না থাকে বা স্পেশাল অর্ডার হয়, তবে <strong>"+ Manual Item"</strong> বাটনে ক্লিক করে নাম, ওজন ও মজুরি বসিয়ে নিন।</li>
+          </ol>
+        </div>
+
+        <div class="lang-en-block">
+          <h3>3.2 Gold Price Math Engine</h3>
+        </div>
+        <div class="lang-bn-block">
+          <h3>৩.২ সোনার বিল তৈরির সঠিক গাণিতিক সূত্র</h3>
+        </div>
+
+        <div class="formula-box">
+          <span class="comment">// ১. নেট সোনার ওজন (Net Weight)</span>
+          নেট সোনার ওজন = মোট ওজন (Gross Wt) - পাথর/পুতির ওজন (Stone Wt)
+          
+          <span class="comment">// ২. সোনার প্রাথমিক মূল্য (Gold Value)</span>
+          সোনার দাম = নেট সোনার ওজন × আজকের প্রতি গ্রাম দর
+
+          <span class="comment">// ৩. মজুরি / মেকিং চার্জ (Making Charges - ৩টি পদ্ধতি)</span>
+          • প্রতি গ্রাম অনুযায়ী:  মজুরি = মোট ওজন × প্রতি গ্রামের মজুরি (যেমন ₹৬৫০/গ্রাম)
+          • শতাংশ অনুযায়ী (%):   মজুরি = সোনার দামের নির্দিষ্ট শতাংশ (যেমন ১০%)
+          • ফিক্সড বা থোক:       নির্দিষ্ট এককালীন টাকা (যেমন ₹৫,০০০)
+
+          <span class="comment">// ৪. করযোগ্য মূল্য (Taxable Amount)</span>
+          করযোগ্য মূল্য = সোনার দাম + মজুরি + পাথরের দাম + হলমার্কিং ফি (₹৪৫) - ছাড়
+
+          <span class="comment">// ৫. জিএসটি ৩% (GST 3%)</span>
+          • রাজ্যের মধ্যে (Intra-State): CGST ১.৫% + SGST ১.৫% = ৩.০%
+          • অন্য রাজ্যে (Inter-State): IGST ৩.০%
+        </div>
+
+        <div class="lang-en-block">
+          <h3>3.3 Dual Invoice Printing Formats</h3>
+          <p>The system prints in two standard formats:</p>
+          <ul>
+            <li><strong>A4 / A5 Official GST Tax Invoice:</strong> Complete legal bill with BIS HUID codes, bank RTGS details, terms, and signature.</li>
+            <li><strong>80mm Thermal Receipt:</strong> High-speed counter slip for quick customer checkout.</li>
+          </ul>
+        </div>
+
+        <div class="lang-bn-block">
+          <h3>৩.৩ দুই ধরণের বিল প্রিন্টের সুবিধা</h3>
+          <p>প্রয়োজন অনুযায়ী আপনি ২ ধরণের রসিদ প্রিন্ট করতে পারবেন:</p>
+          <ul>
+            <li><strong>অফিসিয়াল A4 / A5 জিএসটি ট্যাক্স ইনভয়েস:</strong> যাতে শোরুমের নাম, জিএসটিন (GSTIN), বিআইএস হলমার্ক লাইসেন্স নম্বর, এইচইউআইডি (HUID), ব্যাংকের আরটিজিএস তথ্য এবং টার্মস ও কন্ডিশনস প্রিন্ট হয়।</li>
+            <li><strong>৮০ মিমি থার্মাল স্লিপ (Thermal Receipt):</strong> ক্যাশ কাউন্টারে ক্রেতাকে সাথে সাথে ছোট স্লিপ ধরিয়ে দেওয়ার জন্য।</li>
+          </ul>
+        </div>
+
+        <!-- Sample Mockup -->
+        <div class="preview-card">
+          <div class="center">
+            <strong>BHARAT JEWELLERS & SONS</strong><br/>
+            Bowbazar, Kolkata • GSTIN: 19AAACB1234D1Z5<br/>
+            BIS Reg: HM/BIS/WB-2024/916<br/>
+            <div class="divider"></div>
+            <strong>RETAIL TAX INVOICE</strong><br/>
+            Inv: BJ-2026-INV-1042<br/>
+            Date: 27-Oct-2026 11:30 AM<br/>
+          </div>
+          <div class="divider"></div>
+          <div class="row"><span>Customer:</span> <span>Rajesh Sharma</span></div>
+          <div class="row"><span>22K Gold Necklace (HUID: HM89A2)</span></div>
+          <div class="row"><span>Gross: 14.500g | Net: 14.200g</span> <span>₹1,04,370</span></div>
+          <div class="row"><span>Making (@₹650/g):</span> <span>₹9,425</span></div>
+          <div class="row"><span>Stone Value:</span> <span>₹1,500</span></div>
+          <div class="row"><span>Hallmarking:</span> <span>₹45</span></div>
+          <div class="divider"></div>
+          <div class="row"><span>Taxable Value:</span> <span>₹1,15,340</span></div>
+          <div class="row"><span>CGST 1.5%:</span> <span>₹1,730.10</span></div>
+          <div class="row"><span>SGST 1.5%:</span> <span>₹1,730.10</span></div>
+          <div class="divider"></div>
+          <div class="row"><strong>NET PAYABLE:</strong> <strong>₹1,18,800.00</strong></div>
+          <div class="row"><span>Tender: Cash & UPI</span> <span>PAID</span></div>
+          <div class="divider"></div>
+          <div class="center" style="font-size: 0.7rem;">
+            ১০০% বিআইএস হলমার্কযুক্ত গয়না।<br/>
+            ৭ দিনের মধ্যে আসল বিল সহ এক্সচেঞ্জ প্রযোজ্য।
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================== -->
+      <!-- CHAPTER 4: OLD GOLD EXCHANGE & SCRAP MELT MATH -->
+      <!-- =================================================================== -->
+      <section id="ch4" class="chapter">
+        <div class="chapter-header">
+          <div class="chapter-num">04</div>
+          <h2>
+            <span class="lang-en-block">Old Gold Exchange & Scrap Buyback (Melt Math)</span>
+            <span class="lang-bn-block">পুরনো সোনা বদল ও খাদ কাটার সঠিক হিসাব (Melt Math)</span>
+          </h2>
+        </div>
+
+        <div class="lang-en-block">
+          <p class="chapter-lead">
+            In Indian jewellery retail, old gold exchange represents over 40% of sales. Bharat Jewellery ERP applies a scientifically sound melting formula to protect showroom margins while giving customers maximum value.
+          </p>
+          <h3>4.1 Adding Old Scrap Gold to an Invoice</h3>
+        </div>
+
+        <div class="lang-bn-block">
+          <p class="chapter-lead">
+            বাঙালি ক্রেতারা যখন নতুন গয়না কেনেন, তখন অনেকেই পরিবারের পুরনো সোনা বদল বা ভাঙিয়ে কেনেন। এই সফটওয়্যারে পুরনো সোনার ওজন, গালা বা ধুলোর বাদ (Dust Deduction), এবং খাদ বা ক্যারেট শতাংশ দিলে সফটওয়্যার স্বয়ংক্রিয়ভাবে খাঁটি পাকা সোনার সমান ওজন ও টাকা বের করে বিল থেকে বাদ দিয়ে দেয়।
+          </p>
+          <h3>৪.১ বিলে পুরনো সোনা যোগ করার নিয়ম</h3>
+        </div>
+
+        <ol>
+          <li>
+            <span class="lang-en-block"><strong>Ornament Description:</strong> e.g., "Old 21K Bengali Bangle" or "Melted Scrap Gold".</span>
+            <span class="lang-bn-block"><strong>গয়নার বিবরণ:</strong> যেমন: "পুরনো ২১ ক্যারেট বালা" বা "পুরনো সোনার চেইন"।</span>
+          </li>
+          <li>
+            <span class="lang-en-block"><strong>Gross Weight (g):</strong> Digital scale weight of customer's old scrap.</span>
+            <span class="lang-bn-block"><strong>মোট ওজন (Gross Wt):</strong> কাঁটায় মেপে পুরনো সোনার মোট ওজন লিখুন।</span>
+          </li>
+          <li>
+            <span class="lang-en-block"><strong>Dust / Wax / Enamel Deduction (g):</strong> Deduct non-metallic lacquer, dirt, wax filling, or stones.</span>
+            <span class="lang-bn-block"><strong>গালা, ময়লা ও পাথর বাদ (Dust Wt):</strong> গালার বালা বা পাথরের গয়না হলে ভেতরের গালা ও ময়লার অনুমান ওজন বাদ দিন।</span>
+          </li>
+          <li>
+            <span class="lang-en-block"><strong>Assayed Purity (%):</strong> Karatometer or touchstone test purity (e.g. 85% for traditional scrap, 91.6% for hallmarked scrap).</span>
+            <span class="lang-bn-block"><strong>সোনার বিশুদ্ধতা বা ক্যারেট (%):</strong> ক্যারেটোমিটার বা কষ্টিপাথরে যাচাই করে পাওয়া বিশুদ্ধতা (যেমন সনাতনী গয়নায় ৮৫%, হলমার্ক গয়নায় ৯১.৬%)।</span>
+          </li>
+          <li>
+            <span class="lang-en-block"><strong>Buying Rate (₹/g):</strong> Loads today's scrap buying rate automatically.</span>
+            <span class="lang-bn-block"><strong>পুরনো সোনা কেনার দর:</strong> আজকের বোর্ড রেট অনুযায়ী স্বয়ংক্রিয়ভাবে বসে যাবে।</span>
+          </li>
+        </ol>
+
+        <div class="formula-box">
+          <span class="comment">// পুরনো সোনার সঠিক হিসাবের সমীকরণ</span>
+          ১. মেল্ট ওজন (Melt Weight) = মোট ওজন - গালা/ধুলো বাদ
+          ২. খাঁটি পাকা সোনা (Fine Gold 24K) = মেল্ট ওজন × (বিশুদ্ধতা % ÷ ১০০)
+          ৩. ক্রেতার এক্সচেঞ্জ ক্রেডিট (₹) = খাঁটি পাকা সোনা × আজকের কেনার দর (Buying Rate)
+          ৪. ক্রেতার চূড়ান্ত প্রদেয় টাকা = নতুন গয়নার মোট বিল - পুরনো সোনার ক্রেডিট
+        </div>
+
+        <div class="callout tip">
+          <div class="icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+          </div>
+          <div class="callout-body">
+            <span class="lang-en-block">
+              <strong>Statutory GST Treatment on Old Gold Exchange</strong>
+              Under Indian GST rules, 3% GST is applied to the gross new jewellery value. The old gold exchange credit is then subtracted from the final cash settlement.
+            </span>
+            <span class="lang-bn-block">
+              <strong>পুরনো সোনা বদলের ক্ষেত্রে জিএসটির সরকারি নিয়ম</strong>
+              জিএসটি আইন অনুযায়ী, নতুন যে গয়না কেনা হচ্ছে তার সম্পূর্ণ মূল্যের ওপর ৩% জিএসটি ধার্য হবে, তারপর পুরনো সোনার মূল্যায়ন বাদ দিয়ে অবশিষ্ট টাকা ক্রেতা পরিশোধ করবেন।
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================== -->
+      <!-- CHAPTER 5: RULE 114B STATUTORY PAN COMPLIANCE -->
+      <!-- =================================================================== -->
+      <section id="ch5" class="chapter">
+        <div class="chapter-header">
+          <div class="chapter-num">05</div>
+          <h2>
+            <span class="lang-en-block">Rule 114B: Mandatory PAN on Cash Transactions</span>
+            <span class="lang-bn-block">রুল ১১৪বি: ২ লাখ বা তার বেশি ক্যাশে প্যান কার্ডের সরকারি নিয়ম</span>
+          </h2>
+        </div>
+
+        <div class="lang-en-block">
+          <p class="chapter-lead">
+            Under Indian Income Tax Rule 114B, jewellery transactions involving <strong>cash payments of ₹2,00,000 or more</strong> require mandatory collection and validation of the customer's Permanent Account Number (PAN).
+          </p>
+          <h3>5.1 Built-in POS Safeguards</h3>
+          <ul>
+            <li><strong>Threshold Trigger:</strong> Whenever Cash Paid tender is $\ge ₹2,00,000$, the bill cannot be completed without customer PAN.</li>
+            <li><strong>Checksum Format Verification:</strong> Validates 10-digit Indian PAN format: <code>[A-Z]{5}[0-9]{4}[A-Z]{1}</code> (e.g. <code>ABCDE1234F</code>).</li>
+            <li><strong>Digital Payment Exemption:</strong> If payment is made via RTGS, NEFT, Cheque, or UPI, the cash restriction does not apply.</li>
+          </ul>
+        </div>
+
+        <div class="lang-bn-block">
+          <p class="chapter-lead">
+            ভারত সরকারের ইনকাম ট্যাক্স আইনের <strong>রুল ১১৪বি (Rule 114B)</strong> অনুযায়ী, কোনো ক্রেতা যদি গয়না কেনার জন্য <strong>নগদে (Cash) ২,০০,০০০ (দুই লক্ষ) টাকা বা তার বেশি</strong> দেন, তবে তার <strong>প্যান কার্ড (PAN Card)</strong> নম্বর বিলে নেওয়া আইনত বাধ্যতামূলক।
+          </p>
+          <h3>৫.১ সফটওয়্যারে স্বয়ংক্রিয় সুরক্ষাব্যবস্থা</h3>
+          <ul>
+            <li><strong>স্বয়ংক্রিয় সতর্কবার্তা:</strong> ক্যাশের ঘরে ₹২,০০,০০০ বা তার বেশি টাকা লিখলেই সফটওয়্যার লাল সতর্কবার্তা দেবে এবং বৈধ প্যান কার্ড নম্বর ছাড়া বিল সেভ করতে দেবে না।</li>
+            <li><strong>১০ সংখ্যার প্যান কার্ড ফরম্যাট যাচাই:</strong> ভারতের আয়কর দপ্তরের ফরম্যাট (৫টি ইংরেজি অক্ষর, ৪টি সংখ্যা, ১টি অক্ষর — যেমন: <code>ABCDE1234F</code>) সফটওয়্যার স্বয়ংক্রিয়ভাবে চেক করে।</li>
+            <li><strong>ডিজিটাল পেমেন্টের ছাড়:</strong> ক্রেতা যদি ক্যাশের বদলে ব্যাংকে আরটিজিএস (RTGS), এনইএফটি (NEFT) বা ইউপিআই (UPI)-তে টাকা দেন, তবে ২ লাখের ক্যাশ সীমা প্রযোজ্য হয় না। ক্রেতা প্রয়োজনে ক্যাশে ₹১,৮০,০০০ এবং ইউপিআই-তে বাকি টাকা দিয়ে বিল করতে পারেন।</li>
+          </ul>
+        </div>
+
+        <div class="callout warning">
+          <div class="icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+          </div>
+          <div class="callout-body">
+            <span class="lang-en-block">
+              <strong>Legal Notice: Income Tax Penalties</strong>
+              Failure to collect PAN for cash sales over ₹2,00,000 attracts severe penalties under Section 271FA of the Income Tax Act. The software enforces this compliance automatically to safeguard your business.
+            </span>
+            <span class="lang-bn-block">
+              <strong>আইনগত সতর্কতা: জরিমানার ঝুঁকি এড়ান</strong>
+              ২ লাখের বেশি নগদ টাকায় প্যান কার্ড ছাড়া বিল করলে আয়কর আইনে শোরুমের বড় অঙ্কের জরিমানা হতে পারে। এই সফটওয়্যার শোরুম মালিককে সেই আইনি ঝুঁকি থেকে সম্পূর্ণ সুরক্ষিত রাখে।
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================== -->
+      <!-- CHAPTER 6: INVENTORY & BARBELL TAG PRINTING -->
+      <!-- =================================================================== -->
+      <section id="ch6" class="chapter">
+        <div class="chapter-header">
+          <div class="chapter-num">06</div>
+          <h2>
+            <span class="lang-en-block">Inventory & Barbell Tag Printing</span>
+            <span class="lang-bn-block">শোরুমের স্টক ও গয়নার বারবেল ট্যাগ প্রিন্টিং</span>
+          </h2>
+        </div>
+
+        <div class="lang-en-block">
+          <p class="chapter-lead">
+            Maintain complete visibility over every ornament in the showroom. Track pieces by category, purity karat, gross weight, net fine weight, and BIS HUID identifier.
+          </p>
+        </div>
+
+        <div class="lang-bn-block">
+          <p class="chapter-lead">
+            শোরুমের প্রতিটি গয়নার সঠিক ট্র্যাকিং রাখতে সফটওয়্যারে রয়েছে মজুত স্টক খাতা ও বারকোড ট্যাগ প্রিন্টিং ব্যবস্থা। আংটি, চুড়ি, হার, কানের দুলের জন্য দুই-ডানার বারবেল ট্যাগ তৈরি করা যায়।
+          </p>
+        </div>
+
+        <div class="feature-grid">
+          <div class="guide-card">
+            <div class="card-icon">🏷️</div>
+            <h4>
+              <span class="lang-en-block">Barbell Label Format</span>
+              <span class="lang-bn-block">বারবেল ট্যাগের দুই দিকের বিবরণ</span>
+            </h4>
+            <p>
+              <span class="lang-en-block">Left flap: Short name, karat code, category, HUID. Right flap: Gross weight, Net weight, stone weight, and barcode.</span>
+              <span class="lang-bn-block">বাম ডানা: দোকানের নাম, ক্যারেট (22K916), গয়নার ধরণ ও HUID। ডান ডানা: মোট ওজন (GW), খাঁটি ওজন (NW), পাথর (SW) ও স্ক্যানযোগ্য বারকোড।</span>
+            </p>
+          </div>
+          <div class="guide-card">
+            <div class="card-icon">📦</div>
+            <h4>
+              <span class="lang-en-block">Live Stock Statuses</span>
+              <span class="lang-bn-block">স্টকের ৩টি অবস্থা (Status)</span>
+            </h4>
+            <p>
+              <span class="lang-en-block"><strong>In Stock:</strong> Ready in trays. <strong>Reserved:</strong> Kept on customer advance hold. <strong>Sold:</strong> Billed on tax invoice.</span>
+              <span class="lang-bn-block"><strong>In Stock (মজুত):</strong> ট্রে-তে সাজানো। <strong>Reserved (বুকিং):</strong> বায়না দেওয়া রয়েছে। <strong>Sold (বিক্রি):</strong> বিলে বিক্রি হয়ে গেছে।</span>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================== -->
+      <!-- CHAPTER 7: KARIGAR PRODUCTION INWARD & ARTISAN JOB WORK -->
+      <!-- =================================================================== -->
+      <section id="ch7" class="chapter">
+        <div class="chapter-header">
+          <div class="chapter-num">07</div>
+          <h2>
+            <span class="lang-en-block">Karigar Production Inward & Jobwork</span>
+            <span class="lang-bn-block">কারিগরের জমা ও মজুরির হিসাব (Karigar Inward)</span>
+          </h2>
+        </div>
+
+        <div class="lang-en-block">
+          <p class="chapter-lead">
+            Manage manufacturing workflows with local goldsmiths (Karigars). When raw gold is issued to an artisan and finished ornaments are received, the system tracks metal loss, making charges payable, and assigns new stock tags.
+          </p>
+        </div>
+
+        <div class="lang-bn-block">
+          <p class="chapter-lead">
+            বাঙালী কারিগরদের সাথে কাজ করার সময় কাঁচা সোনা দেওয়া এবং তৈরি গয়না জমা নেওয়ার পুঙ্খানুপুঙ্খ হিসাব রাখা অত্যন্ত জরুরি। এই পেজে কারিগরের জমা করা গয়নার ওজন, খাদ/ঘাটতি, তৈরির মজুরি এবং হলমার্কের HUID লিখে সেভ করলেই নতুন গয়নার বারকোড ট্যাগ তৈরি হয়ে স্টকে যোগ হয়।
+          </p>
+        </div>
+
+        <div class="stepper">
+          <div class="step-item">
+            <div class="step-badge">1</div>
+            <div class="step-content">
+              <h5>
+                <span class="lang-en-block">Select Registered Karigar</span>
+                <span class="lang-bn-block">কারিগর বা কারখানার নাম নির্বাচন করুন</span>
+              </h5>
+              <p>
+                <span class="lang-en-block">Navigate to <strong>Karigar Inward</strong> and choose the artisan from your registered party list.</span>
+                <span class="lang-bn-block"><strong>Karigar Inward</strong> পেজে গিয়ে যে কারিগর গয়না জমা দিচ্ছেন তার নাম সিলেক্ট করুন।</span>
+              </p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-badge">2</div>
+            <div class="step-content">
+              <h5>
+                <span class="lang-en-block">Input Weights & Hallmarking HUID</span>
+                <span class="lang-bn-block">মোট ওজন, পাথর ওজন ও হলমার্ক HUID লিখুন</span>
+              </h5>
+              <p>
+                <span class="lang-en-block">Enter category (e.g. Necklace, Bangle), karat purity, gross grams, stone deduction, and the stamped 6-digit HUID code.</span>
+                <span class="lang-bn-block">গয়নার ক্যাটাগরি (যেমন: নেকলেস, চুড়ি), মোট ওজন, পাথরের ওজন এবং হলমার্ক সেন্টারের ৬ সংখ্যার HUID কোড লিখুন।</span>
+              </p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-badge">3</div>
+            <div class="step-content">
+              <h5>
+                <span class="lang-en-block">Save & Print Tag</span>
+                <span class="lang-bn-block">সেভ করুন ও বারকোড ট্যাগ প্রিন্ট করুন</span>
+              </h5>
+              <p>
+                <span class="lang-en-block">Click <strong>"Save & Generate Tag"</strong>. The piece is immediately added to the showroom inventory with its unique barcode tag ready for tray display.</span>
+                <span class="lang-bn-block">সেভ বাটনে চাপলে স্বয়ংক্রিয়ভাবে কারিগরের পাওনা মজুরির হিসাব তৈরি হবে এবং গয়নার জন্য প্রিন্টযোগ্য বারকোড ট্যাগ চলে আসবে।</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================== -->
+      <!-- CHAPTER 8: BULLION PURCHASES -->
+      <!-- =================================================================== -->
+      <section id="ch8" class="chapter">
+        <div class="chapter-header">
+          <div class="chapter-num">08</div>
+          <h2>
+            <span class="lang-en-block">Bullion Procurement & Vendor Inward</span>
+            <span class="lang-bn-block">মহাজন ও বুলিয়ান ডিলারের থেকে সোনা ক্রয় (Bullion Purchases)</span>
+          </h2>
+        </div>
+
+        <div class="lang-en-block">
+          <p class="chapter-lead">
+            Record wholesale bullion purchases of 24K gold bars, 22K alloy, and 999 fine silver bricks from bullion refiners, banks, or wholesale merchants.
+          </p>
+        </div>
+
+        <div class="lang-bn-block">
+          <p class="chapter-lead">
+            মহাজন, ব্যাংক বা বুলিয়ান রিফাইনারি থেকে যখন শোরুমের জন্য ২৪ ক্যারেট পাকা সোনার বার বা বাট কেনা হয়, তখন সেই বিল নম্বর, ইনপুট ট্যাক্স ক্রেডিট (ITC ৩%) এবং ভেন্ডর লেজার এখানে রেকর্ড করা হয়।
+          </p>
+        </div>
+      </section>
+
+      <!-- =================================================================== -->
+      <!-- CHAPTER 9: SALES RETURNS & CREDIT NOTES -->
+      <!-- =================================================================== -->
+      <section id="ch9" class="chapter">
+        <div class="chapter-header">
+          <div class="chapter-num">09</div>
+          <h2>
+            <span class="lang-en-block">Sales Returns & Credit Notes (CRN)</span>
+            <span class="lang-bn-block">গয়না ফেরত ও ক্রেডিট নোট (Sales Returns & CRN)</span>
+          </h2>
+        </div>
+
+        <div class="lang-en-block">
+          <p class="chapter-lead">
+            When a customer returns an ornament within the policy window, search the original invoice number, choose restocking disposition (Return to Stock or Melt to Bullion), and issue a GST Credit Note.
+          </p>
+        </div>
+
+        <div class="lang-bn-block">
+          <p class="chapter-lead">
+            কোনো ক্রেতা যদি আসল বিল নিয়ে গয়না ফেরত দিতে আসেন, তবে আগের ইনভয়েস নম্বর দিয়ে খুঁজে আইটেমটি ফেরত নেওয়া যায়। গয়না ভালো থাকলে পুনরায় <strong>স্টকে যোগ (Return to Inventory)</strong> করা যায়, অথবা ভেঙে <strong>গলানোর জন্য মেল্টিং স্ক্র্যাপে (Melt to Bullion)</strong> পাঠানো যায় এবং ক্রেতাকে ক্রেডিট নোট দেওয়া হয়।
+          </p>
+        </div>
+      </section>
+
+      <!-- =================================================================== -->
+      <!-- CHAPTER 10: CASH DRAWER & FINANCIAL ACCOUNTS -->
+      <!-- =================================================================== -->
+      <section id="ch10" class="chapter">
+        <div class="chapter-header">
+          <div class="chapter-num">10</div>
+          <h2>
+            <span class="lang-en-block">Cash Drawer, Bank Accounts & Operating Expenses</span>
+            <span class="lang-bn-block">ক্যাশ কাউন্টার, ব্যাংকের খাতা ও খরচ (Cash Drawer & Accounts)</span>
+          </h2>
+        </div>
+
+        <div class="lang-en-block">
+          <p class="chapter-lead">
+            Real-time tracking of cash-in-hand and commercial bank settlement accounts (SBI, HDFC, ICICI, PNB, Axis).
+          </p>
+          <h3>10.1 Daily Expense & Income Vouchers</h3>
+          <ul>
+            <li><strong>Debit Voucher (Cash Out):</strong> Daily tea, refreshments, showroom electricity, staff salary advances.</li>
+            <li><strong>Credit Voucher (Cash In):</strong> Owner capital deposits, interest, scrap sale cash.</li>
+          </ul>
+        </div>
+
+        <div class="lang-bn-block">
+          <p class="chapter-lead">
+            কাউন্টারের ক্যাশ বাক্সে কত টাকা রয়েছে এবং শোরুমের ব্যাংক অ্যাকাউন্টগুলোতে (এসবিআই, এইচডিএফসি, আইসিআইসিআই ইত্যাদি) কত জমা রয়েছে তা রিয়েল-টাইমে দেখা যায়।
+          </p>
+          <h3>১০.১ খরচের ভাউচার (Debit & Credit Vouchers)</h3>
+          <ul>
+            <li><strong>ডেবিট ভাউচার (ক্যাশ আউট):</strong> দোকানের কর্মচারীদের চা-জলখাবার খরচ, বিদ্যুৎ বিল, ঝাড়ুদার/ক্লিনিং, কারিগরের অগ্রিম বা কর্মচারীর বেতন।</li>
+            <li><strong>ক্রেডিট ভাউচার (ক্যাশ ইন):</strong> মালিকের নিজস্ব মূলধন জমা বা অন্যান্য নগদ আয়।</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- =================================================================== -->
+      <!-- CHAPTER 11: STATUTORY GST REPORTS -->
+      <!-- =================================================================== -->
+      <section id="ch11" class="chapter">
+        <div class="chapter-header">
+          <div class="chapter-num">11</div>
+          <h2>
+            <span class="lang-en-block">Statutory GST Reports (GSTR-1 & GSTR-3B)</span>
+            <span class="lang-bn-block">জিএসটি ট্যাক্স ফাইল ও সিএ রিপোর্ট (GST Reports)</span>
+          </h2>
+        </div>
+
+        <div class="lang-en-block">
+          <p class="chapter-lead">
+            Export ready-to-file tables for your Chartered Accountant (CA) or GST common portal:
+          </p>
+        </div>
+
+        <div class="lang-bn-block">
+          <p class="chapter-lead">
+            প্রতি মাসে আপনার চার্টার্ড অ্যাকাউন্ট্যান্ট (CA) বা ট্যাক্স কনসালট্যান্টকে জিএসটি রিটার্ন ফাইলিংয়ের জন্য যে যে টেবিল দিতে হয়, তা সফটওয়্যার থেকে এক ক্লিকে এক্সেল বা সিএসভিতে ডাউনলোড করা যায়:
+          </p>
+        </div>
+
+        <div class="feature-grid">
+          <div class="guide-card">
+            <div class="card-icon">B2B</div>
+            <h4>
+              <span class="lang-en-block">GSTR-1: Table 4 (B2B Sales)</span>
+              <span class="lang-bn-block">GSTR-1: টেবিল ৪ (B2B পাইকারি সেল)</span>
+            </h4>
+            <p>
+              <span class="lang-en-block">Sales to registered jewelers with valid GSTIN and HSN 7113.</span>
+              <span class="lang-bn-block">অন্য কোনো জিএসটি নিবন্ধিত ব্যবসায়ী বা জুয়েলারকে বিক্রি করা বিলের তালিকা।</span>
+            </p>
+          </div>
+          <div class="guide-card">
+            <div class="card-icon">B2C</div>
+            <h4>
+              <span class="lang-en-block">GSTR-1: Table 7 (B2C Retail)</span>
+              <span class="lang-bn-block">GSTR-1: টেবিল ৭ (B2C খুচরো সেল)</span>
+            </h4>
+            <p>
+              <span class="lang-en-block">State-wise aggregate retail sales to general walk-in consumers.</span>
+              <span class="lang-bn-block">সাধারণ খুচরো ক্রেতাদের কাছে ৩% জিএসটিতে বিক্রি হওয়া বিলের সংক্ষেপ।</span>
+            </p>
+          </div>
+          <div class="guide-card">
+            <div class="card-icon">HSN</div>
+            <h4>
+              <span class="lang-en-block">GSTR-1: Table 12 (HSN Summary)</span>
+              <span class="lang-bn-block">GSTR-1: টেবিল ১২ (HSN সামারি)</span>
+            </h4>
+            <p>
+              <span class="lang-en-block">Total gross grams and taxable values under HSN 7113 & 7108.</span>
+              <span class="lang-bn-block">HSN 7113 (গয়না) ও 7108 (বুলিয়ান) অনুযায়ী মোট কত গ্রাম বিক্রি হয়েছে তার হিসাব।</span>
+            </p>
+          </div>
+          <div class="guide-card">
+            <div class="card-icon">3B</div>
+            <h4>
+              <span class="lang-en-block">GSTR-3B: Output vs ITC Offset</span>
+              <span class="lang-bn-block">GSTR-3B: ট্যাক্স অফসেট হিসাব</span>
+            </h4>
+            <p>
+              <span class="lang-en-block">Compares sales tax collected against purchase ITC to calculate net cash tax.</span>
+              <span class="lang-bn-block">বিক্রির মোট জিএসটি থেকে সোনা কেনার ইনপুট ট্যাক্স বাদ দিয়ে সরকারকে প্রদেয় নেট ট্যাক্স।</span>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================== -->
+      <!-- CHAPTER 12: SETTINGS & SHOWROOM CUSTOMIZATION -->
+      <!-- =================================================================== -->
+      <section id="ch12" class="chapter">
+        <div class="chapter-header">
+          <div class="chapter-num">12</div>
+          <h2>
+            <span class="lang-en-block">Showroom Profile & Bank Settings</span>
+            <span class="lang-bn-block">শোরুমের প্রোফাইল ও ব্যাংক সেটিংস</span>
+          </h2>
+        </div>
+
+        <div class="lang-en-block">
+          <p class="chapter-lead">
+            Customize your business profile, address in Bowbazar, multiple bank accounts, UPI IDs, and invoice terms directly in <code>src/config/company.ts</code> or via the Settings page.
+          </p>
+        </div>
+
+        <div class="lang-bn-block">
+          <p class="chapter-lead">
+            আপনার শোরুমের নাম, বউবাজারের ঠিকানা, ফোন নম্বর, জিএসটিন, বিআইএস হলমার্কিং লাইসেন্স নম্বর, এবং বিলের নিচে যে ৫টি ব্যাংকের কিউআর (QR) কোড ও আরটিজিএস তথ্য ছাপা হবে তা সেটিংস পেজে গিয়ে খুব সহজেই পরিবর্তন করতে পারবেন।
+          </p>
+        </div>
+      </section>
+
+      <!-- =================================================================== -->
+      <!-- CHAPTER 13: INTERACTIVE CALCULATORS & SANDBOX -->
+      <!-- =================================================================== -->
+      <section id="ch13" class="chapter">
+        <div class="chapter-header">
+          <div class="chapter-num">13</div>
+          <h2>
+            <span class="lang-en-block">Interactive Training Calculators</span>
+            <span class="lang-bn-block">ইন্টারঅ্যাক্টিভ সোনার বিল ও পুরনো সোনার খাদ ক্যালকুলেটর</span>
+          </h2>
+        </div>
+
+        <div class="lang-en-block">
+          <p class="chapter-lead">
+            Staff training sandbox: Test jewellery pricing, old scrap melt math, and Rule 114B PAN limit verification right here!
+          </p>
+        </div>
+
+        <div class="lang-bn-block">
+          <p class="chapter-lead">
+            কর্মীদের অনুশীলনের জন্য লাইভ ক্যালকুলেটর: এখানে ওজন, দর ও মেকিং চার্জ পরিবর্তন করে দেখুন কীভাবে রিয়েল-টাইমে বিল ও পুরনো সোনার খাদ হিসাব তৈরি হয়!
+          </p>
+        </div>
+
+        <!-- Tool 1: Interactive Gold Bill Calculator -->
+        <div class="calculator-widget">
+          <div class="calculator-widget-header">
+            <h4>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"></rect><line x1="8" y1="6" x2="16" y2="6"></line><line x1="16" y1="14" x2="16" y2="18"></line><path d="M16 10h.01"></path><path d="M12 10h.01"></path><path d="M8 10h.01"></path><path d="M12 14h.01"></path><path d="M8 14h.01"></path><path d="M12 18h.01"></path><path d="M8 18h.01"></path></svg>
+              <span class="lang-en-block">Live Jewellery Pricing & Tax Calculator</span>
+              <span class="lang-bn-block">নতুন গয়নার বিল ও ৩% জিএসটি ক্যালকুলেটর</span>
+            </h4>
+            <span class="badge badge-gold">
+              <span class="lang-en-block">Interactive Tool</span>
+              <span class="lang-bn-block">অনুশীলন টুল</span>
+            </span>
+          </div>
+
+          <div class="calc-grid">
+            <div class="calc-field">
+              <label>
+                <span class="lang-en-block">Gross Weight (grams)</span>
+                <span class="lang-bn-block">মোট ওজন (গ্রাম)</span>
+              </label>
+              <input type="number" id="calcGross" value="12.500" step="0.001" oninput="calculateInteractiveBill()" />
+            </div>
+            <div class="calc-field">
+              <label>
+                <span class="lang-en-block">Stone Weight (grams)</span>
+                <span class="lang-bn-block">পাথর ওজন (গ্রাম)</span>
+              </label>
+              <input type="number" id="calcStoneWt" value="0.500" step="0.001" oninput="calculateInteractiveBill()" />
+            </div>
+            <div class="calc-field">
+              <label>
+                <span class="lang-en-block">Purity Rate (₹/g)</span>
+                <span class="lang-bn-block">সোনার দর (টাকা/গ্রাম)</span>
+              </label>
+              <input type="number" id="calcRate" value="7350" step="10" oninput="calculateInteractiveBill()" />
+            </div>
+            <div class="calc-field">
+              <label>
+                <span class="lang-en-block">Making Type</span>
+                <span class="lang-bn-block">মজুরির ধরণ</span>
+              </label>
+              <select id="calcMakingType" onchange="calculateInteractiveBill()">
+                <option value="per_gram">প্রতি গ্রাম অনুযায়ী (Per Gram)</option>
+                <option value="percentage">শতাংশ অনুযায়ী (Percentage %)</option>
+                <option value="fixed">এককালীন ফিক্সড টাকা (Fixed ₹)</option>
+              </select>
+            </div>
+            <div class="calc-field">
+              <label>
+                <span class="lang-en-block">Making Rate</span>
+                <span class="lang-bn-block">মজুরির রেট</span>
+              </label>
+              <input type="number" id="calcMakingRate" value="650" step="1" oninput="calculateInteractiveBill()" />
+            </div>
+            <div class="calc-field">
+              <label>
+                <span class="lang-en-block">Stone Value (₹)</span>
+                <span class="lang-bn-block">পাথরের দাম (টাকা)</span>
+              </label>
+              <input type="number" id="calcStoneVal" value="1200" step="50" oninput="calculateInteractiveBill()" />
+            </div>
+          </div>
+
+          <div class="calc-output-box">
+            <div class="calc-output-item">
+              <span class="lbl">
+                <span class="lang-en-block">Net Gold Weight</span>
+                <span class="lang-bn-block">খাঁটি সোনার ওজন</span>
+              </span>
+              <span class="val" id="outNetWt">12.000 g</span>
+            </div>
+            <div class="calc-output-item">
+              <span class="lbl">
+                <span class="lang-en-block">Gold Amount</span>
+                <span class="lang-bn-block">সোনার দাম</span>
+              </span>
+              <span class="val" id="outGoldAmt">₹88,200</span>
+            </div>
+            <div class="calc-output-item">
+              <span class="lbl">
+                <span class="lang-en-block">Making Charges</span>
+                <span class="lang-bn-block">মোট মজুরি</span>
+              </span>
+              <span class="val" id="outMakingAmt">₹8,125</span>
+            </div>
+            <div class="calc-output-item">
+              <span class="lbl">
+                <span class="lang-en-block">Hallmarking (BIS)</span>
+                <span class="lang-bn-block">হলমার্কিং ফি</span>
+              </span>
+              <span class="val">₹45</span>
+            </div>
+            <div class="calc-output-item">
+              <span class="lbl">
+                <span class="lang-en-block">GST 3% (1.5% + 1.5%)</span>
+                <span class="lang-bn-block">জিএসটি ৩%</span>
+              </span>
+              <span class="val" id="outGstAmt">₹2,927.10</span>
+            </div>
+            <div class="calc-output-item grand-total">
+              <span class="lbl">
+                <span class="lang-en-block">Total Bill Amount</span>
+                <span class="lang-bn-block">মোট বিলের টাকা</span>
+              </span>
+              <span class="val" id="outGrandTotal">₹1,00,497</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tool 2: Interactive Old Gold Melt Calculator -->
+        <div class="calculator-widget">
+          <div class="calculator-widget-header">
+            <h4>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+              <span class="lang-en-block">Old Gold Scrap Melt Valuation Sandbox</span>
+              <span class="lang-bn-block">পুরনো সোনা খাদ কাটা ও এক্সচেঞ্জ ক্যালকুলেটর</span>
+            </h4>
+            <span class="badge badge-gold">
+              <span class="lang-en-block">Melt Math</span>
+              <span class="lang-bn-block">খাদের হিসাব</span>
+            </span>
+          </div>
+
+          <div class="calc-grid">
+            <div class="calc-field">
+              <label>
+                <span class="lang-en-block">Old Scrap Gross Weight (g)</span>
+                <span class="lang-bn-block">পুরনো সোনার মোট ওজন (গ্রাম)</span>
+              </label>
+              <input type="number" id="meltGross" value="10.000" step="0.001" oninput="calculateInteractiveMelt()" />
+            </div>
+            <div class="calc-field">
+              <label>
+                <span class="lang-en-block">Dust & Wax Deduction (g)</span>
+                <span class="lang-bn-block">গালা ও ময়লা বাদ (গ্রাম)</span>
+              </label>
+              <input type="number" id="meltDust" value="0.400" step="0.001" oninput="calculateInteractiveMelt()" />
+            </div>
+            <div class="calc-field">
+              <label>
+                <span class="lang-en-block">Assayed Purity (%)</span>
+                <span class="lang-bn-block">সোনার বিশুদ্ধতা (%)</span>
+              </label>
+              <input type="number" id="meltPurity" value="85.0" step="0.1" max="100" oninput="calculateInteractiveMelt()" />
+            </div>
+            <div class="calc-field">
+              <label>
+                <span class="lang-en-block">Old Gold Buying Rate (₹/g)</span>
+                <span class="lang-bn-block">পুরনো সোনা কেনার দর (টাকা/গ্রাম)</span>
+              </label>
+              <input type="number" id="meltRate" value="7050" step="10" oninput="calculateInteractiveMelt()" />
+            </div>
+          </div>
+
+          <div class="calc-output-box">
+            <div class="calc-output-item">
+              <span class="lbl">
+                <span class="lang-en-block">Net Melt Metal</span>
+                <span class="lang-bn-block">মেল্ট ওজন</span>
+              </span>
+              <span class="val" id="outMeltNet">9.600 g</span>
+            </div>
+            <div class="calc-output-item">
+              <span class="lbl">
+                <span class="lang-en-block">Fine Gold Equivalent</span>
+                <span class="lang-bn-block">পাকা সোনার সমান ওজন</span>
+              </span>
+              <span class="val" id="outFineGold">8.160 g</span>
+            </div>
+            <div class="calc-output-item grand-total">
+              <span class="lbl">
+                <span class="lang-en-block">Customer Exchange Credit</span>
+                <span class="lang-bn-block">ক্রেতার প্রাপ্য এক্সচেঞ্জ টাকা</span>
+              </span>
+              <span class="val" id="outExchangeCredit">₹57,528</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tool 3: Rule 114B PAN Cash Limit Tester -->
+        <div class="calculator-widget">
+          <div class="calculator-widget-header">
+            <h4>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              <span class="lang-en-block">Rule 114B PAN Cash Limit Validator</span>
+              <span class="lang-bn-block">রুল ১১৪বি প্যান কার্ড নিয়ম পরীক্ষক (₹২ লাখ ক্যাশ লিমিট)</span>
+            </h4>
+            <span class="badge badge-blue">
+              <span class="lang-en-block">Compliance</span>
+              <span class="lang-bn-block">সরকারি নিয়ম</span>
+            </span>
+          </div>
+
+          <div class="calc-grid">
+            <div class="calc-field">
+              <label>
+                <span class="lang-en-block">Total Invoice Payable (₹)</span>
+                <span class="lang-bn-block">বিলের মোট টাকা (₹)</span>
+              </label>
+              <input type="number" id="panInvoice" value="250000" step="1000" oninput="testPanCompliance()" />
+            </div>
+            <div class="calc-field">
+              <label>
+                <span class="lang-en-block">Cash Tender Paid (₹)</span>
+                <span class="lang-bn-block">নগদে দেওয়া টাকা (Cash ₹)</span>
+              </label>
+              <input type="number" id="panCashTender" value="210000" step="1000" oninput="testPanCompliance()" />
+            </div>
+            <div class="calc-field">
+              <label>
+                <span class="lang-en-block">Customer PAN Input</span>
+                <span class="lang-bn-block">ক্রেতার প্যান কার্ড নম্বর</span>
+              </label>
+              <input type="text" id="panTestInput" value="ABCDE1234F" maxlength="10" oninput="testPanCompliance()" style="text-transform: uppercase;" />
+            </div>
+          </div>
+
+          <div id="panAlertBox" class="callout warning" style="margin: 0;">
+            <div class="icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path></svg>
+            </div>
+            <div class="callout-body" id="panAlertMessage">
+              <strong>MANDATORY PAN REQUIRED (Rule 114B)</strong><br/>
+              Cash tender exceeds ₹2,00,000 statutory limit. Valid PAN format verified: <code>ABCDE1234F</code>.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================== -->
+      <!-- CHAPTER 14: KEYBOARD SHORTCUTS REFERENCE -->
+      <!-- =================================================================== -->
+      <section id="ch14" class="chapter">
+        <div class="chapter-header">
+          <div class="chapter-num">14</div>
+          <h2>
+            <span class="lang-en-block">Keyboard Shortcuts & Fast Keys</span>
+            <span class="lang-bn-block">কাজের গতি বাড়াতে কি-বোর্ড শর্টকাট তালিকা</span>
+          </h2>
+        </div>
+
+        <div class="lang-en-block">
+          <p class="chapter-lead">
+            Operate at maximum speed during festive rushes (Dhanteras, Diwali, Akshaya Tritiya, Wedding Season) using hotkeys:
+          </p>
+        </div>
+
+        <div class="lang-bn-block">
+          <p class="chapter-lead">
+            ধনতেরাস, অক্ষয় তৃতীয়া বা বিয়ের মরসুমে ভিড়ের সময় দ্রুত বিল করতে মাউসের বদলে কি-বোর্ড শর্টকাট ব্যবহার করুন:
+          </p>
+        </div>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th><span class="lang-en-block">Shortcut</span><span class="lang-bn-block">শর্টকাট কি</span></th>
+                <th><span class="lang-en-block">Target Action</span><span class="lang-bn-block">কাজ</span></th>
+                <th><span class="lang-en-block">Description</span><span class="lang-bn-block">বিবরণ</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><kbd>F2</kbd></td>
+                <td>
+                  <span class="lang-en-block">Open POS Terminal</span>
+                  <span class="lang-bn-block">সরাসরি বিলিং কাউন্টারে যাওয়া</span>
+                </td>
+                <td>
+                  <span class="lang-en-block">Jumps instantly to the active retail billing counter.</span>
+                  <span class="lang-bn-block">যেকোনো স্ক্রিন থেকে এক নিমেষে নতুন বিল তৈরির স্ক্রিনে যায়।</span>
+                </td>
+              </tr>
+              <tr>
+                <td><kbd>F4</kbd></td>
+                <td>
+                  <span class="lang-en-block">Inventory & Stock Catalogue</span>
+                  <span class="lang-bn-block">স্টক ও ইনভেন্টরি পেজ</span>
+                </td>
+                <td>
+                  <span class="lang-en-block">Opens stock search and barcode tag printing table.</span>
+                  <span class="lang-bn-block">দোকানের মজুত গয়না ও ট্যাগ প্রিন্ট তালিকা খোলে।</span>
+                </td>
+              </tr>
+              <tr>
+                <td><kbd>Ctrl</kbd> + <kbd>P</kbd></td>
+                <td>
+                  <span class="lang-en-block">Print Invoice / Thermal Slip</span>
+                  <span class="lang-bn-block">বিল বা রসিদ প্রিন্ট</span>
+                </td>
+                <td>
+                  <span class="lang-en-block">Triggers standard browser printing dialog for active bill.</span>
+                  <span class="lang-bn-block">চলতি বিলের প্রিন্টার উইন্ডো চালু করে।</span>
+                </td>
+              </tr>
+              <tr>
+                <td><kbd>Enter</kbd> (ট্যাগ ইনপুটে)</td>
+                <td>
+                  <span class="lang-en-block">Scan & Add Tag</span>
+                  <span class="lang-bn-block">ট্যাগ কার্টে যোগ করা</span>
+                </td>
+                <td>
+                  <span class="lang-en-block">Fetches item weight, karat, and HUID and adds it to cart.</span>
+                  <span class="lang-bn-block">বারকোড স্ক্যান করার পর স্বয়ংক্রিয়ভাবে বিলে আইটেমটি যুক্ত করে।</span>
+                </td>
+              </tr>
+              <tr>
+                <td><kbd>Esc</kbd></td>
+                <td>
+                  <span class="lang-en-block">Close Modal Windows</span>
+                  <span class="lang-bn-block">পপআপ বন্ধ করা</span>
+                </td>
+                <td>
+                  <span class="lang-en-block">Dismisses active dialogs or cancel popups.</span>
+                  <span class="lang-bn-block">যেকোনো খোলা পপআপ বা মোডাল বন্ধ করে।</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- =================================================================== -->
+      <!-- CHAPTER 15: FAQ & TROUBLESHOOTING -->
+      <!-- =================================================================== -->
+      <section id="ch15" class="chapter">
+        <div class="chapter-header">
+          <div class="chapter-num">15</div>
+          <h2>
+            <span class="lang-en-block">Frequently Asked Questions & Troubleshooting</span>
+            <span class="lang-bn-block">সচরাচর জিজ্ঞাস্য প্রশ্ন ও সমাধান (FAQ)</span>
+          </h2>
+        </div>
+
+        <div class="guide-card" style="margin-bottom: 16px;">
+          <h4>
+            <span class="lang-en-block">Q1: Why is the Cash Drawer balance showing in red or negative?</span>
+            <span class="lang-bn-block">প্রশ্ন ১: ক্যাশ ড্রয়ারের ব্যালেন্স লাল রঙে বা মাইনাস দেখাচ্ছে কেন?</span>
+          </h4>
+          <p>
+            <span class="lang-en-block">
+              A negative drawer balance indicates cash payouts (e.g., bullion purchase, supplier vouchers, or customer cash returns) exceeded the recorded cash intake. To resolve, record an initial Cash Opening Float voucher or audit counter transactions.
+            </span>
+            <span class="lang-bn-block">
+              যদি ক্যাশ বিক্রির চেয়ে বেশি টাকা কোনো মহাজনকে দেওয়া হয় বা কারিগরকে দেওয়া হয় এবং ওপেনিং ক্যাশ এন্ট্রি করা না থাকে, তবে ব্যালেন্স মাইনাস হতে পারে। সকালে দোকানে ক্যাশ কাউন্টার চালুর সময় 'Cash Drawer' পেজে গিয়ে মালিকের প্রারম্ভিক ক্যাশ ফ্লোট (Opening Cash) এন্ট্রি করলেই এটি ঠিক হয়ে যায়।
+            </span>
+          </p>
+        </div>
+
+        <div class="guide-card" style="margin-bottom: 16px;">
+          <h4>
+            <span class="lang-en-block">Q2: What happens if a barcode scanner fails to scan a damaged barbell tag?</span>
+            <span class="lang-bn-block">প্রশ্ন ২: গয়নার বারকোড ট্যাগ যদি ছিঁড়ে যায় বা স্ক্যান না নেয় তাহলে কী করব?</span>
+          </h4>
+          <p>
+            <span class="lang-en-block">
+              You can type the 6 to 10 character tag code directly into the scanner field (e.g., <code>BJ-2024-001</code>) and hit <kbd>Enter</kbd>. If the tag is completely unreadable, click <strong>"+ Manual Item"</strong> and input details manually.
+            </span>
+            <span class="lang-bn-block">
+              কোনো চিন্তা নেই! ট্যাগের গায়ে লেখা নম্বরটি (যেমন: <code>BJ-2024-001</code>) সরাসরি স্ক্যানার বক্সে টাইপ করে Enter চাপুন। অথবা <strong>"+ Manual Item"</strong> বাটনে ক্লিক করে হাতে নাম ও ওজন বসিয়ে সরাসরি বিল করতে পারেন।
+            </span>
+          </p>
+        </div>
+
+        <div class="guide-card" style="margin-bottom: 16px;">
+          <h4>
+            <span class="lang-en-block">Q3: How do I reprint an old tax invoice from last week?</span>
+            <span class="lang-bn-block">প্রশ্ন ৩: আগের কোনো পুরনো বিল পুনরায় প্রিন্ট করবেন কীভাবে?</span>
+          </h4>
+          <p>
+            <span class="lang-en-block">
+              Navigate to <strong>Sales Invoices</strong> in the left sidebar. Use the search bar to locate the customer name or invoice number, then click the <strong>Printer</strong> icon to reprint either in A4/A5 or 80mm thermal format.
+            </span>
+            <span class="lang-bn-block">
+              বামদিকের মেনু থেকে <strong>"Sales Invoices"</strong> পেজে যান। ক্রেতার নাম বা বিল নম্বর দিয়ে সার্চ করুন। তারপর পাশে থাকা <strong>Printer</strong> আইকনে ক্লিক করলেই আবার A4 বা থার্মাল স্লিপ প্রিন্ট হয়ে যাবে।
+            </span>
+          </p>
+        </div>
+
+        <div class="guide-card" style="margin-bottom: 16px;">
+          <h4>
+            <span class="lang-en-block">Q4: Is internet connectivity mandatory for counter billing?</span>
+            <span class="lang-bn-block">প্রশ্ন ৪: বিলিং করার জন্য কি সবসময় ইন্টারনেট থাকা জরুরি?</span>
+          </h4>
+          <p>
+            <span class="lang-en-block">
+              No! Bharat Jewellery ERP runs on your local showroom server (WAMP / Apache / MySQL). Counter staff can bill, scan tags, and print invoices locally with zero downtime during internet outages.
+            </span>
+            <span class="lang-bn-block">
+              একদমই না! এই সফটওয়্যারটি আপনার শোরুমের নিজস্ব কম্পিউটারে বা লোকাল সার্ভারে চলে। তাই ব্রডব্যান্ড বা ইন্টারনেট চলে গেলেও কাউন্টারে বিলিং, বারকোড স্ক্যানিং ও প্রিন্টিং এক সেকেন্ডের জন্যও আটকাবে না।
+            </span>
+          </p>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="doc-footer">
+    <div style="font-family: var(--font-display); font-size: 1rem; color: #fff; margin-bottom: 6px;">
+      BHARAT JEWELLERS & SONS PVT. LTD. • ভারত জুয়েলার্স অ্যান্ড সন্স
+    </div>
+    <div>Bowbazar, Kolkata • BIS Hallmark License: HM/BIS/WB-2024/916 • GSTIN: 19AAACB1234D1Z5</div>
+    <div style="margin-top: 10px; font-size: 0.75rem;">
+      <span class="lang-en-block">Bharat Jewellery ERP & POS System Documentation v1.2.0 • Built with React 19 & Tailwind CSS</span>
+      <span class="lang-bn-block">ভারত জুয়েলারি ইআরপি ও পিওএস সংস্করণ ১.২.০ • সম্পূর্ণ দ্বিভাষিক (বাংলা ও ইংরেজি) সহায়িকা</span>
+    </div>
+  </footer>
+
+  <!-- Interactive Scripts -->
+  <script>
+    // Language Toggle Functionality
+    function setLanguage(lang) {
+      const body = document.body;
+      const btnBn = document.getElementById('btnLangBn');
+      const btnEn = document.getElementById('btnLangEn');
+
+      if (lang === 'bn') {
+        body.classList.remove('lang-en');
+        body.classList.add('lang-bn');
+        btnBn.classList.add('active');
+        btnEn.classList.remove('active');
+        localStorage.setItem('bj_manual_lang', 'bn');
+      } else {
+        body.classList.remove('lang-bn');
+        body.classList.add('lang-en');
+        btnEn.classList.add('active');
+        btnBn.classList.remove('active');
+        localStorage.setItem('bj_manual_lang', 'en');
+      }
+
+      // Re-trigger live calculators to update any strings
+      calculateInteractiveBill();
+      calculateInteractiveMelt();
+      testPanCompliance();
+    }
+
+    // Live Search Functionality
+    function filterManual() {
+      const query = document.getElementById('manualSearch').value.toLowerCase().trim();
+      const chapters = document.querySelectorAll('section.chapter');
+      const navLinks = document.querySelectorAll('#sidebarNav li');
+
+      chapters.forEach((chapter, index) => {
+        const text = chapter.innerText.toLowerCase();
+        if (!query || text.includes(query)) {
+          chapter.style.display = 'block';
+          if (navLinks[index]) navLinks[index].style.display = 'block';
+        } else {
+          chapter.style.display = 'none';
+          if (navLinks[index]) navLinks[index].style.display = 'none';
+        }
+      });
+    }
+
+    // ScrollSpy for Active Sidebar Link
+    window.addEventListener('scroll', () => {
+      const scrollPos = window.scrollY + 120;
+      const chapters = document.querySelectorAll('section.chapter');
+      const navLinks = document.querySelectorAll('.nav-link');
+
+      chapters.forEach((chapter) => {
+        const top = chapter.offsetTop;
+        const height = chapter.offsetHeight;
+        const id = chapter.getAttribute('id');
+
+        if (scrollPos >= top && scrollPos < top + height) {
+          navLinks.forEach((link) => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + id) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    });
+
+    // Interactive Jewellery Bill Calculator
+    function calculateInteractiveBill() {
+      const gross = parseFloat(document.getElementById('calcGross').value) || 0;
+      const stoneWt = parseFloat(document.getElementById('calcStoneWt').value) || 0;
+      const rate = parseFloat(document.getElementById('calcRate').value) || 0;
+      const makingType = document.getElementById('calcMakingType').value;
+      const makingRate = parseFloat(document.getElementById('calcMakingRate').value) || 0;
+      const stoneVal = parseFloat(document.getElementById('calcStoneVal').value) || 0;
+      const hallmarking = 45.0;
+
+      const netWt = Math.max(0, gross - stoneWt);
+      const goldAmt = netWt * rate;
+
+      let makingAmt = 0;
+      if (makingType === 'per_gram') {
+        makingAmt = gross * makingRate;
+      } else if (makingType === 'percentage') {
+        makingAmt = (goldAmt * makingRate) / 100;
+      } else {
+        makingAmt = makingRate;
+      }
+
+      const taxable = goldAmt + makingAmt + stoneVal + hallmarking;
+      const gst = taxable * 0.03;
+      const total = taxable + gst;
+
+      document.getElementById('outNetWt').innerText = netWt.toFixed(3) + ' g';
+      document.getElementById('outGoldAmt').innerText = '₹' + Math.round(goldAmt).toLocaleString('en-IN');
+      document.getElementById('outMakingAmt').innerText = '₹' + Math.round(makingAmt).toLocaleString('en-IN');
+      document.getElementById('outGstAmt').innerText = '₹' + gst.toFixed(2);
+      document.getElementById('outGrandTotal').innerText = '₹' + Math.round(total).toLocaleString('en-IN');
+    }
+
+    // Interactive Old Gold Melt Calculator
+    function calculateInteractiveMelt() {
+      const gross = parseFloat(document.getElementById('meltGross').value) || 0;
+      const dust = parseFloat(document.getElementById('meltDust').value) || 0;
+      const purity = parseFloat(document.getElementById('meltPurity').value) || 0;
+      const rate = parseFloat(document.getElementById('meltRate').value) || 0;
+
+      const netMelt = Math.max(0, gross - dust);
+      const fineGold = (netMelt * purity) / 100;
+      const credit = fineGold * rate;
+
+      document.getElementById('outMeltNet').innerText = netMelt.toFixed(3) + ' g';
+      document.getElementById('outFineGold').innerText = fineGold.toFixed(3) + ' g';
+      document.getElementById('outExchangeCredit').innerText = '₹' + Math.round(credit).toLocaleString('en-IN');
+    }
+
+    // Rule 114B PAN Compliance Sandbox
+    function testPanCompliance() {
+      const tender = parseFloat(document.getElementById('panCashTender').value) || 0;
+      const pan = document.getElementById('panTestInput').value.trim().toUpperCase();
+      const alertBox = document.getElementById('panAlertBox');
+      const alertMsg = document.getElementById('panAlertMessage');
+      const isBengali = document.body.classList.contains('lang-bn');
+
+      const panRegex = /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
+      const isOverLimit = tender >= 200000;
+      const isPanValid = panRegex.test(pan);
+
+      if (isOverLimit) {
+        if (isPanValid) {
+          alertBox.className = 'callout tip';
+          alertMsg.innerHTML = isBengali
+            ? '<strong>রুল ১১৪বি নিয়ম সম্পূর্ণ মেনে চলা হয়েছে (COMPLIANT)</strong><br/>নগদ জমা ₹' + tender.toLocaleString('en-IN') + ' (≥ ₹২,০০,০০০ সীমা), এবং ক্রেতার বৈধ প্যান কার্ড (' + pan + ') সঠিকভাবে লিপিবদ্ধ হয়েছে।'
+            : '<strong>RULE 114B COMPLIANT</strong><br/>Cash tender ₹' + tender.toLocaleString('en-IN') + ' is ≥ ₹2,00,000, and customer PAN (' + pan + ') is verified valid.';
+        } else {
+          alertBox.className = 'callout warning';
+          alertMsg.innerHTML = isBengali
+            ? '<strong>প্যান কার্ড দেওয়া আইনত বাধ্যতামূলক (MANDATORY PAN REQUIRED)</strong><br/>নগদে নেওয়া টাকা ₹' + tender.toLocaleString('en-IN') + ' যা ২ লাখ টাকার সরকারি সীমা অতিক্রম করেছে। বিলে ক্রেতার ১০ সংখ্যার সঠিক প্যান নম্বর (যেমন: ABCDE1234F) লিখুন।'
+            : '<strong>MANDATORY PAN REQUIRED (Rule 114B)</strong><br/>Cash tender ₹' + tender.toLocaleString('en-IN') + ' is ≥ ₹2,00,000 limit. Please enter a valid 10-digit PAN (e.g., ABCDE1234F).';
+        }
+      } else {
+        alertBox.className = 'callout info';
+        alertMsg.innerHTML = isBengali
+          ? '<strong>স্বাভাবিক ক্যাশ পেমেন্ট (STANDARD CASH)</strong><br/>নগদ টাকা ₹' + tender.toLocaleString('en-IN') + ' যা ২ লাখ টাকার সীমার নিচে রয়েছে। এই লেনদেনে প্যান কার্ড নেওয়া বাধ্যতামূলক নয়।'
+          : '<strong>STANDARD CASH TENDER</strong><br/>Cash tender ₹' + tender.toLocaleString('en-IN') + ' is below the ₹2,00,000 threshold. PAN is optional under Rule 114B.';
+      }
+    }
+
+    // Filter view by Staff Role
+    function filterByRole(role) {
+      const pills = document.querySelectorAll('.role-pill');
+      pills.forEach(p => p.classList.remove('active'));
+
+      if (window.event && window.event.currentTarget) {
+        window.event.currentTarget.classList.add('active');
+      }
+
+      if (role === 'all') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        const targetId = 'role-' + role;
+        const targetSec = document.getElementById(targetId);
+        if (targetSec) {
+          targetSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          targetSec.style.borderColor = '#fbbf24';
+          targetSec.style.boxShadow = '0 0 25px rgba(245, 158, 11, 0.4)';
+          setTimeout(() => {
+            targetSec.style.borderColor = 'rgba(245, 158, 11, 0.25)';
+            targetSec.style.boxShadow = 'none';
+          }, 2500);
+        }
+      }
+    }
+
+    // Print specific role manual in clean A4 format
+    function printRoleManual(roleSectionId) {
+      const sec = document.getElementById(roleSectionId);
+      if (!sec) return;
+      const printWindow = window.open('', '_blank');
+      const title = sec.querySelector('h2') ? sec.querySelector('h2').innerText : 'Role Manual';
+      const content = sec.innerHTML;
+      printWindow.document.write(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <title>${title}</title>
+          <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+          <style>
+            body { font-family: 'Hind Siliguri', sans-serif; padding: 30px; color: #000; line-height: 1.6; }
+            .btn, .no-print, a { display: none !important; }
+            .step-item { display: flex; gap: 14px; margin-bottom: 16px; border-bottom: 1px dashed #ccc; padding-bottom: 12px; }
+            .step-badge { font-weight: bold; border: 1px solid #000; border-radius: 50%; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; }
+            h2 { margin-bottom: 6px; }
+            kbd { border: 1px solid #333; padding: 1px 5px; font-family: monospace; }
+          </style>
+        </head>
+        <body>
+          ${content}
+          <script>window.onload = function() { window.print(); window.close(); }<\/script>
+        </body>
+        </html>
+      `);
+      printWindow.document.close();
+    }
+
+    // Initialize on load with saved language (defaulting to Bengali 'bn')
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedLang = localStorage.getItem('bj_manual_lang') || 'bn';
+      setLanguage(savedLang);
+    });
+  </script>
+</body>
+</html>

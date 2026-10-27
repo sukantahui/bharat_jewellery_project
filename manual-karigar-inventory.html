@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>কারিগর ও স্টক ম্যানেজারের নির্দেশিকা | Bharat Jewellery ERP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Hind+Siliguri:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #06090e; --card: #0c121d; --border: rgba(245, 158, 11, 0.25);
+      --gold: #f59e0b; --gold-light: #fbbf24; --text: #f8fafc; --muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: 'Hind Siliguri', sans-serif; line-height: 1.6; padding: 24px; }
+    .container { max-width: 900px; margin: 0 auto; }
+    .header { background: linear-gradient(135deg, #101827, #1c150b); border: 1px solid var(--border); border-radius: 16px; padding: 28px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+    .role-badge { display: inline-block; padding: 4px 12px; background: rgba(245, 158, 11, 0.15); border: 1px solid var(--gold); border-radius: 20px; color: var(--gold-light); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; margin-bottom: 8px; }
+    h1 { font-size: 1.8rem; color: #fff; margin-bottom: 6px; }
+    .btn { padding: 8px 16px; border-radius: 8px; font-weight: 600; font-size: 0.85rem; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; border: none; }
+    .btn-gold { background: linear-gradient(135deg, #f59e0b, #d97706); color: #0b0f19; }
+    .btn-outline { background: #0f172a; border: 1px solid var(--border); color: var(--gold-light); }
+    .step-card { background: var(--card); border: 1px solid rgba(148, 163, 184, 0.15); border-radius: 12px; padding: 20px; margin-bottom: 16px; display: flex; gap: 16px; align-items: flex-start; }
+    .step-card:hover { border-color: var(--gold); }
+    .step-num { width: 36px; height: 36px; border-radius: 50%; background: rgba(245, 158, 11, 0.15); border: 1px solid var(--gold); color: var(--gold-light); font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; }
+    .step-content h3 { font-size: 1.1rem; color: #fff; margin-bottom: 6px; }
+    .step-content p { color: var(--muted); font-size: 0.92rem; margin-bottom: 8px; }
+    kbd { background: #1e293b; border: 1px solid #334155; padding: 2px 7px; border-radius: 5px; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: #fff; }
+    @media print {
+      body { background: #fff !important; color: #000 !important; }
+      .btn, .no-print { display: none !important; }
+      .header, .step-card { background: #fff !important; color: #000 !important; border: 1px solid #ccc !important; }
+      h1, h3 { color: #000 !important; }
+      .step-num { color: #000 !important; border-color: #000 !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div>
+        <div class="role-badge">কর্মীর ভূমিকা: কারিগর ও স্টক ম্যানেজার (Artisan & Stock Manager)</div>
+        <h1>কারিগর জমা ও শোরুমের স্টক ম্যানেজমেন্ট নির্দেশিকা</h1>
+        <p style="color: var(--muted); font-size: 0.9rem;">Bharat Jewellery ERP • গয়না জমা, HUID ট্যাগিং ও লেবেল প্রিন্ট</p>
+      </div>
+      <div class="no-print" style="display: flex; gap: 8px;">
+        <button class="btn btn-outline" onclick="window.print()">🖨️ প্রিন্ট করুন</button>
+        <a href="/user-manual.html" class="btn btn-gold">📚 মূল নির্দেশিকা</a>
+      </div>
+    </div>
+
+    <!-- Step 1 -->
+    <div class="step-card">
+      <div class="step-num">১</div>
+      <div class="step-content">
+        <h3>কারিগর ইনওয়ার্ড পেজ খোলা (Open Karigar Inward)</h3>
+        <p>মেনু থেকে <strong>"Karigar Inward"</strong> পেজে যান। যে কারিগর বা কর্মশালা গয়না জমা দিতে এসেছেন, তার নাম ড্রপডাউন তালিকা থেকে নির্বাচন করুন।</p>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="step-card">
+      <div class="step-num">২</div>
+      <div class="step-content">
+        <h3>গয়নার ক্যাটাগরি, ক্যারেট ও ওজন এন্ট্রি</h3>
+        <p>গয়নার ধরণ সিলেক্ট করুন (যেমন: নেকলেস, ঝুমকো, আংটি, বালা ইত্যাদি)। তারপর ক্যারেট (২২ ক্যারেট ৯১৬) এবং ডিজিটাল কাঁটা দেখে মোট ওজন (Gross Wt) ও পাথর থাকলে পাথরের ওজন (Stone Wt) ৩ দশমিক স্থান (যেমন: <code>14.250g</code>) পর্যন্ত নির্ভুলভাবে লিখুন।</p>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="step-card">
+      <div class="step-num">৩</div>
+      <div class="step-content">
+        <h3>কারিগরের মজুরি ও হলমার্কের HUID কোড লেখা</h3>
+        <p>কারিগরের সাথে চুক্তি অনুযায়ী প্রতি গ্রাম মজুরি (যেমন ₹২৮০/গ্রাম বা ফিক্সড মজুরি) উল্লেখ করুন। এরপর বিআইএস অনুমোদিত হলমার্কিং সেন্টারের খোদাই করা ৬-সংখ্যার ইউনিক আইডি (HUID — যেমন: <code>HM89A2</code>) টাইপ করুন।</p>
+      </div>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="step-card">
+      <div class="step-num">৪</div>
+      <div class="step-content">
+        <h3>সেভ করা ও বারকোড ট্যাগ জেনারেট (Save & Tag)</h3>
+        <p><strong>"Save & Generate Tag"</strong> বাটনে ক্লিক করুন। সফটওয়্যার স্বয়ংক্রিয়ভাবে কারিগরের লেজারে তৈরি মজুরি জমা করবে এবং গয়নাটিকে অনন্য বারকোড সহ শোরুমের লাইভ স্টকে অন্তর্ভুক্ত করে নেবে।</p>
+      </div>
+    </div>
+
+    <!-- Step 5 -->
+    <div class="step-card">
+      <div class="step-num">৫</div>
+      <div class="step-content">
+        <h3>বারবেল ট্যাগ প্রিন্ট ও গয়নায় লাগানো (Tag Printing)</h3>
+        <p>লেবেল প্রিন্টারে বারবেল ট্যাগটি প্রিন্ট দিন।</p>
+        <ul>
+          <li><strong>বাম ডানায়:</strong> শোরুমের নাম, ক্যারেট (22K 916), গয়নার নাম ও ৬ অক্ষরের HUID।</li>
+          <li><strong>ডান ডানায়:</strong> গ্রস ওজন (GW), খাঁটি ওজন (NW), পাথর (SW) ও স্ক্যানযোগ্য বারকোড।</li>
+        </ul>
+        <p>ট্যাগটি সুন্দরভাবে আঠা দিয়ে গয়নায় আটকে দিন।</p>
+      </div>
+    </div>
+
+    <!-- Step 6 -->
+    <div class="step-card">
+      <div class="step-num">৬</div>
+      <div class="step-content">
+        <h3>ট্রে ও লকারে সাজানো এবং স্টক অডিট</h3>
+        <p>ট্যাগ লাগানো গয়নাটি শোরুমের নির্দিষ্ট ট্রে বা লকারের খোপে রেখে দিন। নিয়মিত <strong>"Inventory & Tags"</strong> (<kbd>F4</kbd>) পেজে গিয়ে স্টক ফিল্টার করে দেখুন কোনো আইটেম ৩ পিসের নিচে নেমে গেছে কিনা। ঘাটতি থাকলে কারিগরকে নতুন অর্ডার দিন।</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
